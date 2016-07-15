@@ -70,4 +70,4 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:hotfireeagle/hotfireeagle.github.io.git
-  branch: master
+  branch: gh-pages
