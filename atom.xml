@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-14T06:35:27.624Z</updated>
+  <updated>2018-10-15T10:05:18.949Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>puppeteer-API备忘</title>
+    <link href="http://yoursite.com/2018/10/15/puppeteer-API%E5%A4%87%E5%BF%98/"/>
+    <id>http://yoursite.com/2018/10/15/puppeteer-API备忘/</id>
+    <published>2018-10-15T07:54:47.000Z</published>
+    <updated>2018-10-15T10:05:18.949Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-API"><a href="#1-API" class="headerlink" title="1.API"></a>1.API</h3><p>1.获取某个元素的文本采用下面的方式：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> text = <span class="keyword">await</span>.page.$<span class="built_in">eval</span>(<span class="string">'query'</span>, ele =&gt; ele.textContent); <span class="comment">/* 其中text就是该dom元素所对应的文本 */</span></span><br></pre></td></tr></table></figure><p>2.测试页面中是否存在某个元素:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.waitForSelector(<span class="string">'query'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;, () =&gt; &#123;<span class="built_in">console</span>.error(<span class="string">'要检查的元素不存在'</span>)&#125;);</span><br></pre></td></tr></table></figure><p>3.获取某个响应的数据:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">page.on(<span class="string">'requestfinished'</span>, request =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (request.url().endsWith(<span class="string">'the url you want compare'</span>)) &#123;</span><br><span class="line">    request.response().json().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">/* do something with the res */</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h3 id="2-小技巧"><a href="#2-小技巧" class="headerlink" title="2.小技巧"></a>2.小技巧</h3><p>1.遇到一些问题，加入有一个交互是这样的，点击button.dropdown-toggle，UI表现上展开ul.dropdown-menu列表数据。在这种场景下我们希望列表数据中的第二项，那应该这样写：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟点击button.dropdown-toggle</span></span><br><span class="line"><span class="keyword">await</span> page.click(<span class="string">'button.dropdown-toggle'</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;, () =&gt; &#123;</span><br><span class="line">  Utils.log(<span class="string">'课堂练习-&gt;班级练习页面-&gt;点击请选择班级按钮时发生错误'</span>, <span class="string">'error'</span>);</span><br><span class="line">&#125;); <span class="comment">// 不知道为什么一定得先点击这个按钮</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟点击列表中的第二个数据</span></span><br><span class="line"><span class="keyword">await</span> page.click(<span class="string">'ul.dropdown-menu li:nth-of-type(2) a'</span>).then(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  page.on(<span class="string">'requestfinished'</span>, request =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (request.url().endsWith(<span class="string">'gk/ops/class/exercise/page'</span>)) &#123;</span><br><span class="line">      request.response().json().then(<span class="keyword">async</span> res =&gt; &#123;</span><br><span class="line">        <span class="keyword">await</span> testUI(res, <span class="string">'二'</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">  Utils.log(<span class="string">'课堂练习-&gt;班级练习页面-&gt;点击第二个班级按钮的时候发生错误'</span>, <span class="string">'error'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>2.某些用户产生的交互行为会触发网络请求，那么怎么捕获监听呢？思路：模拟产生交互的行为，在其返回的promise的resolve cb里面使用page去监听requestfinished事件，如下所示：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> page.click(<span class="string">'ul.dropdown-menu li:nth-of-type(2) a'</span>).then(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  page.on(<span class="string">'requestfinished'</span>, request =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (request.url().endsWith(<span class="string">'you want compare'</span>)) &#123;</span><br><span class="line">      request.response().json().then(<span class="keyword">async</span> res =&gt; &#123;</span><br><span class="line">        <span class="keyword">await</span> testUI(res, <span class="string">'二'</span>); <span class="comment">// 测试UI与响应是否对应</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">  Utils.log(<span class="string">'some error message'</span>, <span class="string">'error'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>3.近期做项目遇到一个问题，那就是localStorage丢失的问题，思前想后才发现上一个页面的域名是HTTPS（在上个页面写的localStorage)，而下个页面成了http，这就解释了为什么localStorage为什么会丢失的问题了。毕竟localStorage特定于页面的协议。有可能是第二个页面引入了某个非https的协议，所以降成了http。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-API&quot;&gt;&lt;a href=&quot;#1-API&quot; class=&quot;headerlink&quot; title=&quot;1.API&quot;&gt;&lt;/a&gt;1.API&lt;/h3&gt;&lt;p&gt;1.获取某个元素的文本采用下面的方式：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascrip
+      
+    
+    </summary>
+    
+    
+      <category term="puppeteer" scheme="http://yoursite.com/tags/puppeteer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css实现轮播</title>
+    <link href="http://yoursite.com/2018/10/15/css%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD/"/>
+    <id>http://yoursite.com/2018/10/15/css实现轮播/</id>
+    <published>2018-10-15T06:51:11.000Z</published>
+    <updated>2018-10-15T07:03:53.527Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-知识要点"><a href="#1-知识要点" class="headerlink" title="1.知识要点"></a>1.知识要点</h3><p>1.label的作用？label标签是用来转义焦点的，当用户点击label的时候，浏览器会自动将焦点转到label所对应的那个元素上面。常见的用法就是input和label搭配使用，其用法如下：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"nameInput"</span>&gt;</span>姓名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"nameInput"</span> <span class="attr">name</span>=<span class="string">"name"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"email"</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-知识要点&quot;&gt;&lt;a href=&quot;#1-知识要点&quot; class=&quot;headerlink&quot; title=&quot;1.知识要点&quot;&gt;&lt;/a&gt;1.知识要点&lt;/h3&gt;&lt;p&gt;1.label的作用？label标签是用来转义焦点的，当用户点击label的时候，浏览器会自动将焦点转到la
+      
+    
+    </summary>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>文本超出范围显示省略号</title>
