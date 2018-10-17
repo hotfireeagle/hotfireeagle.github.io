@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/17/DOM%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2018-10-17T15:14:41.650Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/15/puppeteer-API%E5%A4%87%E5%BF%98/</loc>
     
-    <lastmod>2018-10-15T10:05:18.949Z</lastmod>
+    <lastmod>2018-10-16T07:01:30.378Z</lastmod>
     
   </url>
   
