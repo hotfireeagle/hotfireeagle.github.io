@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-17T15:14:41.650Z</updated>
+  <updated>2018-10-18T06:48:46.034Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>typeORM学习</title>
+    <link href="http://yoursite.com/2018/10/18/typeORM%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2018/10/18/typeORM学习/</id>
+    <published>2018-10-18T03:49:07.000Z</published>
+    <updated>2018-10-18T06:48:46.034Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-什么是Entity"><a href="#1-什么是Entity" class="headerlink" title="1.什么是Entity?"></a>1.什么是Entity?</h3><p>Entity是一个类，被抽象映射为数据库的table，假如使用Mogodb数据库的话，那么就对应为collection。</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* user.entity.ts */</span></span><br><span class="line"><span class="keyword">import</span> &#123; Entity, PrimaryGeneratedColumn, Column &#125; <span class="keyword">from</span> <span class="string">"typeorm"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> User &#123;</span><br><span class="line">  <span class="meta">@PrimaryGeneratedColumn</span>()</span><br><span class="line">  id: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Column</span>()</span><br><span class="line">  firstName: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Column</span>()</span><br><span class="line">  lastName: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Column</span>()</span><br><span class="line">  isActive: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 上面的代码相当于创建了一个名字叫user的table，包括有四个字段，其中id是自增字段 */</span></span><br></pre></td></tr></table></figure><p>通常的，每一个Entity都必须得包含有columns以及relations，并且必须包含有一个primary column(如果使用mongodb的话那么就必须包含有ObjectId column)。一般应用中都会包含多个Entity，每个Entity都必须在connection options里面被注册相关连接实际数据库的事宜。</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createConnection, Connection &#125; <span class="keyword">from</span> <span class="string">"typeorm"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; User &#125; <span class="keyword">from</span> <span class="string">"./entity/user.entity"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> connection: Connection = <span class="keyword">await</span> createConnection(&#123;</span><br><span class="line">  <span class="keyword">type</span>: <span class="string">"mysql"</span>,</span><br><span class="line">  host: <span class="string">"localhost"</span>,</span><br><span class="line">  port: <span class="number">3306</span>,</span><br><span class="line">  username: <span class="string">"USER_NAME"</span>,</span><br><span class="line">  password: <span class="string">"PASSWORD"</span>,</span><br><span class="line">  database: <span class="string">"DATABASE_NAME"</span>,</span><br><span class="line">  entities: [User], <span class="comment">// 一个table的配置</span></span><br><span class="line">  <span class="comment">// entities: ["entity/*.ts"], 或者这样写，配置整个目录下面的entity文件</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>前面也提到了Entity是一个装饰类，Entity能够接受可选的参数作为对table的配置，比如table的name，如下所示：</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(<span class="string">"users"</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> User &#123;&#125;</span><br></pre></td></tr></table></figure><p>上面就是创建一个叫做名字叫做users的table，更具体的，一些常见的配置如下所示：</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>(&#123;</span><br><span class="line">  name: <span class="string">"users"</span>,</span><br><span class="line">  database: <span class="string">"DATA_BASE_NAME"</span>,</span><br><span class="line">  orderBy: &#123;</span><br><span class="line">    name: <span class="string">"ASC"</span>,</span><br><span class="line">    id: <span class="string">"DESC"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> User&#123;&#125;</span><br></pre></td></tr></table></figure><p>既然table由columns组成，那么Entity也是由columns构成。@column装饰类将会把字段数据给映射成database table column。而column分为了很多种：primary columns；special columns；spatial columns。其中，任何一个entity都必须包含至少一个primary column，并且primary column又分为了下面几个部分：</p><ul><li>PrimaryColumn：创建一个任意类型任意值的primary column，当然你也可以指出column的类型.</li><li>PrimaryGeneratedColumn：自动创建一个自增的int类型的primary column。在保存之前我们无需对他手动赋值，他会被自动生成。</li><li>PrimaryGeneratedColumn(“uuid”)：自动创建一个独一无二的string类型的primary column，保存之前无需手动赋值，会被自动生成。</li></ul><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> User &#123;</span><br><span class="line">  <span class="meta">@PrimaryColumn</span>()</span><br><span class="line">  id: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PrimaryGeneratedColumn</span>()</span><br><span class="line">  addId: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PrimaryGeneratedColumn</span>(<span class="string">"uuid"</span>)</span><br><span class="line">  userUuid: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-什么是Entity&quot;&gt;&lt;a href=&quot;#1-什么是Entity&quot; class=&quot;headerlink&quot; title=&quot;1.什么是Entity?&quot;&gt;&lt;/a&gt;1.什么是Entity?&lt;/h3&gt;&lt;p&gt;Entity是一个类，被抽象映射为数据库的table，假如使用M
+      
+    
+    </summary>
+    
+    
+      <category term="typeORM" scheme="http://yoursite.com/tags/typeORM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rust语法备忘</title>
+    <link href="http://yoursite.com/2018/10/18/rust%E8%AF%AD%E6%B3%95%E5%A4%87%E5%BF%98/"/>
+    <id>http://yoursite.com/2018/10/18/rust语法备忘/</id>
+    <published>2018-10-18T03:08:15.000Z</published>
+    <updated>2018-10-18T03:49:27.273Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-表达式"><a href="#1-表达式" class="headerlink" title="1.表达式"></a>1.表达式</h3><p>1.1 赋值表达式返回的类型为unit，即一个空的tuple()。这样设计就可以防止连续赋值，在Rust中是不允许连续赋值的。把赋值表达式的返回值类型规定成了一个unit的话，那么就可以防止连续赋值了，因为会报类型错误。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-表达式&quot;&gt;&lt;a href=&quot;#1-表达式&quot; class=&quot;headerlink&quot; title=&quot;1.表达式&quot;&gt;&lt;/a&gt;1.表达式&lt;/h3&gt;&lt;p&gt;1.1 赋值表达式返回的类型为unit，即一个空的tuple()。这样设计就可以防止连续赋值，在Rust中是不允许连
+      
+    
+    </summary>
+    
+    
+      <category term="Rust" scheme="http://yoursite.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DOM操作</title>
     <link href="http://yoursite.com/2018/10/17/DOM%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2018/10/17/DOM操作/</id>
     <published>2018-10-17T15:03:06.000Z</published>
-    <updated>2018-10-17T15:14:41.650Z</updated>
+    <updated>2018-10-18T02:45:48.392Z</updated>
     
     <content type="html"><![CDATA[<h3 id="1-利用js获取select所选择的选项"><a href="#1-利用js获取select所选择的选项" class="headerlink" title="1.利用js获取select所选择的选项"></a>1.利用js获取select所选择的选项</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"year-select"</span> <span class="attr">class</span>=<span class="string">"weui-select"</span> <span class="attr">name</span>=<span class="string">"yearSelect"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2018"</span>&gt;</span>2018年<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2019"</span>&gt;</span>2019年<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure><p>html结构如上所示，使用原生js获取select所选择的内容的方法如下所示：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> yearSelect = <span class="built_in">document</span>.getElementById(<span class="string">"year-select"</span>);</span><br><span class="line"><span class="keyword">let</span> index = yearSelect.selectedIndex;</span><br><span class="line"><span class="keyword">let</span> choseYear = yearSelect.options[index].value; <span class="comment">// select所选择的值</span></span><br></pre></td></tr></table></figure>]]></content>
     
