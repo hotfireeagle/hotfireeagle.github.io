@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.在typescript中，数字都是浮点型。 1let octNum: number = 0o677; // 八进制 2.typescript相比于JavaScript所新引入的类型是：元组(tuple),枚举(enum),任意值(any),void,never。 3.元组：元素数量确定，元素类型确定，元素类型顺序确定（可以有多种类型）。 12let x: [string, number] =">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript知识点">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/typescript知识点/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.在typescript中，数字都是浮点型。 1let octNum: number = 0o677; // 八进制 2.typescript相比于JavaScript所新引入的类型是：元组(tuple),枚举(enum),任意值(any),void,never。 3.元组：元素数量确定，元素类型确定，元素类型顺序确定（可以有多种类型）。 12let x: [string, number] =">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-25T02:01:26.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript知识点">
+<meta name="twitter:description" content="1.在typescript中，数字都是浮点型。 1let octNum: number = 0o677; // 八进制 2.typescript相比于JavaScript所新引入的类型是：元组(tuple),枚举(enum),任意值(any),void,never。 3.元组：元素数量确定，元素类型确定，元素类型顺序确定（可以有多种类型）。 12let x: [string, number] =">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>typescript知识点</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/10/18/typeORM学习/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/25/typescript知识点/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/25/typescript知识点/&text=typescript知识点"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/25/typescript知识点/&is_video=false&description=typescript知识点"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript知识点&body=Check out this article: http://yoursite.com/2018/10/25/typescript知识点/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/25/typescript知识点/&name=typescript知识点&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        typescript知识点
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-25T01:23:54.000Z" itemprop="datePublished">2018-10-25</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/typescript/">typescript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>1.在typescript中，数字都是浮点型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> octNum: <span class="built_in">number</span> = <span class="number">0o677</span>; <span class="comment">// 八进制</span></span><br></pre></td></tr></table></figure>
+<p>2.typescript相比于JavaScript所新引入的类型是：元组(tuple),枚举(enum),任意值(any),void,never。</p>
+<p>3.元组：元素数量确定，元素类型确定，元素类型顺序确定（可以有多种类型）。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">'angular'</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> x2: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="number">2</span>, <span class="string">'angular'</span>]; <span class="comment">// wrong</span></span><br></pre></td></tr></table></figure>
+<p>4.枚举：下标默认从0开始，可修改默认值，从头开始递增1.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123;Red = <span class="number">2</span>, Blue, Green = <span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Blue; <span class="comment">// =&gt; c === 3</span></span><br></pre></td></tr></table></figure>
+<p>5.多类型检查</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n: <span class="built_in">number</span> = <span class="number">20</span>;</span><br><span class="line">n = <span class="literal">null</span>; <span class="comment">// 报错</span></span><br><span class="line">n = <span class="literal">undefined</span>; <span class="comment">// 报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> n2: <span class="built_in">number</span> | <span class="literal">null</span> | <span class="literal">undefined</span>;</span><br><span class="line">n2 = <span class="number">20</span>;</span><br><span class="line">n2 = <span class="literal">null</span>;</span><br><span class="line">n2 = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<p>6.void以及any在不返回值的函数中的运用</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fun(foo: () =&gt; void) &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = foo();</span><br><span class="line">  temp.doSth(); <span class="comment">// 报错，如果foo返回类型改成any的话则不会报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7.never类型是其他类型的子类型，也就是说never可以赋值给其他类型，而其他类型无法赋值给never类型。never类型表示为会抛出异常或者无法执行到终止点。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ne: never = <span class="function">(<span class="params">(<span class="params"></span>) =&gt; &#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="params">'i need never'</span>) &#125;</span>)<span class="params">()</span>;</span></span><br><span class="line"><span class="function"><span class="params">function</span> <span class="params">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="params">never</span> &#123;</span></span><br><span class="line"><span class="function">  <span class="params">throw</span> <span class="params">new</span> <span class="params">Error</span>(<span class="params">message</span>);</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"><span class="params">function</span> <span class="params">loop</span><span class="params">()</span>: <span class="params">never</span> &#123;</span></span><br><span class="line"><span class="function">  <span class="params">while</span>(<span class="params"><span class="literal">true</span></span>) &#123;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>8.let,const不存在变量提升；在同一个块级作用域中，let只能声明一个变量一次，多次声明报错。</p>
+<p>9.变量交换： [a, b] = [b, a];</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/25/typescript知识点/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/25/typescript知识点/&text=typescript知识点"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/25/typescript知识点/&is_video=false&description=typescript知识点"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript知识点&body=Check out this article: http://yoursite.com/2018/10/25/typescript知识点/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/25/typescript知识点/&title=typescript知识点"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/25/typescript知识点/&name=typescript知识点&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
