@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/31/css%E5%8A%A8%E7%94%BB/</loc>
+    
+    <lastmod>2018-10-31T05:43:39.654Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/29/angular%E6%8C%87%E4%BB%A4/</loc>
+    
+    <lastmod>2018-10-31T02:07:02.114Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/25/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%80%9D%E8%80%83/</loc>
+    
+    <lastmod>2018-10-25T09:40:18.463Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/25/typescript%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     
-    <lastmod>2018-10-25T02:01:26.462Z</lastmod>
+    <lastmod>2018-10-25T09:09:53.985Z</lastmod>
     
   </url>
   
