@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。">
+    <meta name="description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。">
 <meta name="keywords" content="wxProgram">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序备忘">
 <meta property="og:url" content="http://yoursite.com/2018/10/25/小程序思考/index.html">
 <meta property="og:site_name" content="夜游">
-<meta property="og:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。">
+<meta property="og:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-25T09:40:18.463Z">
+<meta property="og:updated_time" content="2018-11-02T07:50:17.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序备忘">
-<meta name="twitter:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。">
+<meta name="twitter:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><span class="toc-number">1.</span> <span class="toc-text">1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><span class="toc-number">1.</span> <span class="toc-text">1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-image响应式尺寸，设置定宽然后加上一个mode-”widthFix”。"><span class="toc-number">2.</span> <span class="toc-text">2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -142,7 +142,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><a href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。" class="headerlink" title="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"></a>1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</h3>
+    <h3 id="1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><a href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。" class="headerlink" title="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"></a>1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</h3><h3 id="2-image响应式尺寸，设置定宽然后加上一个mode-”widthFix”。"><a href="#2-image响应式尺寸，设置定宽然后加上一个mode-”widthFix”。" class="headerlink" title="2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。"></a>2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。</h3>
   </div>
 </article>
 
@@ -166,7 +166,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><span class="toc-number">1.</span> <span class="toc-text">1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。"><span class="toc-number">1.</span> <span class="toc-text">1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-image响应式尺寸，设置定宽然后加上一个mode-”widthFix”。"><span class="toc-number">2.</span> <span class="toc-text">2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

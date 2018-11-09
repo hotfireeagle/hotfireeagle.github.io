@@ -2,23 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/10/31/css%E5%8A%A8%E7%94%BB/</loc>
+    <loc>http://yoursite.com/2018/11/02/angular%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</loc>
     
-    <lastmod>2018-10-31T05:43:39.654Z</lastmod>
+    <lastmod>2018-11-09T05:38:47.367Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/10/29/angular%E6%8C%87%E4%BB%A4/</loc>
+    <loc>http://yoursite.com/2018/10/13/%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C/</loc>
     
-    <lastmod>2018-10-31T02:07:02.114Z</lastmod>
+    <lastmod>2018-11-09T05:23:19.065Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/04/css%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    
+    <lastmod>2018-11-09T02:17:04.801Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/31/css%E5%8A%A8%E7%94%BB/</loc>
+    
+    <lastmod>2018-11-08T08:56:48.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/31/css%E5%B8%83%E5%B1%80/</loc>
+    
+    <lastmod>2018-11-07T01:29:54.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/03/mysql%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    
+    <lastmod>2018-11-03T12:41:28.553Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/10/25/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%80%9D%E8%80%83/</loc>
     
-    <lastmod>2018-10-25T09:40:18.463Z</lastmod>
+    <lastmod>2018-11-02T07:50:17.771Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/01/angular%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    
+    <lastmod>2018-11-02T03:19:43.834Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/01/angular%E7%BB%84%E4%BB%B6%E4%BA%A4%E4%BA%92/</loc>
+    
+    <lastmod>2018-11-01T13:48:51.627Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/29/angular%E6%8C%87%E4%BB%A4/</loc>
+    
+    <lastmod>2018-11-01T13:27:06.415Z</lastmod>
     
   </url>
   
@@ -61,13 +110,6 @@
     <loc>http://yoursite.com/2018/10/15/css%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD/</loc>
     
     <lastmod>2018-10-15T07:03:53.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/10/13/%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C/</loc>
-    
-    <lastmod>2018-10-14T06:35:27.624Z</lastmod>
     
   </url>
   
