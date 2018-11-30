@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.利用js获取select所选择的选项1234&amp;lt;select id=&quot;year-select&quot; class=&quot;weui-select&quot; name=&quot;yearSelect&quot;&amp;gt;  &amp;lt;option value=&quot;2018&quot;&amp;gt;2018年&amp;lt;/option&amp;gt;  &amp;lt;option value=&quot;2019&quot;&amp;gt;2019年&amp;lt;/option&amp;gt;&amp;lt;/sele">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-18T02:45:48.392Z">
+<meta property="og:updated_time" content="2018-11-26T08:39:02.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM操作">
 <meta name="twitter:description" content="1.利用js获取select所选择的选项1234&amp;lt;select id=&quot;year-select&quot; class=&quot;weui-select&quot; name=&quot;yearSelect&quot;&amp;gt;  &amp;lt;option value=&quot;2018&quot;&amp;gt;2018年&amp;lt;/option&amp;gt;  &amp;lt;option value=&quot;2019&quot;&amp;gt;2019年&amp;lt;/option&amp;gt;&amp;lt;/sele">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-利用js获取select所选择的选项"><span class="toc-number">1.</span> <span class="toc-text">1.利用js获取select所选择的选项</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-利用js获取select所选择的选项"><span class="toc-number">1.</span> <span class="toc-text">1.利用js获取select所选择的选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-获取ul标签中li元素的个数"><span class="toc-number">2.</span> <span class="toc-text">2.获取ul标签中li元素的个数</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -145,6 +145,7 @@
     <h3 id="1-利用js获取select所选择的选项"><a href="#1-利用js获取select所选择的选项" class="headerlink" title="1.利用js获取select所选择的选项"></a>1.利用js获取select所选择的选项</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"year-select"</span> <span class="attr">class</span>=<span class="string">"weui-select"</span> <span class="attr">name</span>=<span class="string">"yearSelect"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2018"</span>&gt;</span>2018年<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2019"</span>&gt;</span>2019年<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>html结构如上所示，使用原生js获取select所选择的内容的方法如下所示：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> yearSelect = <span class="built_in">document</span>.getElementById(<span class="string">"year-select"</span>);</span><br><span class="line"><span class="keyword">let</span> index = yearSelect.selectedIndex;</span><br><span class="line"><span class="keyword">let</span> choseYear = yearSelect.options[index].value; <span class="comment">// select所选择的值</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-获取ul标签中li元素的个数"><a href="#2-获取ul标签中li元素的个数" class="headerlink" title="2.获取ul标签中li元素的个数"></a>2.获取ul标签中li元素的个数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'#ulId'</span>);</span><br><span class="line"><span class="keyword">let</span> length = ul.getElementsByTagName(<span class="string">'li'</span>).length;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
@@ -168,7 +169,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-利用js获取select所选择的选项"><span class="toc-number">1.</span> <span class="toc-text">1.利用js获取select所选择的选项</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-利用js获取select所选择的选项"><span class="toc-number">1.</span> <span class="toc-text">1.利用js获取select所选择的选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-获取ul标签中li元素的个数"><span class="toc-number">2.</span> <span class="toc-text">2.获取ul标签中li元素的个数</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

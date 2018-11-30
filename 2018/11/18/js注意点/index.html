@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。">
+    <meta name="description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。2.获取数组最大值1var max = Math.max.apply(null, [1,2,3]);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js注意点">
 <meta property="og:url" content="http://yoursite.com/2018/11/18/js注意点/index.html">
 <meta property="og:site_name" content="夜游">
-<meta property="og:description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。">
+<meta property="og:description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。2.获取数组最大值1var max = Math.max.apply(null, [1,2,3]);">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-19T14:14:47.235Z">
+<meta property="og:updated_time" content="2018-11-27T14:38:43.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js注意点">
-<meta name="twitter:description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。">
+<meta name="twitter:description" content="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。2.获取数组最大值1var max = Math.max.apply(null, [1,2,3]);">
     
     
         
@@ -100,7 +100,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><span class="toc-number">1.</span> <span class="toc-text">1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><span class="toc-number">1.</span> <span class="toc-text">1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-获取数组最大值"><span class="toc-number">2.</span> <span class="toc-text">2.获取数组最大值</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -136,7 +136,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><a href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。" class="headerlink" title="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。"></a>1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</h3>
+    <h3 id="1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><a href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。" class="headerlink" title="1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。"></a>1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</h3><h3 id="2-获取数组最大值"><a href="#2-获取数组最大值" class="headerlink" title="2.获取数组最大值"></a>2.获取数组最大值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
@@ -160,7 +160,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><span class="toc-number">1.</span> <span class="toc-text">1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pure-Array-prototype-push-不是一个纯方法；Array-prototype-filter是一个纯方法；String-prototype-replace是一个纯方法。String-prototype-substring-是一个纯方法。"><span class="toc-number">1.</span> <span class="toc-text">1.pure: Array.prototype.push()不是一个纯方法；Array.prototype.filter是一个纯方法；String.prototype.replace是一个纯方法。String.prototype.substring()是一个纯方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-获取数组最大值"><span class="toc-number">2.</span> <span class="toc-text">2.获取数组最大值</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter">
+<meta name="keywords" content="nestjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用nestjs开发一个博客应用之程序配置">
+<meta property="og:url" content="http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-30T15:43:03.042Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用nestjs开发一个博客应用之程序配置">
+<meta name="twitter:description" content="1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>用nestjs开发一个博客应用之程序配置</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/11/27/typescript实践/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&text=用nestjs开发一个博客应用之程序配置"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&is_video=false&description=用nestjs开发一个博客应用之程序配置"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=用nestjs开发一个博客应用之程序配置&body=Check out this article: http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&name=用nestjs开发一个博客应用之程序配置&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi-package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示："><span class="toc-number">1.</span> <span class="toc-text">1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-先安装相关依赖包："><span class="toc-number">2.</span> <span class="toc-text">2-1:先安装相关依赖包：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-假设有配置问价如下所示："><span class="toc-number">3.</span> <span class="toc-text">2-2:假设有配置问价如下所示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-创建这个module的service文件："><span class="toc-number">4.</span> <span class="toc-text">2-3:创建这个module的service文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-创建配置的module文件："><span class="toc-number">5.</span> <span class="toc-text">2-4:创建配置的module文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块："><span class="toc-number">6.</span> <span class="toc-text">2-5:到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块：</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        用nestjs开发一个博客应用之程序配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-11-29T16:52:52.000Z" itemprop="datePublished">2018-11-30</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/nestjs/">nestjs</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi-package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示："><a href="#1-应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi-package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示：" class="headerlink" title="1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示："></a>1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示：</h3><h3 id="2-1-先安装相关依赖包："><a href="#2-1-先安装相关依赖包：" class="headerlink" title="2-1:先安装相关依赖包："></a>2-1:先安装相关依赖包：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i --save dotenv; <span class="comment">## 键值对处理相关包，我们的配置文件是以键值对的形式出现的</span></span><br><span class="line">npm i --save joi; <span class="comment">## 字段建模验证</span></span><br><span class="line">npm i --save-dev @types/joi;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-假设有配置问价如下所示："><a href="#2-2-假设有配置问价如下所示：" class="headerlink" title="2-2:假设有配置问价如下所示："></a>2-2:假设有配置问价如下所示：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DATABASE_NAME = BLOG</span><br><span class="line">DATABASE_USER = YOU_NAME</span><br><span class="line">DATABASE_PASSWORD = YOU_PASSWORD</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-创建这个module的service文件："><a href="#2-3-创建这个module的service文件：" class="headerlink" title="2-3:创建这个module的service文件："></a>2-3:创建这个module的service文件：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config.service.ts</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> joi <span class="keyword">from</span> <span class="string">'joi'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> dotenv <span class="keyword">from</span> <span class="string">'dotenv'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fs <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个具有任意属性的对象类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> EnvConfig &#123;</span><br><span class="line">  [Key: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ConfigService &#123;</span><br><span class="line">  <span class="keyword">private</span> readonly envConfig: EnvConfig;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">filePath: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> config = dotenv.parse(fs.readFileSync(filePath));           <span class="comment">// 读取配置文件，并利用dotenv进行解析</span></span><br><span class="line">    <span class="keyword">this</span>.envConfig = <span class="keyword">this</span>.validateInput(config);                      <span class="comment">// 验证配置</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> validateInput(envConfig: EnvConfig): EnvConfig &#123;</span><br><span class="line">    <span class="keyword">const</span> envSchema: joi.ObjectSchema = joi.object(&#123;</span><br><span class="line">      DATABASE_NAME: joi.string()</span><br><span class="line">                        .valid([<span class="string">'blog'</span>, <span class="string">'ablog'</span>])</span><br><span class="line">                        .default(<span class="string">'blog'</span>),</span><br><span class="line">      DATABASE_USER: joi.string()</span><br><span class="line">                        .valid([<span class="string">'root'</span>, <span class="string">'visitor'</span>])</span><br><span class="line">                        .default(<span class="string">'root'</span>),</span><br><span class="line">      DATABASE_PASSWORD: joi.number().required()</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> &#123; error, value: validateConfig &#125; = joi.validate(envConfig, envSchema);</span><br><span class="line">    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(error);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> validateConfig</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 每一个配置属性都必须设置一个getter方法来获取值</span></span><br><span class="line">  <span class="keyword">get</span> databaseName(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.envConfig.DATABASE_NAME;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> databaseUser(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.envConfig.DATABASE_USER;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> databasePassword(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.envConfig.DATABASE_PASSWORD;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-创建配置的module文件："><a href="#2-4-创建配置的module文件：" class="headerlink" title="2-4:创建配置的module文件："></a>2-4:创建配置的module文件：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Module &#125; <span class="keyword">from</span> <span class="string">'@nestjs/common'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ConfigService &#125; <span class="keyword">from</span> <span class="string">'./config.service'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Module</span>(&#123;</span><br><span class="line">  providers: [</span><br><span class="line">    provide: ConfigService,</span><br><span class="line">    useValue: <span class="keyword">new</span> ConfigService(<span class="string">`<span class="subst">$&#123;filePath&#125;</span>`</span>)</span><br><span class="line">  ],</span><br><span class="line">  exports: [ConfigService]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ConfigModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块："><a href="#2-5-到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块：" class="headerlink" title="2-5:到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块："></a>2-5:到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; ConfigModule &#125; <span class="keyword">from</span> <span class="string">'./config.module'</span>;</span><br><span class="line"><span class="meta">@Module</span>(&#123;</span><br><span class="line">  imports: [ConfigModule]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在当前模块中引入了config模块之后，便能够进行使用了，如下所示：</span></span><br><span class="line"><span class="comment">// app.service.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">'@nestjs/common'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppService &#123;</span><br><span class="line">  <span class="keyword">private</span> dataBaseName: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">config: ConfigService</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.dataBaseName = config.databaseName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi-package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示："><span class="toc-number">1.</span> <span class="toc-text">1.应用程序很多时候的运行条件都跟配置息息相关，而在nest中使用配置进行开发也很方便，他被抽象为一个功能模块，因此可以被导入到其他模块中进行动态注入。在nest中关于配置的最佳实践可以搭配joi package一起使用，因为有的时候我们并不希望某个配置项为空或者不存在，那么便可以利用joi包对配置项目进行建模，以此达到一个更加完善的验证。（需要注意的是，对于每个配置属性，都必须有一个getter方法来取值）。相关用法如下所示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-先安装相关依赖包："><span class="toc-number">2.</span> <span class="toc-text">2-1:先安装相关依赖包：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-假设有配置问价如下所示："><span class="toc-number">3.</span> <span class="toc-text">2-2:假设有配置问价如下所示：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-创建这个module的service文件："><span class="toc-number">4.</span> <span class="toc-text">2-3:创建这个module的service文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-创建配置的module文件："><span class="toc-number">5.</span> <span class="toc-text">2-4:创建配置的module文件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块："><span class="toc-number">6.</span> <span class="toc-text">2-5:到了上面这一步基本就已经完成了一个配置模块的功能编写，接下来介绍一下该怎么使用这个配置模块：</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&text=用nestjs开发一个博客应用之程序配置"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&is_video=false&description=用nestjs开发一个博客应用之程序配置"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=用nestjs开发一个博客应用之程序配置&body=Check out this article: http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&title=用nestjs开发一个博客应用之程序配置"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/11/30/用nestjs开发一个博客应用之程序配置/&name=用nestjs开发一个博客应用之程序配置&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
