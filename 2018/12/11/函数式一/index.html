@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：12345678910111213141516171819202122232425&apos;use strict&apos;;var Flock = function(n) &amp;#123;    this.seag = n;&amp;#125;Flock.prototype.conjoin = function(other) &amp;#123;    this.">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数式一">
+<meta property="og:url" content="http://yoursite.com/2018/12/11/函数式一/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：12345678910111213141516171819202122232425&apos;use strict&apos;;var Flock = function(n) &amp;#123;    this.seag = n;&amp;#125;Flock.prototype.conjoin = function(other) &amp;#123;    this.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-11T08:35:25.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数式一">
+<meta name="twitter:description" content="1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：12345678910111213141516171819202122232425&apos;use strict&apos;;var Flock = function(n) &amp;#123;    this.seag = n;&amp;#125;Flock.prototype.conjoin = function(other) &amp;#123;    this.">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>函数式一</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/12/11/rn基础一/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/11/函数式一/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/11/函数式一/&text=函数式一"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/11/函数式一/&is_video=false&description=函数式一"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=函数式一&body=Check out this article: http://yoursite.com/2018/12/11/函数式一/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/11/函数式一/&name=函数式一&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："><span class="toc-number">1.</span> <span class="toc-text">1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。"><span class="toc-number">2.</span> <span class="toc-text">2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："><span class="toc-number">3.</span> <span class="toc-text">3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-可以使用Object-freeze来创建一个不可变对象："><span class="toc-number">4.</span> <span class="toc-text">4.可以使用Object.freeze来创建一个不可变对象：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-纯函数的优点一：可缓存性："><span class="toc-number">5.</span> <span class="toc-text">5.纯函数的优点一：可缓存性：</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        函数式一
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-11T07:58:40.000Z" itemprop="datePublished">2018-12-11</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript/">javascript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："><a href="#1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：" class="headerlink" title="1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："></a>1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Flock = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag = n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Flock.prototype.conjoin = <span class="function"><span class="keyword">function</span>(<span class="params">other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag += other.seag;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Flock.prototype.breed = <span class="function"><span class="keyword">function</span>(<span class="params">other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag *= other.seag;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Flock(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Flock(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Flock(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//a.breed(b) =&gt; 16;  16 + 16;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = a.conjoin(c).breed(b).conjoin(a.breed(b)).seag;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'result'</span>, result);    <span class="comment">// =&gt; 32</span></span><br></pre></td></tr></table></figure>
+<p>上面这个例子输出的结果是32。</p>
+<h3 id="2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。"><a href="#2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。" class="headerlink" title="2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。"></a>2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。</h3><h3 id="3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："><a href="#3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：" class="headerlink" title="3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："></a>3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mini = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> check = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> data &gt;= mini;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pure的应该像下面这样的写法</span></span><br><span class="line"><span class="keyword">var</span> check = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mini = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> data &gt;= mini;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-可以使用Object-freeze来创建一个不可变对象："><a href="#4-可以使用Object-freeze来创建一个不可变对象：" class="headerlink" title="4.可以使用Object.freeze来创建一个不可变对象："></a>4.可以使用Object.freeze来创建一个不可变对象：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.freeze(&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">o1.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1.a);  <span class="comment">// 还是为1</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-纯函数的优点一：可缓存性："><a href="#5-纯函数的优点一：可缓存性：" class="headerlink" title="5.纯函数的优点一：可缓存性："></a>5.纯函数的优点一：可缓存性：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">** memoize函数能够将计算过的值给缓存起来，节约计算时间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> memoize = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cache = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arg_str = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>);</span><br><span class="line">    cache[arg_str] = cache[arg_str] || f.apply(f, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> cache[arg_str];</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> square = memoize(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x*x &#125;);</span><br><span class="line">square(<span class="number">5</span>);</span><br><span class="line">square(<span class="number">5</span>); <span class="comment">// 从缓存里面取值</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："><span class="toc-number">1.</span> <span class="toc-text">1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。"><span class="toc-number">2.</span> <span class="toc-text">2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："><span class="toc-number">3.</span> <span class="toc-text">3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-可以使用Object-freeze来创建一个不可变对象："><span class="toc-number">4.</span> <span class="toc-text">4.可以使用Object.freeze来创建一个不可变对象：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-纯函数的优点一：可缓存性："><span class="toc-number">5.</span> <span class="toc-text">5.纯函数的优点一：可缓存性：</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/11/函数式一/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/11/函数式一/&text=函数式一"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/11/函数式一/&is_video=false&description=函数式一"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=函数式一&body=Check out this article: http://yoursite.com/2018/12/11/函数式一/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/11/函数式一/&title=函数式一"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/11/函数式一/&name=函数式一&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。">
+    <meta name="description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。2.微信分享接口将不再具有success回调以及fail回调。3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，na">
 <meta name="keywords" content="work">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作bug总结">
 <meta property="og:url" content="http://yoursite.com/2018/11/21/工作bug总结/index.html">
 <meta property="og:site_name" content="夜游">
-<meta property="og:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。">
+<meta property="og:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。2.微信分享接口将不再具有success回调以及fail回调。3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，na">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-21T03:13:50.456Z">
+<meta property="og:updated_time" content="2018-12-03T09:34:34.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作bug总结">
-<meta name="twitter:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。">
+<meta name="twitter:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。2.微信分享接口将不再具有success回调以及fail回调。3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，na">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><span class="toc-number">1.</span> <span class="toc-text">1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><span class="toc-number">1.</span> <span class="toc-text">1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-微信分享接口将不再具有success回调以及fail回调。"><span class="toc-number">2.</span> <span class="toc-text">2.微信分享接口将不再具有success回调以及fail回调。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-app里面的globalData和page里的data所建立的关系并不是响应式绑定。"><span class="toc-number">3.</span> <span class="toc-text">3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。"><span class="toc-number">4.</span> <span class="toc-text">4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -142,7 +142,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><a href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。" class="headerlink" title="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"></a>1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</h3>
+    <h3 id="1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><a href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。" class="headerlink" title="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"></a>1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</h3><h3 id="2-微信分享接口将不再具有success回调以及fail回调。"><a href="#2-微信分享接口将不再具有success回调以及fail回调。" class="headerlink" title="2.微信分享接口将不再具有success回调以及fail回调。"></a>2.微信分享接口将不再具有success回调以及fail回调。</h3><h3 id="3-app里面的globalData和page里的data所建立的关系并不是响应式绑定。"><a href="#3-app里面的globalData和page里的data所建立的关系并不是响应式绑定。" class="headerlink" title="3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。"></a>3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。</h3><h3 id="4-微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。"><a href="#4-微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。" class="headerlink" title="4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。"></a>4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。</h3>
   </div>
 </article>
 
@@ -166,7 +166,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><span class="toc-number">1.</span> <span class="toc-text">1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-关于vue中v-html遇到null-a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。"><span class="toc-number">1.</span> <span class="toc-text">1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-微信分享接口将不再具有success回调以及fail回调。"><span class="toc-number">2.</span> <span class="toc-text">2.微信分享接口将不再具有success回调以及fail回调。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-app里面的globalData和page里的data所建立的关系并不是响应式绑定。"><span class="toc-number">3.</span> <span class="toc-text">3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。"><span class="toc-number">4.</span> <span class="toc-text">4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
