@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.express模块自身就是一个函数，而我们要做的就是利用这个函数去实例化出一个server对象。2.express被设计成了插件机制，如果你想实现什么功能的话，那么使用相对应的中间件即可。使用中间件的方法如下所示：123456const express = require(&apos;express&apos;);const morgan = require(&apos;morgan&apos;);const app = expre">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-18T16:29:44.336Z">
+<meta property="og:updated_time" content="2018-12-20T13:29:35.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express">
 <meta name="twitter:description" content="1.express模块自身就是一个函数，而我们要做的就是利用这个函数去实例化出一个server对象。2.express被设计成了插件机制，如果你想实现什么功能的话，那么使用相对应的中间件即可。使用中间件的方法如下所示：123456const express = require(&apos;express&apos;);const morgan = require(&apos;morgan&apos;);const app = expre">
@@ -188,6 +188,56 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 项目根目录</span></span><br><span class="line">openssl genrsa -out privatekey.pem 1024           <span class="comment">## 生成私钥</span></span><br><span class="line">openssl req -new -key privatekey.pem -out request.pem       <span class="comment">## 生成凭证</span></span><br></pre></td></tr></table></figure>
 <p>在express中既启动http服务又启动https服务：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 项目根目录index.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> https = <span class="built_in">require</span>(<span class="string">'https'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> httpsOptions = &#123;</span><br><span class="line">  key: fs.readFileSync(<span class="string">'./privatekey.pem'</span>),</span><br><span class="line">  cert: fs.readFileSync(<span class="string">'./request.pem'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">http.createServer(app).listen(<span class="number">80</span>);</span><br><span class="line">https.createServer(httpsOptions, app).listen(<span class="number">443</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>22.http动词进一步认识</strong></p>
+<ul>
+<li>1.GET: GET方法不应该改变应用的状态，GET是幂等性的，这意味着你从服务器连续取500次某种资源的结果和只取一次的结果应该是一样的，资源不应该发生变化。</li>
+</ul>
+<p><strong>23.api version：为了兼容老用户，但是新的业务逻辑又的确需要更改</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// api1.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> api = express.Router();</span><br><span class="line"></span><br><span class="line">api.get(<span class="string">'time'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="keyword">new</span> <span class="built_in">Date</span>() - <span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>);</span><br><span class="line">    res.status(<span class="number">200</span>).json(&#123; <span class="attr">time</span>: str &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> routerV1 = <span class="built_in">require</span>(<span class="string">'./api1'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'v1'</span>, routerV1); <span class="comment">// url =&gt; /v1/time</span></span><br><span class="line">app.listen(<span class="number">8080</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'port 8080'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>24.一些HTTP状态码:</strong></p>
+<ul>
+<li><ol>
+<li>100 =&gt; Continue</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>101 =&gt; Switch Protocol</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>200 =&gt; Ok</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>201 =&gt; 成功，常见于PUT请求和POST请求</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>202 =&gt; 成功收到请求，但是请求的东西还在处理过程中</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>301 =&gt; don’t visit this url any more</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>401 =&gt; 未授权 Unauthorized</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>403 =&gt; 无权 Forbidden</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>404 =&gt; 资源找不到</li>
+</ol>
+</li>
+<li><ol start="10">
+<li>500 =&gt; 服务器出错了</li>
+</ol>
+</li>
+</ul>
+
   </div>
 </article>
 
