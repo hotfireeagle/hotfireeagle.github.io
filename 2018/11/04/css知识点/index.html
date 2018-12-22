@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.一个内联元素若是使用了flex布局的话，那么其width以及height都是可以设置的了。2.css单位： 1.相对长度单位：1).相对字体长度单位，比如em,ex(字符x的高度)以及css3出现的rem,ch(字符0的宽度)。 2.相对视区单位：vw, vh, vmin, vmax，其中vmin代表的是视窗宽度和视窗高度较小值的百分比。vmax代表的是两者之间较大值的百分比。 3.绝对长度单">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-19T05:43:03.751Z">
+<meta property="og:updated_time" content="2018-12-22T02:09:54.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css知识点">
 <meta name="twitter:description" content="1.一个内联元素若是使用了flex布局的话，那么其width以及height都是可以设置的了。2.css单位： 1.相对长度单位：1).相对字体长度单位，比如em,ex(字符x的高度)以及css3出现的rem,ch(字符0的宽度)。 2.相对视区单位：vw, vh, vmin, vmax，其中vmin代表的是视窗宽度和视窗高度较小值的百分比。vmax代表的是两者之间较大值的百分比。 3.绝对长度单">
@@ -180,6 +180,8 @@
 <li>1.替换元素的典型行为之有自己的尺寸。大部分替换元素在没有明确尺寸设定的情况下，其默认尺寸为300px✖️150px，比如video元素和canvas元素，但是也有例外，比如img在明确尺寸设定的情况下，width一般都是为0，高度值在不同的浏览器下表现是不同的。所有的替换元素其外在盒子都是inline的，也就是说都是内联元素，但是内在盒子是啥在各个浏览器可能就有差异了，可以确定的是img和video在三大浏览器都是inlne的；button和select都是inline-block的；重点是经常使用到的input，在Firefox中是inline的，在ie和Chrome中是inline-block的。</li>
 </ul>
 <h3 id="22-一些有用的img标签应用："><a href="#22-一些有用的img标签应用：" class="headerlink" title="22.一些有用的img标签应用："></a>22.一些有用的img标签应用：</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 图片被hover的时候显示另外一张图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"laugh.png"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">content</span>: <span class="selector-tag">url</span>(<span class="selector-tag">laugh-tear</span><span class="selector-class">.png</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>23.有的时候明明没有对img设置margin-bottom，可是却明明能够看到图片下部分具有margin，这个时候就需要加上一个img {display: block;}才行，加上之后便能够消除底部的margin了。</strong></p>
+
   </div>
 </article>
 
