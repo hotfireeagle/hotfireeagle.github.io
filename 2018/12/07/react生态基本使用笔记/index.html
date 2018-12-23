@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.使用react-router的link标签的时候可以这样使用：1&amp;lt;Link to=&amp;#123;&amp;#123; pathname: `routeUrl`, state: stateObj &amp;#125;&amp;#125;&amp;gt;target&amp;lt;/Link&amp;gt; Link里面所传递的state对象在子页面中可以通过this.props.location.state来进行获取。一个好处，放在loc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-07T08:33:11.683Z">
+<meta property="og:updated_time" content="2018-12-23T05:24:36.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react生态基本使用笔记">
 <meta name="twitter:description" content="1.使用react-router的link标签的时候可以这样使用：1&amp;lt;Link to=&amp;#123;&amp;#123; pathname: `routeUrl`, state: stateObj &amp;#125;&amp;#125;&amp;gt;target&amp;lt;/Link&amp;gt; Link里面所传递的state对象在子页面中可以通过this.props.location.state来进行获取。一个好处，放在loc">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用react-router的link标签的时候可以这样使用："><span class="toc-number">1.</span> <span class="toc-text">1.使用react-router的link标签的时候可以这样使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更新过程不会触发componentWillMount以及componentDidMount。"><span class="toc-number">2.</span> <span class="toc-text">2.更新过程不会触发componentWillMount以及componentDidMount。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><span class="toc-number">3.</span> <span class="toc-text">一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用react-router的link标签的时候可以这样使用："><span class="toc-number">1.</span> <span class="toc-text">1.使用react-router的link标签的时候可以这样使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更新过程不会触发componentWillMount以及componentDidMount。"><span class="toc-number">2.</span> <span class="toc-text">2.更新过程不会触发componentWillMount以及componentDidMount。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><span class="toc-number">3.</span> <span class="toc-text">3.一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -144,7 +144,38 @@
   <div class="content" itemprop="articleBody">
     <h3 id="1-使用react-router的link标签的时候可以这样使用："><a href="#1-使用react-router的link标签的时候可以这样使用：" class="headerlink" title="1.使用react-router的link标签的时候可以这样使用："></a>1.使用react-router的link标签的时候可以这样使用：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link to=&#123;&#123; <span class="attr">pathname</span>: <span class="string">`routeUrl`</span>, <span class="attr">state</span>: stateObj &#125;&#125;&gt;target&lt;<span class="regexp">/Link&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Link里面所传递的state对象在子页面中可以通过this.props.location.state来进行获取。一个好处，放在location里面的数据不会被刷新掉。</p>
-<h3 id="2-更新过程不会触发componentWillMount以及componentDidMount。"><a href="#2-更新过程不会触发componentWillMount以及componentDidMount。" class="headerlink" title="2.更新过程不会触发componentWillMount以及componentDidMount。"></a>2.更新过程不会触发componentWillMount以及componentDidMount。</h3><h3 id="一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><a href="#一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。" class="headerlink" title="一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。"></a>一个route形如下面这样的话：<route path="course/:courseId/class/:classId" component="{CourseClassInfo}/">，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</route></h3>
+<h3 id="2-更新过程不会触发componentWillMount以及componentDidMount。"><a href="#2-更新过程不会触发componentWillMount以及componentDidMount。" class="headerlink" title="2.更新过程不会触发componentWillMount以及componentDidMount。"></a>2.更新过程不会触发componentWillMount以及componentDidMount。</h3><h3 id="3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><a href="#3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。" class="headerlink" title="3.一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。"></a>3.一个route形如下面这样的话：<route path="course/:courseId/class/:classId" component="{CourseClassInfo}/">，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</route></h3><p><strong>4.React挂载阶段所触发的生命周期方法：</strong></p>
+<ul>
+<li>constructor()</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+<p><em>需要注意的地方，React 16.3版本发布以后，引入了下面几个生命周期方法：UNSAFE_componentWillMount,UNSAFE_componentWillReceiveProps,UNSAFE_componentWillUpdate，这几个方法是用来替代componentWillMount和componentWillReceiveProps以及componentWillUpdate的，为什么要进项替代？因为这几个方法在接下来react主要希望实现的目标-异步渲染中将会带来比之前更大的误解。</em> 虽然在react 16.3版本中引入了这几个方法，但是旧的原有方法和新的替代方法是处于一个可以共存的状态下。</p>
+<p>来到react 17以上的版本之后，react将componentWillMount，componentWillReceiveProps，componentWillUpdate这些旧方法都给移除了。只有这些方法相对应的带有UNSAFE_前缀的才可使用。</p>
+<p><strong>5.更新阶段执行的生命周期方法：首先更新一个组件有三种途径，分别是父组件更新，自身状态变化，自身强制更新</strong>。不同的途径所触发的生命周期方法是不同的，<em>先介绍父组件更新所触发的生命周期方法：</em></p>
+<ul>
+<li>1.componentWillReceiveProps()</li>
+<li>2.shouldComponentUpdate()</li>
+<li>3.componentWillUpdate()</li>
+<li>4.render()</li>
+<li>5.componentDidUpdate()</li>
+</ul>
+<p><em>当自身状态发生变化的时候，也就是自己调用setState，此时触发的生命周期方法如下所示：</em></p>
+<ul>
+<li>1.shouldComponentUpdate()</li>
+<li>2.componentWillUpdate()</li>
+<li>3.render()</li>
+<li>4.componentDidUpdate()</li>
+</ul>
+<p><em>当调用forceUpdate()强制触发更新的时候，将会触发下面这些生命周期方法：</em></p>
+<ul>
+<li>1.componentWillUpdate()</li>
+<li>2.render()</li>
+<li>3.componentDidUpdate()</li>
+</ul>
+<p><strong>6.卸载阶段：这个阶段调用的就是componentWillUnmount，可以在这个方法里面执行一些垃圾回收操作。</strong></p>
+
   </div>
 </article>
 
@@ -168,7 +199,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用react-router的link标签的时候可以这样使用："><span class="toc-number">1.</span> <span class="toc-text">1.使用react-router的link标签的时候可以这样使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更新过程不会触发componentWillMount以及componentDidMount。"><span class="toc-number">2.</span> <span class="toc-text">2.更新过程不会触发componentWillMount以及componentDidMount。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><span class="toc-number">3.</span> <span class="toc-text">一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用react-router的link标签的时候可以这样使用："><span class="toc-number">1.</span> <span class="toc-text">1.使用react-router的link标签的时候可以这样使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-更新过程不会触发componentWillMount以及componentDidMount。"><span class="toc-number">2.</span> <span class="toc-text">2.更新过程不会触发componentWillMount以及componentDidMount。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><span class="toc-number">3.</span> <span class="toc-text">3.一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
