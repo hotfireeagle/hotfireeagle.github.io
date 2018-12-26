@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter学习1">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/flutter学习1/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-26T17:05:39.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter学习1">
+<meta name="twitter:description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>flutter学习1</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/27/flutter之包管理/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/12/20/express2之database/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/26/flutter学习1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/26/flutter学习1/&text=flutter学习1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/26/flutter学习1/&is_video=false&description=flutter学习1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter学习1&body=Check out this article: http://yoursite.com/2018/12/26/flutter学习1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/26/flutter学习1/&name=flutter学习1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        flutter学习1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-26T07:08:12.000Z" itemprop="datePublished">2018-12-26</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/flutter/">flutter</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>1.JIT以及AOT</strong></p>
+<p>JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。</p>
+<p><strong>2.开发环境安装</strong></p>
+<p>按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。</p>
+<p><strong>3.dart简介</strong></p>
+<p>1.<em>dart是强类型语言</em>，使用var关键字来定义变量，一旦变量被赋值，那么变量的类型就被确定了，后续不能进行修改。比如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str; <span class="comment">// 说明没有什么默认赋值</span></span><br><span class="line">str = <span class="string">'hello world'</span>;</span><br><span class="line">str = <span class="number">1</span>; <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+<p>2.<em>dynamic和Object</em>：功能和var相似，都能够在赋值时进行类型推断，不同在于，赋值后可以改变其类型。而Object在dart里面是所有对象的基类，也就是说其它类型都是Object的子类，所以任何数据类型的数据都可以赋值给Object声明的对象，在表现上和dynamic类似。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dynamic</span> t;</span><br><span class="line">t = <span class="string">'hello world'</span>;</span><br><span class="line">t = <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+<p>3.<em>final和const</em></p>
+<p>如果你不打算修改一个变量的话，那么使用final和const，final和const的区别在于，const变量是一个编译时常量，final变量则在使用的时候才被初始化。使用final和const修饰变量，变量类型可以省略。</p>
+<p><em>4.函数</em></p>
+<p>dart函数如果没有显示申明返回类型的话，那么返回类型将会是dynamic，函数返回值不具有类型推断功能。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">bool</span> CALLBACK();</span><br><span class="line"></span><br><span class="line">isNoble(<span class="built_in">int</span> atom) &#123;</span><br><span class="line">  <span class="keyword">return</span> _noble[atom] != <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> test(CALLBACK cb) &#123;</span><br><span class="line">  <span class="built_in">print</span>(cb());</span><br><span class="line">&#125;</span><br><span class="line">test(isNoble);</span><br></pre></td></tr></table></figure>
+<p>箭头函数：单行函数</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> isNoble (<span class="built_in">int</span> atomic) =&gt; _noble[atomic] != <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<p>函数作为参数传递：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意这里的var cb</span></span><br><span class="line"><span class="keyword">void</span> exec(<span class="keyword">var</span> cb) &#123;</span><br><span class="line">  cb();</span><br><span class="line">&#125;</span><br><span class="line">exec(() =&gt; <span class="built_in">print</span>(<span class="string">'xxx'</span>));</span><br></pre></td></tr></table></figure>
+<p>可选参数，利用[]进行标记</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> say(<span class="built_in">String</span> from, <span class="built_in">String</span> msg, [<span class="built_in">String</span> device]) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="string">'<span class="subst">$from</span> says <span class="subst">$msg<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  if (device != null) &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    result = '</span></span><span class="subst">$result</span> with a <span class="subst">$device<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  return result;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">say('</span></span>i'</span>, <span class="string">'am ok'</span>);</span><br><span class="line">say(<span class="string">'i'</span>, <span class="string">'am ok'</span>, <span class="string">'oneplus a5000'</span>);</span><br></pre></td></tr></table></figure>
+<p><em>flutter命名参数？</em></p>
+<p><em>5.异步</em></p>
+<p>典型的异步函数有返回Future和Stream这些东西的函数，Future和JavaScript中的Promise是非常相像的.</p>
+<p><em>6.基本知识</em></p>
+<ul>
+<li><p>1.Flutter中main函数是整个应用程序的入口，main函数中会调用runApp方法，他的功能是启动Flutter应用，这个函数所接受的参数为一个Widget类型的参数，换言之，一个Flutter应用本身就是一个widget。一个widget的主要工作就是提供一个build方法来描述该怎么构建UI界面（一般就是通过组合方式）。home是Flutter应用的首页，同时也是一个widget。</p>
+</li>
+<li><p>2.Stateful Widget和Stateless Widget的明显区别在于前者可以具有状态，而后者并不拥有。同时一个Stateful Widget至少由两个类组成：一个StatefulWidget类；一个State类。</p>
+</li>
+</ul>
+<p><em>7.路由</em></p>
+<p>Route在Android里面对应一个Activity，在IOS中对应的是ViewController。当然，在Flutter中一个Route也是一个widget，只不过这个widget会通过路由操作呈现在UI上面，定义一个widget如下所示：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AboutMe</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scafford(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">            title: Text(<span class="string">'我的'</span>),</span><br><span class="line">        ),</span><br><span class="line">        body: Center(</span><br><span class="line">            child: Text(<span class="string">'这个人很懒，什么也没有留下'</span>)</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义好了一个Widget，那么怎么进行使用呢？答案就是利用Flutter提供的Navigator方法来实现路由操作，比如像下面这样的将路由push到路由栈的顶部：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Scafford(</span><br><span class="line">        appBar: <span class="keyword">new</span> AppBar(</span><br><span class="line">            title: <span class="keyword">new</span> Text(<span class="string">'首页'</span>)</span><br><span class="line">        ),</span><br><span class="line">        body: <span class="keyword">new</span> Center(</span><br><span class="line">            child: <span class="keyword">new</span> Column(</span><br><span class="line">                mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">                children: &lt;Widget&gt;[</span><br><span class="line">                  FlatButton(</span><br><span class="line">                      child: Text(<span class="string">'我的'</span>),</span><br><span class="line">                      textColor: Colors.blue,</span><br><span class="line">                      onPressed: () &#123;</span><br><span class="line">                        Navigator.push(</span><br><span class="line">                            context,</span><br><span class="line">                            <span class="keyword">new</span> MaterialPageRoute(builder: (context)&#123;</span><br><span class="line">                                <span class="keyword">return</span> <span class="keyword">new</span> AboutMe();</span><br><span class="line">                            &#125;)</span><br><span class="line">                        );</span><br><span class="line">                      &#125;</span><br><span class="line">                  )</span><br><span class="line">                ]</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关键点就是利用Navigator.push进行路由跳转，将一个widget路由页面通过MaterialPageRoute进行包装一下，MaterialPageRoute继承自PageRoute类，PageRoute类是一个抽象类，表示占有整个屏幕空间的一个模态路由页面，来自于Material组件库，实现与平台一致的动画效果；Navigator是Flutter提供的路由管理的widget，它通过一个栈来管理一个路由widget集合。下面是其暴露出了的两个常用的方法：</p>
+<ul>
+<li>Future push(BuildContext context, Route route)：将页面进行入栈</li>
+<li>bool pop(BuildContext context)：将页面出栈</li>
+</ul>
+<p><em>8.命名路由</em></p>
+<p>基本概念：给路由命名，之后便能直接通过路由名字打开一个新路由：</p>
+<p>1.路由表表里面注册路由，到根widget里面进行注册routes，如下所示：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MaterialApp(</span><br><span class="line">        title: <span class="string">'APP'</span>,</span><br><span class="line">        theme: <span class="keyword">new</span> ThemeData(primarySwatch: Colors.blue),</span><br><span class="line">        home: <span class="keyword">new</span> Index(),</span><br><span class="line">        routes: &#123;</span><br><span class="line">          <span class="string">"About"</span>: (context) =&gt; AboutMe()</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过路由名字打开一个路由需要调用Navigator.pushNamed方法，如下所示：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Navigator.pushNamed(context, <span class="string">'About'</span>);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Navigator.push(context,</span></span><br><span class="line"><span class="comment">  new MaterialPageRoute(builder: (context) &#123;</span></span><br><span class="line"><span class="comment">      return new AboutMe();</span></span><br><span class="line"><span class="comment">  &#125;)</span></span><br><span class="line"><span class="comment">);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/26/flutter学习1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/26/flutter学习1/&text=flutter学习1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/26/flutter学习1/&is_video=false&description=flutter学习1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter学习1&body=Check out this article: http://yoursite.com/2018/12/26/flutter学习1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/26/flutter学习1/&title=flutter学习1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/26/flutter学习1/&name=flutter学习1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
