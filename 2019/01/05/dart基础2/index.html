@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.类 Dart是一种基于类和mixin继承机制的面向对象的语言。所有的类都继承于Object。基于Mixin机制意味着每个类都只有一个超类（除Object外），一个类中的代码可以在其它多个继承类中反复使用。 在Dart2中，new关键字是可选的。 在dart中，存在像下面这样实例化对象的方式： 12var p1 = Point(2,3);var p2 = Point.fromJson(&amp;#123">
+<meta name="keywords" content="dart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dart基础2">
+<meta property="og:url" content="http://yoursite.com/2019/01/05/dart基础2/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.类 Dart是一种基于类和mixin继承机制的面向对象的语言。所有的类都继承于Object。基于Mixin机制意味着每个类都只有一个超类（除Object外），一个类中的代码可以在其它多个继承类中反复使用。 在Dart2中，new关键字是可选的。 在dart中，存在像下面这样实例化对象的方式： 12var p1 = Point(2,3);var p2 = Point.fromJson(&amp;#123">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-06T14:48:36.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dart基础2">
+<meta name="twitter:description" content="1.类 Dart是一种基于类和mixin继承机制的面向对象的语言。所有的类都继承于Object。基于Mixin机制意味着每个类都只有一个超类（除Object外），一个类中的代码可以在其它多个继承类中反复使用。 在Dart2中，new关键字是可选的。 在dart中，存在像下面这样实例化对象的方式： 12var p1 = Point(2,3);var p2 = Point.fromJson(&amp;#123">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>dart基础2</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/01/05/dart基础1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/05/dart基础2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/05/dart基础2/&text=dart基础2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/05/dart基础2/&is_video=false&description=dart基础2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=dart基础2&body=Check out this article: http://yoursite.com/2019/01/05/dart基础2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/05/dart基础2/&name=dart基础2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        dart基础2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-05T09:23:32.000Z" itemprop="datePublished">2019-01-05</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/dart/">dart</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>1.类</strong></p>
+<p>Dart是一种基于类和mixin继承机制的面向对象的语言。所有的类都继承于Object。基于Mixin机制意味着每个类都只有一个超类（除Object外），一个类中的代码可以在其它多个继承类中反复使用。</p>
+<p>在Dart2中，new关键字是可选的。</p>
+<p>在dart中，存在像下面这样实例化对象的方式：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = Point(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = Point.fromJson(&#123;<span class="string">'x'</span>: <span class="number">1</span>, <span class="string">'y'</span>: <span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>2.常量构造函数</strong></p>
+<p>在构造函数名之前加const关键字，来创建编译时常量，构造两个相同的编译时常量会产生一个唯一的，标准的实例：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">const</span> ImmutablePoint(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">const</span> ImmutablePoint(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">assert</span>(identical(a, b));</span><br></pre></td></tr></table></figure>
+<p><strong>3.一个不太明白的特性：在dart2中，一个常量上下文中的const关键字可以被省略。如下所示：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先是一个不省略的版本</span></span><br><span class="line"><span class="keyword">const</span> pointAndLine = <span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="string">'point'</span>: <span class="keyword">const</span> [<span class="keyword">const</span> ImmutablePoint(<span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 接下来是一个省略的版本，仅有一个const，由该const建立上下文</span></span><br><span class="line"><span class="keyword">const</span> pointAndLine = &#123;</span><br><span class="line">  <span class="string">'point'</span>: [ImmutablePoint(<span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>4.获取对象的类型</strong></p>
+<p>使用对象的runtimeType属性可以在运行的时候获取对象的类型。他返回的是一个Type对象。</p>
+<p><strong>5.实例变量：就是不是类对象所拥有的，而是类所实例化出来的对象所拥有的</strong></p>
+<p>所有未初始化变量的默认值都是null，所有实例变量都会生成一个隐式的getter方法，非final的实例变量同样会生成一个隐式的setter方法。也就是说对一个实例变量进行赋值的时候，实际都是通过调用setter方法来赋值的。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> x;  <span class="comment">// 初始值是null</span></span><br><span class="line">  <span class="built_in">num</span> y;  <span class="comment">// 初始值是null</span></span><br><span class="line">  <span class="built_in">num</span> z = <span class="number">0</span>;  <span class="comment">// 初始值是0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>6.构造函数，通过创建一个和类同名的函数来声明构造函数，可以使用this关键字来获取当前实例。</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 很常见的生成构造函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> x, y;</span><br><span class="line"></span><br><span class="line">  Point(<span class="built_in">num</span> x, <span class="built_in">num</span> y) &#123;</span><br><span class="line">    <span class="comment">// 还有更好的方式实现下面代码，在dart里面最佳实践应该减少使用this</span></span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是精简模式：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> x, y;</span><br><span class="line">  <span class="comment">// 一颗语法题</span></span><br><span class="line">  Point (<span class="keyword">this</span>.x, <span class="keyword">this</span>.y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在没有声明构造函数的情况下，Dart会提供一个默认的构造函数，默认构造函数没有参数并会调用父类的无参构造函数。子类不会继承父类的构造函数，子类不声明构造函数，那么它就只有默认构造函数。</p>
+<p><strong>7.命名构造函数，使用命名构造函数可以为一个类实现多个构造函数，可以使用命名构造函数来更清晰的表明函数意图：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> x, y;</span><br><span class="line"></span><br><span class="line">  Point(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 命名构造函数</span></span><br><span class="line">  Point.origin() &#123;</span><br><span class="line">    x = <span class="number">0</span>;</span><br><span class="line">    y = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>8.什么鬼super，如下所示</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="built_in">String</span> firstName;</span><br><span class="line"></span><br><span class="line">  Person.fromJson(<span class="built_in">Map</span> data) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'in Person'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  Employee.fromJson(<span class="built_in">Map</span> data) : <span class="keyword">super</span>.fromJson(data) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'in Employee'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> emp = <span class="keyword">new</span> Employee.fromJson(&#123;&#125;); <span class="comment">// 输出 =&gt; in Person in Employee</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (emp <span class="keyword">is</span> Person) &#123;</span><br><span class="line">    emp.firstName = <span class="string">'Bob'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  (emp <span class="keyword">as</span> Person).firstName = <span class="string">'Bob'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>9.初始化列表概念，很难看</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">num</span> x;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">num</span> y;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">num</span> distanceFromOrigin;</span><br><span class="line"></span><br><span class="line">  Point(x, y)</span><br><span class="line">    : x = x,</span><br><span class="line">      y = y,</span><br><span class="line">      distanceFromOrigin = sqrt(x * x + y * y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  <span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">  <span class="built_in">print</span>(p.distanceFromOrigin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这种初始化列表的写法起的作用对应了js里面的参数默认值，在写法上后者简直不要太简单优雅；在dart中，我们可以在构造函数后面加上一个:后面跟上一些初始化列表语句，同时也能够对其进行开发期assert判断处理。</p>
+<p><strong>10.重定向构造函数，在某些情况下，某些命名构造函数只需要使用其它构造函数的逻辑即可，那么此时使用重定向构造函数便很合适：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> x, y;</span><br><span class="line">  Point(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y);</span><br><span class="line">  Point.which(<span class="built_in">num</span> x): <span class="keyword">this</span>(x, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>11.常量构造函数，常量构造函数所创建出来的实例并不是常量（？？），如果希望实例出来的变量是固定不变的话，那么首先构造函数得是const的，并且所有实例变量也都得是final。如下所示：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImmutablePoint</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> ImmutablePoint origin = <span class="keyword">const</span> ImmutablePoint(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">num</span> x, y;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> ImmutablePoint(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>12.工厂构造函数，第一次接触到。如果类中的某个构造函数并不总是返回这个类的实例（而是有可能返回其它类的实例）的话，那么这个构造函数也被叫做工厂构造函数，使用factory关键字来定义，如下所示：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">String</span> name;</span><br><span class="line">  <span class="built_in">bool</span> mute = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, Logger&gt; _cache = &lt;<span class="built_in">String</span>, Logger&gt;&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 工厂构造函数</span></span><br><span class="line">  <span class="keyword">factory</span> Logger(<span class="built_in">String</span> name) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_cache.containsKey(name)) &#123;</span><br><span class="line">      <span class="keyword">return</span> _cache[name];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">final</span> logger = Logger._internal(name);</span><br><span class="line">      _cache[name] = logger;</span><br><span class="line">      <span class="keyword">return</span> logger;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 命名构造函数</span></span><br><span class="line">  Logger._internal(<span class="keyword">this</span>.name);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 实例方法</span></span><br><span class="line">  <span class="keyword">void</span> log(<span class="built_in">String</span> msg) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!mute) <span class="built_in">print</span>(msg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>13.Getters和Setters，每一个实例变量都会有一个隐式的getter，通常也会有一个setter。同时我们也可以使用get和set关键字来显式设置getters和setters。</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">  <span class="built_in">num</span> left, top, width, height;</span><br><span class="line"></span><br><span class="line">  Rectangle(<span class="keyword">this</span>.left, <span class="keyword">this</span>.top, <span class="keyword">this</span>.width, <span class="keyword">this</span>.height);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 显示声明带有getter和setter的实例属性</span></span><br><span class="line">  <span class="built_in">num</span> <span class="keyword">get</span> right =&gt; left + width;</span><br><span class="line">  <span class="keyword">set</span> right(<span class="built_in">num</span> value) =&gt; left = value - width;</span><br><span class="line">  <span class="built_in">num</span> <span class="keyword">get</span> bottom =&gt; top + height;</span><br><span class="line">  <span class="keyword">set</span> bottom(<span class="built_in">num</span> value) =&gt; top = value - height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="keyword">var</span> rect = Rectangle(<span class="number">3</span>,<span class="number">4</span>,<span class="number">20</span>,<span class="number">15</span>);</span><br><span class="line">  <span class="keyword">assert</span>(rect.left == <span class="number">3</span>);</span><br><span class="line">  rect.right = <span class="number">12</span>l</span><br><span class="line">  <span class="keyword">assert</span>(rect.left = <span class="number">-8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>14.抽象方法，抽象方法只能够存在于抽象类中。实例方法，getter，setter方法可以是抽象的，他们只定义接口而不实现，实现交给子类去完成。调用抽象方法会带来运行时错误：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Doer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">void</span> doStuff();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stuff</span> <span class="keyword">extends</span> <span class="title">Doer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">void</span> soStuff() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>15.抽象类：使用abstract修饰符来定义一个抽象类，抽象类不能用来实例化，如果希望抽象类能够被实例化，那么可以通过定义工厂实例函数来实现。在dart中声明抽象方法无需加上abstract修饰符，没有大花括号并且加上返回值就是了。抽象方法只能在抽象类中定义。</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractContainer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">void</span> updateChildren();  <span class="comment">// 抽象方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>16.接口：每个类都隐式的定义了一个接口，接口包含了该类所有的实例变量以及实例方法，但是，注意并不包含构造函数。如果想要创建一个A类，并且A类要支持B类的API的话，但是又不想继承B类的实现的话，那么可以通过让A类来实现B类的接口。如下所示：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> _name;</span><br><span class="line">  Person(<span class="keyword">this</span>._name);</span><br><span class="line">  <span class="built_in">String</span> greet(<span class="built_in">String</span> who) =&gt; <span class="string">'Hello, <span class="subst">$who</span>, I am <span class="subst">$_name<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">class Impostor implements Person &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  get _name =&gt; '</span><span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  String greet(String who) =&gt; '</span></span>Hi, <span class="subst">$who</span>, Do You Know Who I Am'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">String</span> greetBob(Person person) =&gt; person.greet(<span class="string">'bob'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Person(<span class="string">'kay'</span>)));</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Impostor()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时一个类也能够用来实现多个接口，如下所示：</p>
+<p>class Point implements PointA, PointB {…}</p>
+<p><strong>17.枚举类型是一种特殊的类，使用enum关键字来定义一个枚举类。枚举中的每一个值都具有一个index getter方法，该方法这个值在枚举类型中的位置；每个枚举类型，都具有一个values实例常量，用来获取所有枚举值列表。</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color &#123; red, green, blue &#125;</span><br><span class="line"><span class="keyword">assert</span>(Color.red.index == <span class="number">0</span>);</span><br><span class="line"><span class="built_in">List</span>&lt;Color&gt; colors = Color.values;</span><br><span class="line"><span class="keyword">assert</span>(colors[<span class="number">2</span>] == Color.blue);</span><br></pre></td></tr></table></figure>
+<p><strong>18.使用mixins，使用类的时候with一个mixin，怎么实现一个mixin？使用mixin关键字进行定义，写法和类写法一样，除了使用mixin代替了class外。</strong></p>
+<p><strong>19.静态变量和静态方法，使用static即可，注意，静态变量只有在被使用的时候才会初始化；静态方法因为不可以在实例上访问，所以无法访问this。</strong></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/05/dart基础2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/05/dart基础2/&text=dart基础2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/05/dart基础2/&is_video=false&description=dart基础2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=dart基础2&body=Check out this article: http://yoursite.com/2019/01/05/dart基础2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/05/dart基础2/&title=dart基础2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/05/dart基础2/&name=dart基础2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
