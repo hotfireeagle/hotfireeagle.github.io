@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-07T03:54:59.732Z</updated>
+  <updated>2019-01-09T16:59:55.079Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flutter之文本</title>
+    <link href="http://yoursite.com/2019/01/09/Flutter%E4%B9%8B%E6%96%87%E6%9C%AC/"/>
+    <id>http://yoursite.com/2019/01/09/Flutter之文本/</id>
+    <published>2019-01-09T15:17:00.000Z</published>
+    <updated>2019-01-09T16:59:55.079Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用"></a>1.作用</h3><p>用于显示简单样式文本。用法如下所示：</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Text(<span class="string">'hello world'</span>, textAlign: TextAlign.center);</span><br><span class="line"></span><br><span class="line">Text(<span class="string">'hello world'</span>*<span class="number">4</span>, maxLines: <span class="number">1</span>, overflow: TextOverflow.ellipsis);</span><br><span class="line"></span><br><span class="line">Text(<span class="string">'hello world'</span>, textScaleFactor: <span class="number">1.5</span>);</span><br></pre></td></tr></table></figure><h3 id="2-Text方法的几个参数代表的意思"><a href="#2-Text方法的几个参数代表的意思" class="headerlink" title="2.Text方法的几个参数代表的意思"></a>2.Text方法的几个参数代表的意思</h3><ul><li><p>1.textAlign: 文本的对齐方式，可以选择左对齐，右对齐还是居中；这几个值都是从TextAlign里面获取。<strong>需要注意，对齐的参考系是Text Widget本身，这意味着如果Text的宽度和文本内容长度相等的话，那么此时指定对齐方式是没有意义的。</strong></p></li><li><p>2.maxLines, overflow: 指定文本显示的最大行数，默认情况下，文本是自动折行的。但是如果指定了maxLine的话，那么最多显示maxLines行，超出了maxLines行的行为由overflow的值来决定，默认是直接截断；如果想要显示省略号的话，那么使用TextOverflow.ellipsis值。</p></li><li><p>3.textScaleFactor: 代表文本相对于当前字体大小(style属性里面的fontSize)的缩放因子。</p></li><li><p>4.style: 他的值是一个TextStyle类所实例化出来的对象，举个例子如下所示：</p></li></ul><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">  <span class="string">'hello world'</span>,</span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">  style: TextStyle(</span><br><span class="line">      color: Colors.black,    <span class="comment">// 字体颜色</span></span><br><span class="line">      background: <span class="keyword">new</span> Paint()..color = Colors.white,    <span class="comment">// 字体底层的颜色（背景颜色）</span></span><br><span class="line">      fontSize: <span class="number">20</span>,</span><br><span class="line">      fontFamily: <span class="string">'Courier'</span>,</span><br><span class="line">      decoration: TextDecoration.underline,</span><br><span class="line">      height: <span class="number">1.3</span></span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure><p><strong>需要注意的地方，TextStyle类的实例化参数height是一个因子，具体行高等于fontSize乘height。</strong></p><h3 id="3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"><a href="#3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。" class="headerlink" title="3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"></a>3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。</h3><p>如果想要对Text的不同部分应用不同的效果的话，那么使用TextSpan会更加方便。可以先看看TextSpan的构造函数：</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 采用了命名可选参数的写法，采用这种写法的话，除非带上@required的话否则都是可选</span></span><br><span class="line"><span class="keyword">const</span> TextSpan(&#123;</span><br><span class="line">    TextStyle style,</span><br><span class="line">    <span class="built_in">String</span> text,</span><br><span class="line">    <span class="built_in">List</span>&lt;TextSpan&gt; children,</span><br><span class="line">    GestureRecognizer recognizer</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>各个参数的解释：</p><ul><li>1.children，一个TextSpan数组，说明TextSpan里面可以包含其它TextSpan</li><li>2.recognizer，在文本片段上进行手势处理</li></ul><p>举个例子：</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Text.rich(TextSpan(</span><br><span class="line">    children: [</span><br><span class="line">      TextSpan(</span><br><span class="line">          text: <span class="string">'主页：'</span></span><br><span class="line">      ),</span><br><span class="line">      TextSpan(</span><br><span class="line">          text: <span class="string">'hotfireeagle.github.io'</span>,</span><br><span class="line">          style: TextStyle(</span><br><span class="line">              color: Colors.blue</span><br><span class="line">          ),</span><br><span class="line">          recognizer: gotoLink, <span class="comment">// 手势处理方法</span></span><br><span class="line">      )</span><br><span class="line">    ]</span><br><span class="line">))</span><br></pre></td></tr></table></figure><h3 id="4-DefaultTextStyle"><a href="#4-DefaultTextStyle" class="headerlink" title="4.DefaultTextStyle"></a>4.DefaultTextStyle</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-作用&quot;&gt;&lt;a href=&quot;#1-作用&quot; class=&quot;headerlink&quot; title=&quot;1.作用&quot;&gt;&lt;/a&gt;1.作用&lt;/h3&gt;&lt;p&gt;用于显示简单样式文本。用法如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight dart&quot;&gt;&lt;table&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="flutter" scheme="http://yoursite.com/tags/flutter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>express学习</title>
+    <link href="http://yoursite.com/2019/01/07/express%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2019/01/07/express学习/</id>
+    <published>2019-01-07T09:17:44.000Z</published>
+    <updated>2019-01-09T15:22:15.814Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>1.helmet中间件介绍</strong></p><p>helmet中间件是用来增强express应用的安全性的，</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;1.helmet中间件介绍&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;helmet中间件是用来增强express应用的安全性的，&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="express" scheme="http://yoursite.com/tags/express/"/>
+    
+  </entry>
   
   <entry>
     <title>dart基础3</title>
@@ -423,50 +472,6 @@
     
     
       <category term="react" scheme="http://yoursite.com/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《nodejs 8 the right way》-阅读笔记1</title>
-    <link href="http://yoursite.com/2018/12/07/nodejs%20the%20right%20way%20%E4%B8%80/"/>
-    <id>http://yoursite.com/2018/12/07/nodejs the right way 一/</id>
-    <published>2018-12-06T16:49:00.000Z</published>
-    <updated>2018-12-13T09:22:09.819Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-使用const定义变量，在定义的时候必须赋值。"><a href="#1-使用const定义变量，在定义的时候必须赋值。" class="headerlink" title="1.使用const定义变量，在定义的时候必须赋值。"></a>1.使用const定义变量，在定义的时候必须赋值。</h3><h3 id="2-fs-watch可以用来监控文件变化，第一个参数是文件路径，第二个参数是callback。"><a href="#2-fs-watch可以用来监控文件变化，第一个参数是文件路径，第二个参数是callback。" class="headerlink" title="2.fs.watch可以用来监控文件变化，第一个参数是文件路径，第二个参数是callback。"></a>2.fs.watch可以用来监控文件变化，第一个参数是文件路径，第二个参数是callback。</h3><h3 id="3-事件循环，node代码一路运行到底，事件循环会一直持续下去，直到已经没有什么需要被wait-for，或者程序退出（比如一个未被捕获的异常所引起的退出）。"><a href="#3-事件循环，node代码一路运行到底，事件循环会一直持续下去，直到已经没有什么需要被wait-for，或者程序退出（比如一个未被捕获的异常所引起的退出）。" class="headerlink" title="3.事件循环，node代码一路运行到底，事件循环会一直持续下去，直到已经没有什么需要被wait for，或者程序退出（比如一个未被捕获的异常所引起的退出）。"></a>3.事件循环，node代码一路运行到底，事件循环会一直持续下去，直到已经没有什么需要被wait for，或者程序退出（比如一个未被捕获的异常所引起的退出）。</h3><h3 id="4-process-argv命令行参数列表，第一个是nodefull-path路径，第2个是所执行文件的full-path路径，第三个开始就是自定义参数。"><a href="#4-process-argv命令行参数列表，第一个是nodefull-path路径，第2个是所执行文件的full-path路径，第三个开始就是自定义参数。" class="headerlink" title="4.process.argv命令行参数列表，第一个是nodefull path路径，第2个是所执行文件的full path路径，第三个开始就是自定义参数。"></a>4.process.argv命令行参数列表，第一个是nodefull path路径，第2个是所执行文件的full path路径，第三个开始就是自定义参数。</h3><h3 id="5-child-process模块所暴露出来的spawn方法能够创建一个ChildProcess对象，这个对象具有stdin，stdout，stderr等属性，其中上面所提到的这三个属性是Stream类型的对象，能够被用来读写。比如说streamObject-pipe-process-stdout"><a href="#5-child-process模块所暴露出来的spawn方法能够创建一个ChildProcess对象，这个对象具有stdin，stdout，stderr等属性，其中上面所提到的这三个属性是Stream类型的对象，能够被用来读写。比如说streamObject-pipe-process-stdout" class="headerlink" title="5.child_process模块所暴露出来的spawn方法能够创建一个ChildProcess对象，这个对象具有stdin，stdout，stderr等属性，其中上面所提到的这三个属性是Stream类型的对象，能够被用来读写。比如说streamObject.pipe(process.stdout);"></a>5.child_process模块所暴露出来的spawn方法能够创建一个ChildProcess对象，这个对象具有stdin，stdout，stderr等属性，其中上面所提到的这三个属性是Stream类型的对象，能够被用来读写。比如说streamObject.pipe(process.stdout);</h3><h3 id="6-fs-writeFile，如果文件不存在的话则创建它，如果存在的话，并且没有携带其它额外参数的话，那么覆盖原文件。"><a href="#6-fs-writeFile，如果文件不存在的话则创建它，如果存在的话，并且没有携带其它额外参数的话，那么覆盖原文件。" class="headerlink" title="6.fs.writeFile，如果文件不存在的话则创建它，如果存在的话，并且没有携带其它额外参数的话，那么覆盖原文件。"></a>6.fs.writeFile，如果文件不存在的话则创建它，如果存在的话，并且没有携带其它额外参数的话，那么覆盖原文件。</h3><h3 id="7-事件发布订阅模式，常见的错误捕获方式有两种，分别是利用on和作为一个err-cb。一个未被捕获的异常会导致线程被中断。"><a href="#7-事件发布订阅模式，常见的错误捕获方式有两种，分别是利用on和作为一个err-cb。一个未被捕获的异常会导致线程被中断。" class="headerlink" title="7.事件发布订阅模式，常见的错误捕获方式有两种，分别是利用on和作为一个err cb。一个未被捕获的异常会导致线程被中断。"></a>7.事件发布订阅模式，常见的错误捕获方式有两种，分别是利用on和作为一个err cb。一个未被捕获的异常会导致线程被中断。</h3><h3 id="8-node在很多build-in-模块中都既提供了同步方法，也提供了异步方法，众所周知，同步方法会阻塞后续IO的执行，那么问题来了是不是使用异步方法是最佳时实践呢？其实也不尽然，分场合，在node中，程序的运行有两个阶段，分别是初始化阶段和运行阶段，在初始化阶段完成一些诸如引入模块文件，读取配置的工作；在运行阶段，则进入了事件循环里面，你可能会遇到大量的网络请求，因此在运行阶段记住使用异步方法是提高效率的最佳实践。而对于阶段一来说，很典型的require就是一个同步的操作，在第一阶段可以根据相应场合来做一些同步操作。"><a href="#8-node在很多build-in-模块中都既提供了同步方法，也提供了异步方法，众所周知，同步方法会阻塞后续IO的执行，那么问题来了是不是使用异步方法是最佳时实践呢？其实也不尽然，分场合，在node中，程序的运行有两个阶段，分别是初始化阶段和运行阶段，在初始化阶段完成一些诸如引入模块文件，读取配置的工作；在运行阶段，则进入了事件循环里面，你可能会遇到大量的网络请求，因此在运行阶段记住使用异步方法是提高效率的最佳实践。而对于阶段一来说，很典型的require就是一个同步的操作，在第一阶段可以根据相应场合来做一些同步操作。" class="headerlink" title="8.node在很多build-in 模块中都既提供了同步方法，也提供了异步方法，众所周知，同步方法会阻塞后续IO的执行，那么问题来了是不是使用异步方法是最佳时实践呢？其实也不尽然，分场合，在node中，程序的运行有两个阶段，分别是初始化阶段和运行阶段，在初始化阶段完成一些诸如引入模块文件，读取配置的工作；在运行阶段，则进入了事件循环里面，你可能会遇到大量的网络请求，因此在运行阶段记住使用异步方法是提高效率的最佳实践。而对于阶段一来说，很典型的require就是一个同步的操作，在第一阶段可以根据相应场合来做一些同步操作。"></a>8.node在很多build-in 模块中都既提供了同步方法，也提供了异步方法，众所周知，同步方法会阻塞后续IO的执行，那么问题来了是不是使用异步方法是最佳时实践呢？其实也不尽然，分场合，在node中，程序的运行有两个阶段，分别是初始化阶段和运行阶段，在初始化阶段完成一些诸如引入模块文件，读取配置的工作；在运行阶段，则进入了事件循环里面，你可能会遇到大量的网络请求，因此在运行阶段记住使用异步方法是提高效率的最佳实践。而对于阶段一来说，很典型的require就是一个同步的操作，在第一阶段可以根据相应场合来做一些同步操作。</h3><h3 id="9-fs-watch监听一个不存在的文件会报错，不会被callback的错误处理方式给监听到；fs-watch监听的文件被删除是ok的，"><a href="#9-fs-watch监听一个不存在的文件会报错，不会被callback的错误处理方式给监听到；fs-watch监听的文件被删除是ok的，" class="headerlink" title="9.fs.watch监听一个不存在的文件会报错，不会被callback的错误处理方式给监听到；fs.watch监听的文件被删除是ok的，"></a>9.fs.watch监听一个不存在的文件会报错，不会被callback的错误处理方式给监听到；fs.watch监听的文件被删除是ok的，</h3><h3 id="10-net-createServer方法接收一个cb，cb的第一个参数是connection，每当有请求进来的时候都会进入回调函数，要想向客户端写数据的话可以使用connection-write-方法写数据，可以监听connection-on-‘close’-来监听客户端断开连接。"><a href="#10-net-createServer方法接收一个cb，cb的第一个参数是connection，每当有请求进来的时候都会进入回调函数，要想向客户端写数据的话可以使用connection-write-方法写数据，可以监听connection-on-‘close’-来监听客户端断开连接。" class="headerlink" title="10.net.createServer方法接收一个cb，cb的第一个参数是connection，每当有请求进来的时候都会进入回调函数，要想向客户端写数据的话可以使用connection.write()方法写数据，可以监听connection.on(‘close’)来监听客户端断开连接。"></a>10.net.createServer方法接收一个cb，cb的第一个参数是connection，每当有请求进来的时候都会进入回调函数，要想向客户端写数据的话可以使用connection.write()方法写数据，可以监听connection.on(‘close’)来监听客户端断开连接。</h3><h3 id="11-当你使用nodejs进行网络开发时，在两个端点之间传递信息如果处于理想情况下的话，那么可以一次传递成功；但是如果数据量很大的情况下的话，那么数据将会被分成几份进行传输。"><a href="#11-当你使用nodejs进行网络开发时，在两个端点之间传递信息如果处于理想情况下的话，那么可以一次传递成功；但是如果数据量很大的情况下的话，那么数据将会被分成几份进行传输。" class="headerlink" title="11.当你使用nodejs进行网络开发时，在两个端点之间传递信息如果处于理想情况下的话，那么可以一次传递成功；但是如果数据量很大的情况下的话，那么数据将会被分成几份进行传输。"></a>11.当你使用nodejs进行网络开发时，在两个端点之间传递信息如果处于理想情况下的话，那么可以一次传递成功；但是如果数据量很大的情况下的话，那么数据将会被分成几份进行传输。</h3><h3 id="12-npm-i-–production-表示只安装dependencies而不安装devDependencies。"><a href="#12-npm-i-–production-表示只安装dependencies而不安装devDependencies。" class="headerlink" title="12.npm i –production 表示只安装dependencies而不安装devDependencies。"></a>12.npm i –production 表示只安装dependencies而不安装devDependencies。</h3><h3 id="13-Mocha默认的最大延时时间为2s。运行的时候携带上–timeout后面加上最大延时时间表明最大的延时时间。如果在整个应用的测试实例中有一个测试单元是一个需要延时的操作，并且已经超过了Mocha设置的最大测试时间的话，那么我们可以像下面这样处理："><a href="#13-Mocha默认的最大延时时间为2s。运行的时候携带上–timeout后面加上最大延时时间表明最大的延时时间。如果在整个应用的测试实例中有一个测试单元是一个需要延时的操作，并且已经超过了Mocha设置的最大测试时间的话，那么我们可以像下面这样处理：" class="headerlink" title="13.Mocha默认的最大延时时间为2s。运行的时候携带上–timeout后面加上最大延时时间表明最大的延时时间。如果在整个应用的测试实例中有一个测试单元是一个需要延时的操作，并且已经超过了Mocha设置的最大测试时间的话，那么我们可以像下面这样处理："></a>13.Mocha默认的最大延时时间为2s。运行的时候携带上–timeout后面加上最大延时时间表明最大的延时时间。如果在整个应用的测试实例中有一个测试单元是一个需要延时的操作，并且已经超过了Mocha设置的最大测试时间的话，那么我们可以像下面这样处理：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should finish with 5 seconds'</span>, done =&gt; &#123;</span><br><span class="line">  setTimeout(done, <span class="number">4500</span>);</span><br><span class="line">&#125;).timeout(<span class="number">5000</span>);</span><br></pre></td></tr></table></figure><p>除了在it后面调用timeout方法之外，其实在describe后面也可以设置一个timeout方法。</p><h3 id="14-nodejs是单线程的，尽管如此，但是node运行在机器上还是能够运用上多核机器的性能，也就是说，node尽管被设计成了单线程的，但是还是可以做多进程的事情，实现这个的银弹就是Node内建的模块cluster。在多线程系统中，要想以并行的方式处理更多的任务的话，那么自然是使用多个线程来协同处理了。但是node被设计成一种单线程事件循环模式，所以在node中要想并行的处理多个任务的话，那么就需要使用其它方法了，在node里面，完成这个目的使用的是进程来处理。"><a href="#14-nodejs是单线程的，尽管如此，但是node运行在机器上还是能够运用上多核机器的性能，也就是说，node尽管被设计成了单线程的，但是还是可以做多进程的事情，实现这个的银弹就是Node内建的模块cluster。在多线程系统中，要想以并行的方式处理更多的任务的话，那么自然是使用多个线程来协同处理了。但是node被设计成一种单线程事件循环模式，所以在node中要想并行的处理多个任务的话，那么就需要使用其它方法了，在node里面，完成这个目的使用的是进程来处理。" class="headerlink" title="14.nodejs是单线程的，尽管如此，但是node运行在机器上还是能够运用上多核机器的性能，也就是说，node尽管被设计成了单线程的，但是还是可以做多进程的事情，实现这个的银弹就是Node内建的模块cluster。在多线程系统中，要想以并行的方式处理更多的任务的话，那么自然是使用多个线程来协同处理了。但是node被设计成一种单线程事件循环模式，所以在node中要想并行的处理多个任务的话，那么就需要使用其它方法了，在node里面，完成这个目的使用的是进程来处理。"></a>14.nodejs是单线程的，尽管如此，但是node运行在机器上还是能够运用上多核机器的性能，也就是说，node尽管被设计成了单线程的，但是还是可以做多进程的事情，实现这个的银弹就是Node内建的模块cluster。在多线程系统中，要想以并行的方式处理更多的任务的话，那么自然是使用多个线程来协同处理了。但是node被设计成一种单线程事件循环模式，所以在node中要想并行的处理多个任务的话，那么就需要使用其它方法了，在node里面，完成这个目的使用的是进程来处理。</h3><h3 id="15-child-process模块也是用来产生进程的，但是它spawn所执行的工作是非nodejs类的工作，但是对于处理nodejs类的工作的话，那么利用cluster模块中的fork方法是一种更好的选择。"><a href="#15-child-process模块也是用来产生进程的，但是它spawn所执行的工作是非nodejs类的工作，但是对于处理nodejs类的工作的话，那么利用cluster模块中的fork方法是一种更好的选择。" class="headerlink" title="15.child_process模块也是用来产生进程的，但是它spawn所执行的工作是非nodejs类的工作，但是对于处理nodejs类的工作的话，那么利用cluster模块中的fork方法是一种更好的选择。"></a>15.child_process模块也是用来产生进程的，但是它spawn所执行的工作是非nodejs类的工作，但是对于处理nodejs类的工作的话，那么利用cluster模块中的fork方法是一种更好的选择。</h3><h3 id="16-直观看来，nodejs中process-nextTick中的cb会比setTimeout-cb-0-更快执行。"><a href="#16-直观看来，nodejs中process-nextTick中的cb会比setTimeout-cb-0-更快执行。" class="headerlink" title="16.直观看来，nodejs中process.nextTick中的cb会比setTimeout(cb, 0)更快执行。"></a>16.直观看来，nodejs中process.nextTick中的cb会比setTimeout(cb, 0)更快执行。</h3><h3 id="17-curl-O-资源链接-可以下载指定链接的资源。"><a href="#17-curl-O-资源链接-可以下载指定链接的资源。" class="headerlink" title="17.curl -O 资源链接 可以下载指定链接的资源。"></a>17.curl -O 资源链接 可以下载指定链接的资源。</h3><h3 id="18-Mocha携带flag-–-watch表明持续监听测试用例文件，如下所示："><a href="#18-Mocha携带flag-–-watch表明持续监听测试用例文件，如下所示：" class="headerlink" title="18.Mocha携带flag – watch表明持续监听测试用例文件，如下所示："></a>18.Mocha携带flag – watch表明持续监听测试用例文件，如下所示：</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"test:watch"</span>: <span class="string">"mocha --watch --reporter min"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="19-chmod-x-file；将文件权限修改为可执行。"><a href="#19-chmod-x-file；将文件权限修改为可执行。" class="headerlink" title="19.chmod +x file；将文件权限修改为可执行。"></a>19.chmod +x file；将文件权限修改为可执行。</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-使用const定义变量，在定义的时候必须赋值。&quot;&gt;&lt;a href=&quot;#1-使用const定义变量，在定义的时候必须赋值。&quot; class=&quot;headerlink&quot; title=&quot;1.使用const定义变量，在定义的时候必须赋值。&quot;&gt;&lt;/a&gt;1.使用const定义
-      
-    
-    </summary>
-    
-    
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue学习</title>
-    <link href="http://yoursite.com/2018/12/01/vue%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://yoursite.com/2018/12/01/vue学习/</id>
-    <published>2018-12-01T08:19:30.000Z</published>
-    <updated>2018-12-01T08:21:54.941Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-vue-router-this-router-replace-url-进行跳转，并不会把当前URLpush到页面栈中，所以点击返回会返回到上上页面。"><a href="#1-vue-router-this-router-replace-url-进行跳转，并不会把当前URLpush到页面栈中，所以点击返回会返回到上上页面。" class="headerlink" title="1.vue-router: this.$router.replace(url)进行跳转，并不会把当前URLpush到页面栈中，所以点击返回会返回到上上页面。"></a>1.vue-router: this.$router.replace(url)进行跳转，并不会把当前URLpush到页面栈中，所以点击返回会返回到上上页面。</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-vue-router-this-router-replace-url-进行跳转，并不会把当前URLpush到页面栈中，所以点击返回会返回到上上页面。&quot;&gt;&lt;a href=&quot;#1-vue-router-this-router-replace-url-进行跳转，并不
-      
-    
-    </summary>
-    
     
   </entry>
   

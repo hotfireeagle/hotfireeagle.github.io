@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.作用用于显示简单样式文本。用法如下所示： 12345Text(&apos;hello world&apos;, textAlign: TextAlign.center);Text(&apos;hello world&apos;*4, maxLines: 1, overflow: TextOverflow.ellipsis);Text(&apos;hello world&apos;, textScaleFactor: 1.5); 2.Text方法的几个参">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter之文本">
+<meta property="og:url" content="http://yoursite.com/2019/01/09/Flutter之文本/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.作用用于显示简单样式文本。用法如下所示： 12345Text(&apos;hello world&apos;, textAlign: TextAlign.center);Text(&apos;hello world&apos;*4, maxLines: 1, overflow: TextOverflow.ellipsis);Text(&apos;hello world&apos;, textScaleFactor: 1.5); 2.Text方法的几个参">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-09T16:59:55.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter之文本">
+<meta name="twitter:description" content="1.作用用于显示简单样式文本。用法如下所示： 12345Text(&apos;hello world&apos;, textAlign: TextAlign.center);Text(&apos;hello world&apos;*4, maxLines: 1, overflow: TextOverflow.ellipsis);Text(&apos;hello world&apos;, textScaleFactor: 1.5); 2.Text方法的几个参">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Flutter之文本</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/01/07/express学习/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/09/Flutter之文本/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/09/Flutter之文本/&text=Flutter之文本"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/09/Flutter之文本/&is_video=false&description=Flutter之文本"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Flutter之文本&body=Check out this article: http://yoursite.com/2019/01/09/Flutter之文本/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/09/Flutter之文本/&name=Flutter之文本&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用"><span class="toc-number">1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Text方法的几个参数代表的意思"><span class="toc-number">2.</span> <span class="toc-text">2.Text方法的几个参数代表的意思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"><span class="toc-number">3.</span> <span class="toc-text">3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-DefaultTextStyle"><span class="toc-number">4.</span> <span class="toc-text">4.DefaultTextStyle</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Flutter之文本
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-09T15:17:00.000Z" itemprop="datePublished">2019-01-09</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/flutter/">flutter</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用"></a>1.作用</h3><p>用于显示简单样式文本。用法如下所示：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Text(<span class="string">'hello world'</span>, textAlign: TextAlign.center);</span><br><span class="line"></span><br><span class="line">Text(<span class="string">'hello world'</span>*<span class="number">4</span>, maxLines: <span class="number">1</span>, overflow: TextOverflow.ellipsis);</span><br><span class="line"></span><br><span class="line">Text(<span class="string">'hello world'</span>, textScaleFactor: <span class="number">1.5</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-Text方法的几个参数代表的意思"><a href="#2-Text方法的几个参数代表的意思" class="headerlink" title="2.Text方法的几个参数代表的意思"></a>2.Text方法的几个参数代表的意思</h3><ul>
+<li><p>1.textAlign: 文本的对齐方式，可以选择左对齐，右对齐还是居中；这几个值都是从TextAlign里面获取。<strong>需要注意，对齐的参考系是Text Widget本身，这意味着如果Text的宽度和文本内容长度相等的话，那么此时指定对齐方式是没有意义的。</strong></p>
+</li>
+<li><p>2.maxLines, overflow: 指定文本显示的最大行数，默认情况下，文本是自动折行的。但是如果指定了maxLine的话，那么最多显示maxLines行，超出了maxLines行的行为由overflow的值来决定，默认是直接截断；如果想要显示省略号的话，那么使用TextOverflow.ellipsis值。</p>
+</li>
+<li><p>3.textScaleFactor: 代表文本相对于当前字体大小(style属性里面的fontSize)的缩放因子。</p>
+</li>
+<li><p>4.style: 他的值是一个TextStyle类所实例化出来的对象，举个例子如下所示：</p>
+</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">  <span class="string">'hello world'</span>,</span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">  style: TextStyle(</span><br><span class="line">      color: Colors.black,    <span class="comment">// 字体颜色</span></span><br><span class="line">      background: <span class="keyword">new</span> Paint()..color = Colors.white,    <span class="comment">// 字体底层的颜色（背景颜色）</span></span><br><span class="line">      fontSize: <span class="number">20</span>,</span><br><span class="line">      fontFamily: <span class="string">'Courier'</span>,</span><br><span class="line">      decoration: TextDecoration.underline,</span><br><span class="line">      height: <span class="number">1.3</span></span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>需要注意的地方，TextStyle类的实例化参数height是一个因子，具体行高等于fontSize乘height。</strong></p>
+<h3 id="3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"><a href="#3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。" class="headerlink" title="3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"></a>3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。</h3><p>如果想要对Text的不同部分应用不同的效果的话，那么使用TextSpan会更加方便。可以先看看TextSpan的构造函数：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 采用了命名可选参数的写法，采用这种写法的话，除非带上@required的话否则都是可选</span></span><br><span class="line"><span class="keyword">const</span> TextSpan(&#123;</span><br><span class="line">    TextStyle style,</span><br><span class="line">    <span class="built_in">String</span> text,</span><br><span class="line">    <span class="built_in">List</span>&lt;TextSpan&gt; children,</span><br><span class="line">    GestureRecognizer recognizer</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>各个参数的解释：</p>
+<ul>
+<li>1.children，一个TextSpan数组，说明TextSpan里面可以包含其它TextSpan</li>
+<li>2.recognizer，在文本片段上进行手势处理</li>
+</ul>
+<p>举个例子：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Text.rich(TextSpan(</span><br><span class="line">    children: [</span><br><span class="line">      TextSpan(</span><br><span class="line">          text: <span class="string">'主页：'</span></span><br><span class="line">      ),</span><br><span class="line">      TextSpan(</span><br><span class="line">          text: <span class="string">'hotfireeagle.github.io'</span>,</span><br><span class="line">          style: TextStyle(</span><br><span class="line">              color: Colors.blue</span><br><span class="line">          ),</span><br><span class="line">          recognizer: gotoLink, <span class="comment">// 手势处理方法</span></span><br><span class="line">      )</span><br><span class="line">    ]</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<h3 id="4-DefaultTextStyle"><a href="#4-DefaultTextStyle" class="headerlink" title="4.DefaultTextStyle"></a>4.DefaultTextStyle</h3>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-作用"><span class="toc-number">1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Text方法的几个参数代表的意思"><span class="toc-number">2.</span> <span class="toc-text">2.Text方法的几个参数代表的意思</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。"><span class="toc-number">3.</span> <span class="toc-text">3.TextSpan：如果是Text是p元素的话，那么TextSpan就是span元素。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-DefaultTextStyle"><span class="toc-number">4.</span> <span class="toc-text">4.DefaultTextStyle</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/09/Flutter之文本/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/09/Flutter之文本/&text=Flutter之文本"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/09/Flutter之文本/&is_video=false&description=Flutter之文本"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Flutter之文本&body=Check out this article: http://yoursite.com/2019/01/09/Flutter之文本/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/09/Flutter之文本/&title=Flutter之文本"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/09/Flutter之文本/&name=Flutter之文本&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
