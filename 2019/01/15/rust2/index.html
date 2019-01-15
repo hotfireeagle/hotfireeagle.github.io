@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.trait在trait中可以包含函数，常量，类型等。如下所示是一个包含函数的trait。 123trait Shape &amp;#123;  fn area(&amp;amp;self) -&amp;gt; f64;&amp;#125; 所有的trait中都有一个隐藏的类型Self，代表了当前实现了该trait的具体类型，在trait中定义的函数，被叫做关联函数。如果一个关联函数的第一个参数是Self类型并且名字叫self">
+<meta name="keywords" content="rust">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust2">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/rust2/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.trait在trait中可以包含函数，常量，类型等。如下所示是一个包含函数的trait。 123trait Shape &amp;#123;  fn area(&amp;amp;self) -&amp;gt; f64;&amp;#125; 所有的trait中都有一个隐藏的类型Self，代表了当前实现了该trait的具体类型，在trait中定义的函数，被叫做关联函数。如果一个关联函数的第一个参数是Self类型并且名字叫self">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-15T14:35:42.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rust2">
+<meta name="twitter:description" content="1.trait在trait中可以包含函数，常量，类型等。如下所示是一个包含函数的trait。 123trait Shape &amp;#123;  fn area(&amp;amp;self) -&amp;gt; f64;&amp;#125; 所有的trait中都有一个隐藏的类型Self，代表了当前实现了该trait的具体类型，在trait中定义的函数，被叫做关联函数。如果一个关联函数的第一个参数是Self类型并且名字叫self">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>rust2</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/01/15/flutter之弹性布局Flex/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/rust2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/rust2/&text=rust2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/rust2/&is_video=false&description=rust2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=rust2&body=Check out this article: http://yoursite.com/2019/01/15/rust2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/rust2/&name=rust2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-trait"><span class="toc-number">1.</span> <span class="toc-text">1.trait</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        rust2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-15T12:50:34.000Z" itemprop="datePublished">2019-01-15</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/rust/">rust</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-trait"><a href="#1-trait" class="headerlink" title="1.trait"></a>1.trait</h3><p>在trait中可以包含函数，常量，类型等。如下所示是一个包含函数的trait。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Shape</span></span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">area</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">f64</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有的trait中都有一个隐藏的类型Self，代表了当前实现了该trait的具体类型，在trait中定义的函数，被叫做关联函数。如果一个关联函数的第一个参数是Self类型并且名字叫self的话（这样的参数叫做接收者），那么这个关联函数叫做方法，方法通过变量实例加上小数点进行调用；如果一个关联函数第一个参数不是接收者的话，那么这个关联函数叫做静态函数，通过类型::函数名的形式来调用。</p>
+<p>所以在Rust中，Self（类型）和self（变量实例名）都是保留关键字。</p>
+<p>当然我们也可以显示给接收者指定类型，但是同时他们在rust中都具有简写的写法，如下所示：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">trait Shape &#123;</span><br><span class="line">  fn method1(self: Self);</span><br><span class="line">  fn method2(self: &amp;Self);</span><br><span class="line">  fn method3(self: &amp;mut Self);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对于上面的情况，也可以简写成下面的形式：</span></span><br><span class="line">trait Shape &#123;</span><br><span class="line">  fn method1(self);</span><br><span class="line">  fn method2(&amp;self);</span><br><span class="line">  fn method3(&amp;mut self);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是让一个类实现一个trait的例子：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">trait Shape &#123;</span><br><span class="line">  fn area(&amp;self) -&gt; f64;</span><br><span class="line">&#125;</span><br><span class="line">struct Circle &#123;</span><br><span class="line">  radius: f64,</span><br><span class="line">&#125;</span><br><span class="line">impl Shape <span class="keyword">for</span> Circle &#123;</span><br><span class="line">  fn area(&amp;self) -&gt; f64 &#123;</span><br><span class="line">    std::f64::consts::PI * self.radius * self.radius</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line">  let c = Circle&#123; radius: <span class="number">10</span>f64 &#125;;</span><br><span class="line">  println!(<span class="string">"area is &#123;&#125;"</span>, c.area());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以为一个struct实现一个匿名trait；并不是只能在trait中声明函数，也可以定义函数的行为，实现他的struct便能够直接使用，如下所示：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Circle</span></span> &#123;</span><br><span class="line">  radius: <span class="built_in">f64</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> Circle &#123;</span><br><span class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">get_radius</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">f64</span> &#123;</span><br><span class="line">    <span class="keyword">self</span>.radius</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> c = Circle&#123; radius: <span class="number">10f64</span> &#125;;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">"c.radius is &#123;&#125;"</span>, c.get_radius());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>静态方法</strong>，只要一个trait里面的关联函数的第一个参数不是接收器的话，那么就表明这个方法是静态函数，使用类型::方式调用，如下所示：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">T</span></span>(<span class="built_in">i32</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> T &#123;</span><br><span class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">func</span></span>(this: &amp;<span class="keyword">Self</span>) &#123;  <span class="comment">// 由于第一个参数的名字不是self，尽管类型是Self</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"value is &#123;&#125;"</span>, this.<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> x = T(<span class="number">42</span>);</span><br><span class="line">  T::func(&amp;x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Rust规定，在函数中进行参数传递，返回值传递等地方，都要求这个类型在编译阶段具有确定的大小。而trait本身既不是具体类型，也不是指针类型，它只是定义了一个针对类型的抽象的约束，不同的类型可以实现同一个trait，同时满足同一个trait的类型可能具有不同的大小，所以trait在编译期间是没有确定大小的，因此不能使用trait作为实例变量，参数，返回值。</strong></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-trait"><span class="toc-number">1.</span> <span class="toc-text">1.trait</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/rust2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/rust2/&text=rust2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/rust2/&is_video=false&description=rust2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=rust2&body=Check out this article: http://yoursite.com/2019/01/15/rust2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/rust2/&title=rust2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/rust2/&name=rust2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

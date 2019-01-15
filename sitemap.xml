@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/01/15/rust2/</loc>
+    
+    <lastmod>2019-01-15T14:35:42.085Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/18/rust%E8%AF%AD%E6%B3%95%E5%A4%87%E5%BF%98/</loc>
+    
+    <lastmod>2019-01-15T12:29:58.443Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/15/flutter%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80Flex/</loc>
+    
+    <lastmod>2019-01-15T05:23:19.399Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/01/15/flutter%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80/</loc>
     
     <lastmod>2019-01-15T02:33:52.910Z</lastmod>
@@ -320,13 +341,6 @@
     <loc>http://yoursite.com/2018/10/25/typescript%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     
     <lastmod>2018-10-25T09:09:53.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/10/18/rust%E8%AF%AD%E6%B3%95%E5%A4%87%E5%BF%98/</loc>
-    
-    <lastmod>2018-10-19T01:40:39.053Z</lastmod>
     
   </url>
   

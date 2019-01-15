@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.基本概念弹性布局表示允许子widget按照一定比例来分配父容器的空间；如果你知道主轴方向，那么使用Row/Column会更加方便一些，因为这两者也都是继承自Flex的。下面我们可以看看Flex的基本定义，在前面Row和Column中提到过的属性这里就不提了： 1234Flex(&amp;#123;    ...    @required this.direction, // 弹性布局方向，对于Row来">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter之弹性布局Flex">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/flutter之弹性布局Flex/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.基本概念弹性布局表示允许子widget按照一定比例来分配父容器的空间；如果你知道主轴方向，那么使用Row/Column会更加方便一些，因为这两者也都是继承自Flex的。下面我们可以看看Flex的基本定义，在前面Row和Column中提到过的属性这里就不提了： 1234Flex(&amp;#123;    ...    @required this.direction, // 弹性布局方向，对于Row来">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-15T05:23:19.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter之弹性布局Flex">
+<meta name="twitter:description" content="1.基本概念弹性布局表示允许子widget按照一定比例来分配父容器的空间；如果你知道主轴方向，那么使用Row/Column会更加方便一些，因为这两者也都是继承自Flex的。下面我们可以看看Flex的基本定义，在前面Row和Column中提到过的属性这里就不提了： 1234Flex(&amp;#123;    ...    @required this.direction, // 弹性布局方向，对于Row来">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>flutter之弹性布局Flex</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/01/15/rust2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/01/15/flutter线性布局/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&text=flutter之弹性布局Flex"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&is_video=false&description=flutter之弹性布局Flex"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter之弹性布局Flex&body=Check out this article: http://yoursite.com/2019/01/15/flutter之弹性布局Flex/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&name=flutter之弹性布局Flex&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-新概念-Expanded"><span class="toc-number">2.</span> <span class="toc-text">2.新概念-Expanded</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-流式布局"><span class="toc-number">3.</span> <span class="toc-text">3.流式布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-布局类和容器类"><span class="toc-number">4.</span> <span class="toc-text">4.布局类和容器类</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        flutter之弹性布局Flex
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-15T02:35:04.000Z" itemprop="datePublished">2019-01-15</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/flutter/">flutter</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>弹性布局表示允许子widget按照一定比例来分配父容器的空间；如果你知道主轴方向，那么使用Row/Column会更加方便一些，因为这两者也都是继承自Flex的。下面我们可以看看Flex的基本定义，在前面Row和Column中提到过的属性这里就不提了：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Flex(&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="meta">@required</span> <span class="keyword">this</span>.direction, <span class="comment">// 弹性布局方向，对于Row来说默认就是水平方向；对于Column来说默认就是垂直方向。</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="2-新概念-Expanded"><a href="#2-新概念-Expanded" class="headerlink" title="2.新概念-Expanded"></a>2.新概念-Expanded</h3><p>可以按照比例来扩伸Row，Column和Flex子Widget所占用的空间。下面可以看看它的构造函数：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Expanded(&#123;</span><br><span class="line">    <span class="built_in">int</span> flex = <span class="number">1</span>,</span><br><span class="line">    <span class="meta">@required</span> Widget child</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>flex为弹性系数，如果为0或者null的话，则child是没有弹性的，此时不会扩伸占用的空间。如果大于0，所有的Expanded将会按照其flex的比例来分割主轴的全部空闲空间。</p>
+<h3 id="3-流式布局"><a href="#3-流式布局" class="headerlink" title="3.流式布局"></a>3.流式布局</h3><p>对于Row和Column来说，如果子widget超出屏幕范围，则会报溢出错误，因为Row默认只能显示一行，如果超出屏幕的话并不会折行。在Flutter中，把超出屏幕显示范围会自动折行的布局叫做流失布局，具体通过Wrap和Flow这两个widget来进行支持。</p>
+<h3 id="4-布局类和容器类"><a href="#4-布局类和容器类" class="headerlink" title="4.布局类和容器类"></a>4.布局类和容器类</h3><p>布局类一般接受一个widget数组（children)，而容器类一般只接受一个子Widget（child)。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-新概念-Expanded"><span class="toc-number">2.</span> <span class="toc-text">2.新概念-Expanded</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-流式布局"><span class="toc-number">3.</span> <span class="toc-text">3.流式布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-布局类和容器类"><span class="toc-number">4.</span> <span class="toc-text">4.布局类和容器类</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&text=flutter之弹性布局Flex"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&is_video=false&description=flutter之弹性布局Flex"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter之弹性布局Flex&body=Check out this article: http://yoursite.com/2019/01/15/flutter之弹性布局Flex/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&title=flutter之弹性布局Flex"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/flutter之弹性布局Flex/&name=flutter之弹性布局Flex&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
