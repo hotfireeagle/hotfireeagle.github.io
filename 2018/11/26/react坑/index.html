@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.一个语言层面优先级的问题，如下所示： 1234exerciseType === &apos;XINGCE&apos; || exerciseType === &apos;SHENLUN&apos; &amp;amp;&amp;amp;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; 这些的写法和自己所希望出现的情况应该会出现不符合的情况，正确的情况应该是像下面这样的： 1234(exerciseType === &apos;行测&apos; || exerciseTyp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-26T13:03:00.371Z">
+<meta property="og:updated_time" content="2019-01-11T02:35:11.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react坑">
 <meta name="twitter:description" content="1.一个语言层面优先级的问题，如下所示： 1234exerciseType === &apos;XINGCE&apos; || exerciseType === &apos;SHENLUN&apos; &amp;amp;&amp;amp;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; 这些的写法和自己所希望出现的情况应该会出现不符合的情况，正确的情况应该是像下面这样的： 1234(exerciseType === &apos;行测&apos; || exerciseTyp">
@@ -136,10 +136,12 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>1.一个语言层面优先级的问题，如下所示：</p>
+    <p><strong>1.一个语言层面优先级的问题，如下所示：</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exerciseType === <span class="string">'XINGCE'</span> || exerciseType === <span class="string">'SHENLUN'</span> &amp;&amp;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这些的写法和自己所希望出现的情况应该会出现不符合的情况，正确的情况应该是像下面这样的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(exerciseType === <span class="string">'行测'</span> || exerciseType === <span class="string">'SHENLUN'</span>) &amp;&amp;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.如果某个组件是个受控的话，切记不能讲defaultValue作为value使用，defaultValue只能使用一次。</strong></p>
+
   </div>
 </article>
 

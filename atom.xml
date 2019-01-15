@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-10T13:50:29.952Z</updated>
+  <updated>2019-01-15T02:33:52.910Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,98 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flutter线性布局</title>
+    <link href="http://yoursite.com/2019/01/15/flutter%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80/"/>
+    <id>http://yoursite.com/2019/01/15/flutter线性布局/</id>
+    <published>2019-01-15T01:41:55.000Z</published>
+    <updated>2019-01-15T02:33:52.910Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指垂直方向；在Flutter中通过Row和Column来实现线性布局；并且Row以及Column都是继承自Flex。</p><h3 id="2-Row"><a href="#2-Row" class="headerlink" title="2.Row"></a>2.Row</h3><p>Row表明在水平方向排列其子widget，因此此时主轴就是水平方向；纵轴就是垂直方向；Row的定义如下所示：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Row(&#123;</span><br><span class="line">  TextDirection textDirection,</span><br><span class="line">  MainAxisSize mainAxisSize = MainAxisSize.max,</span><br><span class="line">  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,</span><br><span class="line">  VerticalDirection verticalDirection = VerticalDirection.down,</span><br><span class="line">  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,</span><br><span class="line">  List&lt;Widget&gt; children = <span class="keyword">const</span> &lt;Widget&gt;[]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>构造函数中各个字段的意思：</p><ul><li>1.textDirection：表示在水平方向上widget的布局顺序，注意一定是水平方向。</li><li>2.mainAxisSize：表示一个Row在水平方向所占用的空间，两个值可选，分别是mainAxisSize.min和mainAxisSize.max。</li><li>3.mainAxisAlignment：表示子Widgets在水平空间内的对齐方式；如果mainAxisSize的值为MainAxisSize.min的话，那么定义mainAxisAlignment的值将没有意义，因为子widget的宽度和Row的宽度是一样的。只有在mainAxisSize的值为mainAxisSize.max的时候，给mainAxisAlignment设置值才是可以接受的，假设textDirection的值为TextDirection.ltr的话，那么MainAxisAlignment.start表示左对齐；假设textDirection的值为TextDirection.rtl的话，那么设置MainAxisAlignment.end的话也是表明左对齐。当然还有mainAxisAlignment.center，这自然表明是居中了。</li><li>4.verticalDirection：表示Row的纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</li><li>5.crossAxisAlignment：表示子widget在纵轴方向的对齐方式，在线性布局里面，Row的高度等于子Widgets中最高的子元素高度。这个属性具有三个可选值，分别是start,end,center，不同的是它的参考系是verticalDirection。</li><li>6.children：子widget数组。</li></ul><h3 id="3-Column"><a href="#3-Column" class="headerlink" title="3.Column"></a>3.Column</h3><p>Column表示在垂直方向进行排列，参数和Row类似，不同的就是Column表明的是垂直方向。</p><h3 id="4-需要注意的地方"><a href="#4-需要注意的地方" class="headerlink" title="4.需要注意的地方"></a>4.需要注意的地方</h3><p>如果Row里面嵌套Row，或者Column里面嵌套Column，那么只有最外面的Row或者Column会占用尽可能大的空间，里面的Row和Column为其实际大小。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot; class=&quot;headerlink&quot; title=&quot;1.基本概念&quot;&gt;&lt;/a&gt;1.基本概念&lt;/h3&gt;&lt;p&gt;对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指
+      
+    
+    </summary>
+    
+    
+      <category term="flutter" scheme="http://yoursite.com/tags/flutter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>next.js学习</title>
+    <link href="http://yoursite.com/2019/01/14/next-js%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2019/01/14/next-js学习/</id>
+    <published>2019-01-14T03:20:44.000Z</published>
+    <updated>2019-01-15T01:57:35.544Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save next react reac-dom</span><br></pre></td></tr></table></figure><p>将上面的这些依赖安装好了之后，接着配置package.json文件，如下所示：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"next"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"next start"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>经过上面这些设置之后，在项目根目录下面的pages文件夹下面就是一个路由文件了，路由的名字和</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-使用&quot;&gt;&lt;a href=&quot;#1-使用&quot; class=&quot;headerlink&quot; title=&quot;1.使用&quot;&gt;&lt;/a&gt;1.使用&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
+      
+    
+    </summary>
+    
+    
+      <category term="next.js" scheme="http://yoursite.com/tags/next-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>flutter之图片和icon</title>
+    <link href="http://yoursite.com/2019/01/11/flutter%E4%B9%8B%E5%9B%BE%E7%89%87%E5%92%8Cicon/"/>
+    <id>http://yoursite.com/2019/01/11/flutter之图片和icon/</id>
+    <published>2019-01-11T11:46:42.000Z</published>
+    <updated>2019-01-11T12:49:26.231Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>Flutter中，通过Image来加载并显示图片，Image的数据源可以是asset，文件，内存以及网络。</p><h3 id="2-ImageProvider"><a href="#2-ImageProvider" class="headerlink" title="2.ImageProvider"></a>2.ImageProvider</h3><p>ImageProvider是一个抽象类，主要定义了图片数据获取的接口load()，从不同的数据源获取图片需要实现不同的ImageProvider，比如AssetImage是实现了从Asset中加载图片的ImageProvider，而NetworkImage实现了从网络中加载图片的ImageProvider。</p><p>Image Widget有一个必选的image参数，它对应一个ImageProvider，如下面例子：</p><p>如果是从asset中加载图片的话，那么要先在pubspec.yml文件中的flutter部分添加以下内容：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">flutter:</span></span><br><span class="line"><span class="attr">  assets:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">images/WechatIMG540.jpeg</span></span><br></pre></td></tr></table></figure><p>具体的实例代码：</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Image(</span><br><span class="line">    image: AssetImage(<span class="string">"images/some.png"</span>),</span><br><span class="line">    width: <span class="number">100.0</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 或者像下面这样</span></span><br><span class="line">Image.asset(<span class="string">"images/some.png"</span>, width: <span class="number">100.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于网络图片来说，其用法可能更加简单一点</span></span><br><span class="line">Image(</span><br><span class="line">    image: NetworkImage(<span class="string">'image_url'</span>),</span><br><span class="line">    width: <span class="number">300.0</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者像下面这样的便捷写法</span></span><br><span class="line">Image.network(</span><br><span class="line">    <span class="string">'img_url'</span>,</span><br><span class="line">    width: <span class="number">300.0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot; class=&quot;headerlink&quot; title=&quot;1.基本概念&quot;&gt;&lt;/a&gt;1.基本概念&lt;/h3&gt;&lt;p&gt;Flutter中，通过Image来加载并显示图片，Image的数据源可以是asset，文件，内存以及网络。&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="flutter" scheme="http://yoursite.com/tags/flutter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter之按钮</title>
+    <link href="http://yoursite.com/2019/01/11/Flutter%E4%B9%8B%E6%8C%89%E9%92%AE/"/>
+    <id>http://yoursite.com/2019/01/11/Flutter之按钮/</id>
+    <published>2019-01-11T09:34:47.000Z</published>
+    <updated>2019-01-11T11:29:33.007Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>Material widget库中提供了多种按钮Widget，比如RaisedButton，FlatButton，OutlineButton，它们都是直接或间接继承自RawMaterialButton。所有的Material库中的按钮都有下面几相同点：</p><ul><li>1.按下的时候会有水波动画</li><li>2.<strong>有一个onPressed属性来设置点击回调，按钮按下的时候执行该回调；如果不提供该回调的话则按钮会处于禁用状态。禁用状态不响应用户点击。</strong></li></ul><h3 id="2-RaisedButton：漂浮按钮，默认带有阴影和灰色背景，按下后，阴影会变大。"><a href="#2-RaisedButton：漂浮按钮，默认带有阴影和灰色背景，按下后，阴影会变大。" class="headerlink" title="2.RaisedButton：漂浮按钮，默认带有阴影和灰色背景，按下后，阴影会变大。"></a>2.RaisedButton：漂浮按钮，默认带有阴影和灰色背景，按下后，阴影会变大。</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RaisedButton(</span><br><span class="line">  child: Text(<span class="string">'购买'</span>),</span><br><span class="line">  onPressed: () =&gt; &#123;&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure><h3 id="3-FlatButton：扁平按钮，默认背景透明并且不带阴影，按下后，会有背景色。"><a href="#3-FlatButton：扁平按钮，默认背景透明并且不带阴影，按下后，会有背景色。" class="headerlink" title="3.FlatButton：扁平按钮，默认背景透明并且不带阴影，按下后，会有背景色。"></a>3.FlatButton：扁平按钮，默认背景透明并且不带阴影，按下后，会有背景色。</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line">    child: Text(<span class="string">'按钮'</span>),</span><br><span class="line">    onPressed: () =&gt; &#123;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>FlatButton的构造信息如下所示：</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> FlatButton(&#123;</span><br><span class="line">    <span class="meta">@required</span> <span class="keyword">this</span>.onPressed, <span class="comment">// 按钮点击回调</span></span><br><span class="line">    <span class="keyword">this</span>.textColor,   <span class="comment">// 按钮文字颜色,</span></span><br><span class="line">    <span class="keyword">this</span>.color,     <span class="comment">// 按钮背景颜色</span></span><br><span class="line">    <span class="keyword">this</span>.disabledColor, <span class="comment">// 按钮禁用时候的背景颜色</span></span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot; class=&quot;headerlink&quot; title=&quot;1.基本概念&quot;&gt;&lt;/a&gt;1.基本概念&lt;/h3&gt;&lt;p&gt;Material widget库中提供了多种按钮Widget，比如RaisedButton，FlatButt
+      
+    
+    </summary>
+    
+    
+      <category term="flutter" scheme="http://yoursite.com/tags/flutter/"/>
+    
+  </entry>
   
   <entry>
     <title>Flutter之文本</title>
@@ -389,89 +481,6 @@
     
     
       <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node事件循环</title>
-    <link href="http://yoursite.com/2018/12/12/node%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
-    <id>http://yoursite.com/2018/12/12/node事件循环/</id>
-    <published>2018-12-12T09:11:18.000Z</published>
-    <updated>2018-12-12T09:11:18.568Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>函数式一</title>
-    <link href="http://yoursite.com/2018/12/11/%E5%87%BD%E6%95%B0%E5%BC%8F%E4%B8%80/"/>
-    <id>http://yoursite.com/2018/12/11/函数式一/</id>
-    <published>2018-12-11T07:58:40.000Z</published>
-    <updated>2018-12-13T13:52:17.643Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："><a href="#1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：" class="headerlink" title="1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子："></a>1.纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Flock = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag = n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Flock.prototype.conjoin = <span class="function"><span class="keyword">function</span>(<span class="params">other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag += other.seag;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Flock.prototype.breed = <span class="function"><span class="keyword">function</span>(<span class="params">other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.seag *= other.seag;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Flock(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Flock(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Flock(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//a.breed(b) =&gt; 16;  16 + 16;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = a.conjoin(c).breed(b).conjoin(a.breed(b)).seag;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'result'</span>, result);    <span class="comment">// =&gt; 32</span></span><br></pre></td></tr></table></figure><p>上面这个例子输出的结果是32。</p><h3 id="2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。"><a href="#2-区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array-prototype-slice就是一个纯方法，而Array-prototype-splice并不是一个纯方法。" class="headerlink" title="2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。"></a>2.区别一下原生的js类型中有哪些较为常见的纯方法以及非纯方法，比如说：Array.prototype.slice就是一个纯方法，而Array.prototype.splice并不是一个纯方法。</h3><h3 id="3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："><a href="#3-一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：" class="headerlink" title="3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态："></a>3.一个非纯函数还可能会长这样，尽管不太明显，但是需要清除这个函数依赖了外部的系统状态：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mini = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> check = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> data &gt;= mini;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pure的应该像下面这样的写法</span></span><br><span class="line"><span class="keyword">var</span> check = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mini = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> data &gt;= mini;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="4-可以使用Object-freeze来创建一个不可变对象："><a href="#4-可以使用Object-freeze来创建一个不可变对象：" class="headerlink" title="4.可以使用Object.freeze来创建一个不可变对象："></a>4.可以使用Object.freeze来创建一个不可变对象：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o1 = <span class="built_in">Object</span>.freeze(&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">o1.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1.a);  <span class="comment">// 还是为1</span></span><br></pre></td></tr></table></figure><h3 id="5-纯函数的优点一：可缓存性："><a href="#5-纯函数的优点一：可缓存性：" class="headerlink" title="5.纯函数的优点一：可缓存性："></a>5.纯函数的优点一：可缓存性：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">** memoize函数能够将计算过的值给缓存起来，节约计算时间</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span> memoize = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cache = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arg_str = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>);</span><br><span class="line">    cache[arg_str] = cache[arg_str] || f.apply(f, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> cache[arg_str];</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> square = memoize(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x*x &#125;);</span><br><span class="line">square(<span class="number">5</span>);</span><br><span class="line">square(<span class="number">5</span>); <span class="comment">// 从缓存里面取值</span></span><br></pre></td></tr></table></figure><h3 id="6-组合，下面可以看一个函数组合的例子："><a href="#6-组合，下面可以看一个函数组合的例子：" class="headerlink" title="6.组合，下面可以看一个函数组合的例子："></a>6.组合，下面可以看一个函数组合的例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compose = <span class="function"><span class="keyword">function</span>(<span class="params">f, g</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f(g(x));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> toUpperCase = <span class="function"><span class="keyword">function</span>(<span class="params">x=<span class="string">''</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x.toUpperCase;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reverseString = <span class="function"><span class="keyword">function</span>(<span class="params">x=<span class="string">''</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> power = compose(toUpperCase, reverseString);  <span class="comment">// 很直观 从右到左</span></span><br><span class="line"><span class="built_in">console</span>.log(power(<span class="string">'hello frp'</span>));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：&quot;&gt;&lt;a href=&quot;#1-纯函数：同一个输入，同一个输出，不改变数据。下面看一个槽糕的例子：&quot; class=&quot;headerlink&quot; title=&quot;1.纯函数：同一个输入，同一个输出，不改变数
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rn基础一</title>
-    <link href="http://yoursite.com/2018/12/11/rn%E5%9F%BA%E7%A1%80%E4%B8%80/"/>
-    <id>http://yoursite.com/2018/12/11/rn基础一/</id>
-    <published>2018-12-11T05:51:46.000Z</published>
-    <updated>2018-12-11T05:57:59.677Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-设置全屏"><a href="#1-设置全屏" class="headerlink" title="1.设置全屏"></a>1.设置全屏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Dimensions &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;&#123;<span class="attr">width</span>: Dimensions.get(<span class="string">'window'</span>).width, <span class="attr">height</span>: Dimensions.get(<span class="string">'window'</span>).height&#125;&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-设置全屏&quot;&gt;&lt;a href=&quot;#1-设置全屏&quot; class=&quot;headerlink&quot; title=&quot;1.设置全屏&quot;&gt;&lt;/a&gt;1.设置全屏&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
-      
-    
-    </summary>
-    
-    
-      <category term="ReactNative" scheme="http://yoursite.com/tags/ReactNative/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react生态基本使用笔记</title>
-    <link href="http://yoursite.com/2018/12/07/react%E7%94%9F%E6%80%81%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/12/07/react生态基本使用笔记/</id>
-    <published>2018-12-07T03:18:59.000Z</published>
-    <updated>2018-12-23T05:24:36.507Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-使用react-router的link标签的时候可以这样使用："><a href="#1-使用react-router的link标签的时候可以这样使用：" class="headerlink" title="1.使用react-router的link标签的时候可以这样使用："></a>1.使用react-router的link标签的时候可以这样使用：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link to=&#123;&#123; <span class="attr">pathname</span>: <span class="string">`routeUrl`</span>, <span class="attr">state</span>: stateObj &#125;&#125;&gt;target&lt;<span class="regexp">/Link&gt;</span></span><br></pre></td></tr></table></figure><p>Link里面所传递的state对象在子页面中可以通过this.props.location.state来进行获取。一个好处，放在location里面的数据不会被刷新掉。</p><h3 id="2-更新过程不会触发componentWillMount以及componentDidMount。"><a href="#2-更新过程不会触发componentWillMount以及componentDidMount。" class="headerlink" title="2.更新过程不会触发componentWillMount以及componentDidMount。"></a>2.更新过程不会触发componentWillMount以及componentDidMount。</h3><h3 id="3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。"><a href="#3-一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this-props-params-classId来获取班级id。" class="headerlink" title="3.一个route形如下面这样的话：，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。"></a>3.一个route形如下面这样的话：<route path="course/:courseId/class/:classId" component="{CourseClassInfo}/">，那么我们可以在CourseClassInfo组件中通过this.props.params.classId来获取班级id。</route></h3><p><strong>4.React挂载阶段所触发的生命周期方法：</strong></p><ul><li>constructor()</li><li>componentWillMount()</li><li>render()</li><li>componentDidMount()</li></ul><p><em>需要注意的地方，React 16.3版本发布以后，引入了下面几个生命周期方法：UNSAFE_componentWillMount,UNSAFE_componentWillReceiveProps,UNSAFE_componentWillUpdate，这几个方法是用来替代componentWillMount和componentWillReceiveProps以及componentWillUpdate的，为什么要进项替代？因为这几个方法在接下来react主要希望实现的目标-异步渲染中将会带来比之前更大的误解。</em> 虽然在react 16.3版本中引入了这几个方法，但是旧的原有方法和新的替代方法是处于一个可以共存的状态下。</p><p>来到react 17以上的版本之后，react将componentWillMount，componentWillReceiveProps，componentWillUpdate这些旧方法都给移除了。只有这些方法相对应的带有UNSAFE_前缀的才可使用。</p><p><strong>5.更新阶段执行的生命周期方法：首先更新一个组件有三种途径，分别是父组件更新，自身状态变化，自身强制更新</strong>。不同的途径所触发的生命周期方法是不同的，<em>先介绍父组件更新所触发的生命周期方法：</em></p><ul><li>1.componentWillReceiveProps()</li><li>2.shouldComponentUpdate()</li><li>3.componentWillUpdate()</li><li>4.render()</li><li>5.componentDidUpdate()</li></ul><p><em>当自身状态发生变化的时候，也就是自己调用setState，此时触发的生命周期方法如下所示：</em></p><ul><li>1.shouldComponentUpdate()</li><li>2.componentWillUpdate()</li><li>3.render()</li><li>4.componentDidUpdate()</li></ul><p><em>当调用forceUpdate()强制触发更新的时候，将会触发下面这些生命周期方法：</em></p><ul><li>1.componentWillUpdate()</li><li>2.render()</li><li>3.componentDidUpdate()</li></ul><p><strong>6.卸载阶段：这个阶段调用的就是componentWillUnmount，可以在这个方法里面执行一些垃圾回收操作。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-使用react-router的link标签的时候可以这样使用：&quot;&gt;&lt;a href=&quot;#1-使用react-router的link标签的时候可以这样使用：&quot; class=&quot;headerlink&quot; title=&quot;1.使用react-router的link标签的时候
-      
-    
-    </summary>
-    
-    
-      <category term="react" scheme="http://yoursite.com/tags/react/"/>
     
   </entry>
   

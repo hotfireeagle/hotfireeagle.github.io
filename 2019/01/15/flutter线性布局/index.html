@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.基本概念对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指垂直方向；在Flutter中通过Row和Column来实现线性布局；并且Row以及Column都是继承自Flex。 2.RowRow表明在水平方向排列其子widget，因此此时主轴就是水平方向；纵轴就是垂直方向；Row的定义如下所示： 12345678Row(&amp;#123;  Te">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter线性布局">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/flutter线性布局/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.基本概念对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指垂直方向；在Flutter中通过Row和Column来实现线性布局；并且Row以及Column都是继承自Flex。 2.RowRow表明在水平方向排列其子widget，因此此时主轴就是水平方向；纵轴就是垂直方向；Row的定义如下所示： 12345678Row(&amp;#123;  Te">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-15T02:33:52.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter线性布局">
+<meta name="twitter:description" content="1.基本概念对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指垂直方向；在Flutter中通过Row和Column来实现线性布局；并且Row以及Column都是继承自Flex。 2.RowRow表明在水平方向排列其子widget，因此此时主轴就是水平方向；纵轴就是垂直方向；Row的定义如下所示： 12345678Row(&amp;#123;  Te">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>flutter线性布局</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/01/14/next-js学习/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/flutter线性布局/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/flutter线性布局/&text=flutter线性布局"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/flutter线性布局/&is_video=false&description=flutter线性布局"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter线性布局&body=Check out this article: http://yoursite.com/2019/01/15/flutter线性布局/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/flutter线性布局/&name=flutter线性布局&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Row"><span class="toc-number">2.</span> <span class="toc-text">2.Row</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Column"><span class="toc-number">3.</span> <span class="toc-text">3.Column</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-需要注意的地方"><span class="toc-number">4.</span> <span class="toc-text">4.需要注意的地方</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        flutter线性布局
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-01-15T01:41:55.000Z" itemprop="datePublished">2019-01-15</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/flutter/">flutter</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>对于线性布局，有主轴和纵轴之分，如果布局是沿水平方，那么主轴就是水平方向；如果布局沿垂直方向，那么主轴就是指垂直方向；在Flutter中通过Row和Column来实现线性布局；并且Row以及Column都是继承自Flex。</p>
+<h3 id="2-Row"><a href="#2-Row" class="headerlink" title="2.Row"></a>2.Row</h3><p>Row表明在水平方向排列其子widget，因此此时主轴就是水平方向；纵轴就是垂直方向；Row的定义如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Row(&#123;</span><br><span class="line">  TextDirection textDirection,</span><br><span class="line">  MainAxisSize mainAxisSize = MainAxisSize.max,</span><br><span class="line">  MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,</span><br><span class="line">  VerticalDirection verticalDirection = VerticalDirection.down,</span><br><span class="line">  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,</span><br><span class="line">  List&lt;Widget&gt; children = <span class="keyword">const</span> &lt;Widget&gt;[]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>构造函数中各个字段的意思：</p>
+<ul>
+<li>1.textDirection：表示在水平方向上widget的布局顺序，注意一定是水平方向。</li>
+<li>2.mainAxisSize：表示一个Row在水平方向所占用的空间，两个值可选，分别是mainAxisSize.min和mainAxisSize.max。</li>
+<li>3.mainAxisAlignment：表示子Widgets在水平空间内的对齐方式；如果mainAxisSize的值为MainAxisSize.min的话，那么定义mainAxisAlignment的值将没有意义，因为子widget的宽度和Row的宽度是一样的。只有在mainAxisSize的值为mainAxisSize.max的时候，给mainAxisAlignment设置值才是可以接受的，假设textDirection的值为TextDirection.ltr的话，那么MainAxisAlignment.start表示左对齐；假设textDirection的值为TextDirection.rtl的话，那么设置MainAxisAlignment.end的话也是表明左对齐。当然还有mainAxisAlignment.center，这自然表明是居中了。</li>
+<li>4.verticalDirection：表示Row的纵轴（垂直）的对齐方向，默认是VerticalDirection.down，表示从上到下。</li>
+<li>5.crossAxisAlignment：表示子widget在纵轴方向的对齐方式，在线性布局里面，Row的高度等于子Widgets中最高的子元素高度。这个属性具有三个可选值，分别是start,end,center，不同的是它的参考系是verticalDirection。</li>
+<li>6.children：子widget数组。</li>
+</ul>
+<h3 id="3-Column"><a href="#3-Column" class="headerlink" title="3.Column"></a>3.Column</h3><p>Column表示在垂直方向进行排列，参数和Row类似，不同的就是Column表明的是垂直方向。</p>
+<h3 id="4-需要注意的地方"><a href="#4-需要注意的地方" class="headerlink" title="4.需要注意的地方"></a>4.需要注意的地方</h3><p>如果Row里面嵌套Row，或者Column里面嵌套Column，那么只有最外面的Row或者Column会占用尽可能大的空间，里面的Row和Column为其实际大小。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Row"><span class="toc-number">2.</span> <span class="toc-text">2.Row</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Column"><span class="toc-number">3.</span> <span class="toc-text">3.Column</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-需要注意的地方"><span class="toc-number">4.</span> <span class="toc-text">4.需要注意的地方</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/15/flutter线性布局/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/15/flutter线性布局/&text=flutter线性布局"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/15/flutter线性布局/&is_video=false&description=flutter线性布局"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=flutter线性布局&body=Check out this article: http://yoursite.com/2019/01/15/flutter线性布局/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/15/flutter线性布局/&title=flutter线性布局"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/15/flutter线性布局/&name=flutter线性布局&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
