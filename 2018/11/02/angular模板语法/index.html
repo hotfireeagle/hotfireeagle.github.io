@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.模板语法概览 1.插值语法：绑定属性变量的值到模板中。 1&amp;lt;p&amp;gt;&amp;#123;&amp;#123; detail.telNum &amp;#125;&amp;#125;&amp;lt;/p&amp;gt;  2.DOM元素属性绑定语法：将属性变量的值绑定到div的title属性上面。 1&amp;lt;div [title]=&quot;name&quot;&amp;gt;hello&amp;lt;/div&amp;gt;，  3.class类绑定：当isBlue返回tru">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-09T05:38:47.367Z">
+<meta property="og:updated_time" content="2019-01-30T03:53:00.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular模板语法">
 <meta name="twitter:description" content="1.模板语法概览 1.插值语法：绑定属性变量的值到模板中。 1&amp;lt;p&amp;gt;&amp;#123;&amp;#123; detail.telNum &amp;#125;&amp;#125;&amp;lt;/p&amp;gt;  2.DOM元素属性绑定语法：将属性变量的值绑定到div的title属性上面。 1&amp;lt;div [title]=&quot;name&quot;&amp;gt;hello&amp;lt;/div&amp;gt;，  3.class类绑定：当isBlue返回tru">
@@ -171,8 +171,20 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; detail?.telNum &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>10.星号前缀：使用星号前缀可以简化对结构指令的使用，angular会将带有星号的指令引用替换成带有<template>标签的代码，等同于</template></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">myUnless</span>=<span class="string">"boolValue"</span>&gt;</span>myUnless is false now.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> [<span class="attr">myUnless</span>]=<span class="string">"boolValue"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>now is time<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">myUnless</span>=<span class="string">"boolValue"</span>&gt;</span>myUnless is false now.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> [<span class="attr">myUnless</span>]=<span class="string">"boolValue"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>now is time<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>11.使用ng generate component heros来创建一个组件。</p>
+</li>
 </ul>
+<p><strong>12.每个组件都必须声明在（且只能声明在）一个NgModule中，如果相对input使用ngModel的话，那么就必须在顶层的appModule中import表单的module，叫做FormsModule。</strong></p>
+<p><strong>13.一个组件都必须声明也只能声明在一个NgModule中，具体放在declarations数组里面。</strong></p>
+<p><strong>14.列表渲染，如下所示：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngFor</span>=<span class="string">"let hero of heroes"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>15.css类名绑定机制，如下所示：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> [<span class="attr">class.selected</span>]=<span class="string">"hero === selectedHero"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>16.创建一个service，使用下面的命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng generate service hero</span><br></pre></td></tr></table></figure>
+<p><strong>17.angular模板只会绑定组件的公共属性。</strong></p>
 
   </div>
 </article>

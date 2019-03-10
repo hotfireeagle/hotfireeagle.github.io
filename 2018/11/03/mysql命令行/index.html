@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="1.登录mysql：1mysql -u root -p 2.连接远程主机：1mysql -h 主机名 -u 用户名 -p">
+    <meta name="description" content="1.登录mysql: 1mysql -u root -p 2.连接远程主机： 1mysql -h 主机名 -u 用户名 -p 3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。 12345678import * as mysql from &apos;mysql&apos;;const pool = mysql.createPool(&amp;#">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql命令行">
 <meta property="og:url" content="http://yoursite.com/2018/11/03/mysql命令行/index.html">
 <meta property="og:site_name" content="夜游">
-<meta property="og:description" content="1.登录mysql：1mysql -u root -p 2.连接远程主机：1mysql -h 主机名 -u 用户名 -p">
+<meta property="og:description" content="1.登录mysql: 1mysql -u root -p 2.连接远程主机： 1mysql -h 主机名 -u 用户名 -p 3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。 12345678import * as mysql from &apos;mysql&apos;;const pool = mysql.createPool(&amp;#">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-06T16:50:54.228Z">
+<meta property="og:updated_time" content="2019-03-10T03:27:46.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql命令行">
-<meta name="twitter:description" content="1.登录mysql：1mysql -u root -p 2.连接远程主机：1mysql -h 主机名 -u 用户名 -p">
+<meta name="twitter:description" content="1.登录mysql: 1mysql -u root -p 2.连接远程主机： 1mysql -h 主机名 -u 用户名 -p 3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。 12345678import * as mysql from &apos;mysql&apos;;const pool = mysql.createPool(&amp;#">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-登录mysql："><span class="toc-number">1.</span> <span class="toc-text">1.登录mysql：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-连接远程主机："><span class="toc-number">2.</span> <span class="toc-text">2.连接远程主机：</span></a></li></ol>
+      
     </div>
   </span>
 </div>
@@ -142,8 +142,18 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h3 id="1-登录mysql："><a href="#1-登录mysql：" class="headerlink" title="1.登录mysql："></a>1.登录mysql：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<h3 id="2-连接远程主机："><a href="#2-连接远程主机：" class="headerlink" title="2.连接远程主机："></a>2.连接远程主机：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 主机名 -u 用户名 -p</span><br></pre></td></tr></table></figure>
+    <p><strong>1.登录mysql:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p><strong>2.连接远程主机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 主机名 -u 用户名 -p</span><br></pre></td></tr></table></figure>
+<p><strong>3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> mysql <span class="keyword">from</span> <span class="string">'mysql'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pool = mysql.createPool(&#123;</span><br><span class="line">  host: <span class="string">'host'</span>,</span><br><span class="line">  user: <span class="string">'user'</span>,</span><br><span class="line">  password: <span class="string">'password'</span>,</span><br><span class="line">  database: <span class="string">'database'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果使用了线程池的形式的话，那么将会是这样的一个调用形式：pool.getConnection() -&gt; connection.query() -&gt; connection.release()。</p>
+<p><strong>4.MySQL在创建数据库的时候设置字符集，对于中文来说，有些字使用utf8表示不了，更不要说emoji表情了，所以在创建数据库的时候，最好让设置字符集支持4字节的文字，此时典型的字符集就是utf8mb4，能够完美支持。那么如何创建这样一个数据库呢？答案是使用下面的命令：(其中collate后面表示的意思是用来排序的规则)</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database name default character <span class="built_in">set</span> utf8mb4 collate utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p><strong>5.mysql删除数据库的某个表，首先需要使用use命令转到对应的数据库；接着使用drop table table_name;命令来删除一个表。</strong></p>
+<p><strong>6.首先使用use切换到具体的数据库，接着使用source命令，后面跟上sql文件的路径即可。</strong></p>
+
   </div>
 </article>
 
@@ -167,7 +177,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-登录mysql："><span class="toc-number">1.</span> <span class="toc-text">1.登录mysql：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-连接远程主机："><span class="toc-number">2.</span> <span class="toc-text">2.连接远程主机：</span></a></li></ol>
+      
     </div>
 
     <div id="share-footer" style="display: none">
