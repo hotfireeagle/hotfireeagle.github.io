@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-14T02:05:35.300Z</updated>
+  <updated>2019-03-28T03:43:56.645Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现一个sleep方法</title>
+    <link href="http://yoursite.com/2019/03/28/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAsleep%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/03/28/实现一个sleep方法/</id>
+    <published>2019-03-28T02:52:53.000Z</published>
+    <updated>2019-03-28T03:43:56.645Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-问题：实现一个sleep方法进行等待"><a href="#1-问题：实现一个sleep方法进行等待" class="headerlink" title="1.问题：实现一个sleep方法进行等待"></a>1.问题：实现一个sleep方法进行等待</h3><p><strong>法一：使用Promise实现</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出结果，步骤1和步骤2，步骤4几乎同时输出，步骤3被延时1S</span></span><br><span class="line"><span class="keyword">let</span> sleep = <span class="function"><span class="params">ms</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;, ms);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'4'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br></pre></td></tr></table></figure><p><strong>法二：使用promise+async实现，避免callback形式</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出结果，步骤1，步骤2，步骤4的输出结果几乎相同；步骤3被延时1S</span></span><br><span class="line"><span class="keyword">let</span> sleepPromise = <span class="function"><span class="params">ms</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;, ms);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wait1s = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">  <span class="keyword">await</span> sleepPromise(<span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">wait1s();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'4'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br></pre></td></tr></table></figure><p><strong>法三：使用promise+generator实现，注意每次调用generator构造方法都将会生成一个新的generator实例，此时将会从头开始yield.</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 步骤1和步骤3几乎同时同时输出，步骤2滞后1S</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">gen</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">  <span class="keyword">yield</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve();</span><br><span class="line">    &#125;, ms);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> genIns = gen(<span class="number">1000</span>);</span><br><span class="line">genIns.next().value.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'3'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br></pre></td></tr></table></figure><p>关于generator，调用generator实例的next会执行到yield语句，返回的是一个对象，该对象具有两个字段，分别是value和done，value对应yield出来的值，done表示这个generator实例是否执行完毕。每次调用generator构造函数函数都会生成一个新的generator实例。</p><p>看个例子：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> gi = gen();</span><br><span class="line"><span class="built_in">console</span>.log(gi.next());     <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen().next());  <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gi.next());     <span class="comment">// &#123; value: 2, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gi.next());     <span class="comment">// &#123; value: 3, done: true &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen().next());  <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen().next());  <span class="comment">// &#123; value: 1, done: false &#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-问题：实现一个sleep方法进行等待&quot;&gt;&lt;a href=&quot;#1-问题：实现一个sleep方法进行等待&quot; class=&quot;headerlink&quot; title=&quot;1.问题：实现一个sleep方法进行等待&quot;&gt;&lt;/a&gt;1.问题：实现一个sleep方法进行等待&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>angular指令</title>
@@ -455,34 +478,6 @@
       
         &lt;p&gt;&lt;strong&gt;1.基础概念&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;widget不仅只描述UI。widget是描述一个UI元素的配置数据；widget并不是绘制在屏幕的UI的抽象，那是Element，Widget只是描述Element的配置；一个Widget可以对应多个Eleme
-      
-    
-    </summary>
-    
-    
-      <category term="flutter" scheme="http://yoursite.com/tags/flutter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>flutter之包管理</title>
-    <link href="http://yoursite.com/2018/12/27/flutter%E4%B9%8B%E5%8C%85%E7%AE%A1%E7%90%86/"/>
-    <id>http://yoursite.com/2018/12/27/flutter之包管理/</id>
-    <published>2018-12-26T17:13:48.000Z</published>
-    <updated>2018-12-26T17:28:50.206Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>1.基本概念</em></p><p>包管理的配置文件采用yaml格式，默认配置文件叫做pubspec.yaml，位于项目根目录。</p><p><em>2.各个字段的基本意义</em></p><ul><li>1.name: 应用或者包名称</li><li>2.description: 应用或者包的简介</li><li>3.version: 应用或者包的版本号</li><li>4.dependencies: 应用或者包的依赖</li><li>5.dev_dependencies: 开发环境依赖</li><li>6.flutter: flutter相关配置选项</li></ul><p><em>3.包仓库</em></p><p>Flutter的包管理仓库就是dart语言的包管理仓库，叫做pub仓库，类似于npm仓库。添加一个依赖包只需要根性pubspec.yaml即可，如下所示：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dependencies:</span></span><br><span class="line"><span class="attr">  packageName:</span> <span class="string">PACKAGE_VERSION</span>  <span class="comment">## 直接使用pub仓库的包</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  package1:</span> <span class="string">./lib/package1</span>  <span class="comment">## 使用本地包</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  pkg2:</span></span><br><span class="line"><span class="attr">    git:</span></span><br><span class="line"><span class="attr">      url:</span> <span class="string">git_url</span></span><br><span class="line"><span class="attr">      path:</span> <span class="string">src/pkg2</span>    <span class="comment">## 如果不在仓库的根目录下的话，那么就加上相对路径，在的话则无需这步</span></span><br></pre></td></tr></table></figure><p><em>4.引入包</em></p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'package:pkg2/pkg2.dart'</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;em&gt;1.基本概念&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;包管理的配置文件采用yaml格式，默认配置文件叫做pubspec.yaml，位于项目根目录。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;2.各个字段的基本意义&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1.name: 应用或者包名称&lt;/li&gt;
-&lt;li&gt;2
       
     
     </summary>

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.API1.获取某个元素的文本采用下面的方式： 1let text = await.page.$eval(&apos;query&apos;, ele =&amp;gt; ele.textContent); /* 其中text就是该dom元素所对应的文本 */ 2.测试页面中是否存在某个元素: 1page.waitForSelector(&apos;query&apos;).then(() =&amp;gt; &amp;#123;&amp;#125;, () =&amp;g">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-16T07:01:30.378Z">
+<meta property="og:updated_time" content="2019-03-24T14:35:09.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="puppeteer-API备忘">
 <meta name="twitter:description" content="1.API1.获取某个元素的文本采用下面的方式： 1let text = await.page.$eval(&apos;query&apos;, ele =&amp;gt; ele.textContent); /* 其中text就是该dom元素所对应的文本 */ 2.测试页面中是否存在某个元素: 1page.waitForSelector(&apos;query&apos;).then(() =&amp;gt; &amp;#123;&amp;#125;, () =&amp;g">
@@ -157,7 +157,11 @@
 <p>2.某些用户产生的交互行为会触发网络请求，那么怎么捕获监听呢？思路：模拟产生交互的行为，在其返回的promise的resolve cb里面使用page去监听requestfinished事件，如下所示：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> page.click(<span class="string">'ul.dropdown-menu li:nth-of-type(2) a'</span>).then(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  page.on(<span class="string">'requestfinished'</span>, request =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (request.url().endsWith(<span class="string">'you want compare'</span>)) &#123;</span><br><span class="line">      request.response().json().then(<span class="keyword">async</span> res =&gt; &#123;</span><br><span class="line">        <span class="keyword">await</span> testUI(res, <span class="string">'二'</span>); <span class="comment">// 测试UI与响应是否对应</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">  Utils.log(<span class="string">'some error message'</span>, <span class="string">'error'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>3.近期做项目遇到一个问题，那就是localStorage丢失的问题，思前想后才发现上一个页面的域名是HTTPS（在上个页面写的localStorage)，而下个页面成了http，这就解释了为什么localStorage为什么会丢失的问题了。毕竟localStorage特定于页面的协议。有可能是第二个页面引入了某个非https的协议，所以降成了http。</p>
-
+<p><strong>4.page.$eval方法怎么使用，用处是什么？，先看下面示例代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> page.$<span class="built_in">eval</span>(</span><br><span class="line">  <span class="string">'#login'</span>,</span><br><span class="line">  (ele, userName) =&gt; &#123;</span><br><span class="line">    ele.value = userName;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'hahahai'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>page.$eval方法相当于执行document.querySelector()，并且将match到的结果作为callback的第一个参数，而$eval方法所返回的结果就是callback所返回的结果，如果callback返回的是一个promise的话，那么会等待直到promise被决议。函数的第三个参数如果提供了的话，那么将会作为callback方法的第二个参数。</p>
+<p><strong>5.我想摸你按下回车。代码如下所示：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> page.keyboard.press(<span class="string">"Enter"</span>);</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 

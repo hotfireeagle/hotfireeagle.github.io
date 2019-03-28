@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.登录mysql: 1mysql -u root -p 2.连接远程主机： 1mysql -h 主机名 -u 用户名 -p 3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。 12345678import * as mysql from &apos;mysql&apos;;const pool = mysql.createPool(&amp;#">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-10T03:27:46.274Z">
+<meta property="og:updated_time" content="2019-03-24T06:10:16.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql命令行">
 <meta name="twitter:description" content="1.登录mysql: 1mysql -u root -p 2.连接远程主机： 1mysql -h 主机名 -u 用户名 -p 3.使用js建立到数据库的连接，建议采用连接池模式，这样处理能够提升性能。避免开了太多的线程，同时也能够让一个连接达到复用的机会。 12345678import * as mysql from &apos;mysql&apos;;const pool = mysql.createPool(&amp;#">
@@ -153,6 +153,19 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database name default character <span class="built_in">set</span> utf8mb4 collate utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
 <p><strong>5.mysql删除数据库的某个表，首先需要使用use命令转到对应的数据库；接着使用drop table table_name;命令来删除一个表。</strong></p>
 <p><strong>6.首先使用use切换到具体的数据库，接着使用source命令，后面跟上sql文件的路径即可。</strong></p>
+<p><strong>7.创建一个数据表，首先先转到指定的数据库下面，接着使用类似下面的命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table users (</span><br><span class="line">  num int AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">  name char(20) NOT NULL,</span><br><span class="line">  job char(10)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</span><br></pre></td></tr></table></figure>
+<p><strong>8.往数据表里面加入数据可以使用如下命令，如下所示：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO users(name, job) VALUES(<span class="string">'hahahai'</span>, <span class="string">'teacher'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>9.查看数据表里面的所有数据：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users;</span><br></pre></td></tr></table></figure>
+<p><strong>10.查看数据表某项的所有数据并且排序：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT job FROM users ORDER BY job;</span><br></pre></td></tr></table></figure>
+<p><strong>10.查看数据表里面某些满足指定条件的数据并且排序：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT job FROM users WHERE job=<span class="string">'owner'</span> ORDER BY job;</span><br></pre></td></tr></table></figure>
+<p><strong>10.如何更新数据表里面所存储的某条数据：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE users SET job=<span class="string">'owner'</span> WHERE job=<span class="string">'stu'</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>11.PRIMARY KEY用来唯一标识数据库的记录，主键必须包含唯一的值；主键不能包含NULL值；每个表都得有一个主键，并且只能有一个主键。</strong></p>
 
   </div>
 </article>
