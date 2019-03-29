@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
 <meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
@@ -67,7 +67,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -84,7 +84,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/26/flutter学习1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -161,7 +161,7 @@
 <p>函数作为参数传递：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意这里的var cb</span></span><br><span class="line"><span class="keyword">void</span> exec(<span class="keyword">var</span> cb) &#123;</span><br><span class="line">  cb();</span><br><span class="line">&#125;</span><br><span class="line">exec(() =&gt; <span class="built_in">print</span>(<span class="string">'xxx'</span>));</span><br></pre></td></tr></table></figure>
 <p>可选参数，利用[]进行标记</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> say(<span class="built_in">String</span> from, <span class="built_in">String</span> msg, [<span class="built_in">String</span> device]) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="string">'<span class="subst">$from</span> says <span class="subst">$msg<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  if (device != null) &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    result = '</span></span><span class="subst">$result</span> with a <span class="subst">$device<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  return result;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">say('</span></span>i'</span>, <span class="string">'am ok'</span>);</span><br><span class="line">say(<span class="string">'i'</span>, <span class="string">'am ok'</span>, <span class="string">'oneplus a5000'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> say(<span class="built_in">String</span> from, <span class="built_in">String</span> msg, [<span class="built_in">String</span> device]) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="string">'<span class="subst">$from</span> says <span class="subst">$msg</span>'</span>;</span><br><span class="line">  <span class="keyword">if</span> (device != <span class="keyword">null</span>) &#123;</span><br><span class="line">    result = <span class="string">'<span class="subst">$result</span> with a <span class="subst">$device</span>'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">say(<span class="string">'i'</span>, <span class="string">'am ok'</span>);</span><br><span class="line">say(<span class="string">'i'</span>, <span class="string">'am ok'</span>, <span class="string">'oneplus a5000'</span>);</span><br></pre></td></tr></table></figure>
 <p><em>flutter命名参数？</em></p>
 <p><em>5.异步</em></p>
 <p>典型的异步函数有返回Future和Stream这些东西的函数，Future和JavaScript中的Promise是非常相像的.</p>

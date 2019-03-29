@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="1.类 Dart是一种基于类和mixin继承机制的面向对象的语言。所有的类都继承于Object。基于Mixin机制意味着每个类都只有一个超类（除Object外），一个类中的代码可以在其它多个继承类中反复使用。 在Dart2中，new关键字是可选的。 在dart中，存在像下面这样实例化对象的方式： 12var p1 = Point(2,3);var p2 = Point.fromJson(&amp;#123">
 <meta name="keywords" content="dart">
 <meta property="og:type" content="article">
@@ -67,7 +67,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -84,7 +84,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/05/dart基础2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -182,7 +182,7 @@
 <p><strong>15.抽象类：使用abstract修饰符来定义一个抽象类，抽象类不能用来实例化，如果希望抽象类能够被实例化，那么可以通过定义工厂实例函数来实现。在dart中声明抽象方法无需加上abstract修饰符，没有大花括号并且加上返回值就是了。抽象方法只能在抽象类中定义。</strong></p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractContainer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">void</span> updateChildren();  <span class="comment">// 抽象方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>16.接口：每个类都隐式的定义了一个接口，接口包含了该类所有的实例变量以及实例方法，但是，注意并不包含构造函数。如果想要创建一个A类，并且A类要支持B类的API的话，但是又不想继承B类的实现的话，那么可以通过让A类来实现B类的接口。如下所示：</strong></p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> _name;</span><br><span class="line">  Person(<span class="keyword">this</span>._name);</span><br><span class="line">  <span class="built_in">String</span> greet(<span class="built_in">String</span> who) =&gt; <span class="string">'Hello, <span class="subst">$who</span>, I am <span class="subst">$_name<span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">class Impostor implements Person &#123;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  get _name =&gt; '</span><span class="string">';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  String greet(String who) =&gt; '</span></span>Hi, <span class="subst">$who</span>, Do You Know Who I Am'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">String</span> greetBob(Person person) =&gt; person.greet(<span class="string">'bob'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Person(<span class="string">'kay'</span>)));</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Impostor()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> _name;</span><br><span class="line">  Person(<span class="keyword">this</span>._name);</span><br><span class="line">  <span class="built_in">String</span> greet(<span class="built_in">String</span> who) =&gt; <span class="string">'Hello, <span class="subst">$who</span>, I am <span class="subst">$_name</span>'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Impostor</span> <span class="keyword">implements</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">get</span> _name =&gt; <span class="string">''</span>;</span><br><span class="line">  <span class="built_in">String</span> greet(<span class="built_in">String</span> who) =&gt; <span class="string">'Hi, <span class="subst">$who</span>, Do You Know Who I Am'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">String</span> greetBob(Person person) =&gt; person.greet(<span class="string">'bob'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Person(<span class="string">'kay'</span>)));</span><br><span class="line">  <span class="built_in">print</span>(greetBob(Impostor()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>同时一个类也能够用来实现多个接口，如下所示：</p>
 <p>class Point implements PointA, PointB {…}</p>
 <p><strong>17.枚举类型是一种特殊的类，使用enum关键字来定义一个枚举类。枚举中的每一个值都具有一个index getter方法，该方法这个值在枚举类型中的位置；每个枚举类型，都具有一个values实例常量，用来获取所有枚举值列表。</strong></p>

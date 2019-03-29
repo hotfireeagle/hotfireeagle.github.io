@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.题目：12345678var a = 10;                 // 步骤0(function () &amp;#123;    console.log(a)          // 步骤1    a = 5                   // 步骤1-1    console.log(window.a)   // 步骤2    var a = 20;             //">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从一道作用域题目聊聊作用域">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.题目：12345678var a = 10;                 // 步骤0(function () &amp;#123;    console.log(a)          // 步骤1    a = 5                   // 步骤1-1    console.log(window.a)   // 步骤2    var a = 20;             //">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T08:22:43.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从一道作用域题目聊聊作用域">
+<meta name="twitter:description" content="1.题目：12345678var a = 10;                 // 步骤0(function () &amp;#123;    console.log(a)          // 步骤1    a = 5                   // 步骤1-1    console.log(window.a)   // 步骤2    var a = 20;             //">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>从一道作用域题目聊聊作用域</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/03/28/promise相关/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&text=从一道作用域题目聊聊作用域"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&is_video=false&description=从一道作用域题目聊聊作用域"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从一道作用域题目聊聊作用域&body=Check out this article: http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&name=从一道作用域题目聊聊作用域&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-题目："><span class="toc-number">1.</span> <span class="toc-text">1.题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-分析："><span class="toc-number">2.</span> <span class="toc-text">2.分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-拓展，立执行函数的作用域分析："><span class="toc-number">3.</span> <span class="toc-text">3.拓展，立执行函数的作用域分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-拓展2：理解变量提升"><span class="toc-number">4.</span> <span class="toc-text">4.拓展2：理解变量提升</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        从一道作用域题目聊聊作用域
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-03-29T04:10:04.000Z" itemprop="datePublished">2019-03-29</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-题目："><a href="#1-题目：" class="headerlink" title="1.题目："></a>1.题目：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;                 <span class="comment">// 步骤0</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)          <span class="comment">// 步骤1</span></span><br><span class="line">    a = <span class="number">5</span>                   <span class="comment">// 步骤1-1</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.a)   <span class="comment">// 步骤2</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">20</span>;             <span class="comment">// 步骤2-1</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)          <span class="comment">// 步骤3</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h3 id="2-分析："><a href="#2-分析：" class="headerlink" title="2.分析："></a>2.分析：</h3><p>我们知道js的运行流程分为两个部分，预编译期和执行期；先是预编译期接着是执行期。而在预编译期会进行词法分析等，预编译期导致的一个和我们强关联的结果那就是-变量声明提升。同时在es6出来之后，需要明白使用let和const声明的变量不会存在变量提升。</p>
+<p>所以在上面预编译期间存在两处变量提升，分别是window.a 和 local.a。因此执行步骤1的时候此时由于Local作用域里面已经有变量a了，所以输出undefined。接下来运行步骤1-1，同样由于在预编译期间所导致的local.a，因此不会继续向上层作用域查找变量a。步骤0自然是挂载到了全局作用域下面。执行步骤2-1的时候，相当于local.a = 20;到这里基本就解释完毕了。</p>
+<p>总结：var声明的变量在预编译期间会经历声明提升；如果在当前作用域没有找到某个变量，会向上层作用域进行查找，直到找到全局作用域，若是此时还没有找到的话，那么剩下的就是reference error了。</p>
+<h3 id="3-拓展，立执行函数的作用域分析："><a href="#3-拓展，立执行函数的作用域分析：" class="headerlink" title="3.拓展，立执行函数的作用域分析："></a>3.拓展，立执行函数的作用域分析：</h3><p><strong>目前断言，立执行函数的作用域就是window</strong>。问题为什么在jQuery的立执行函数中需要传入window呢？答案：使得在jQuery代码块中访问window时，不需要将作用域链回退到顶层作用域，实现更快的访问window。</p>
+<p>所以可以看一下下面这个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结果输出为 10 50 20</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;         </span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">    a = <span class="number">50</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="4-拓展2：理解变量提升"><a href="#4-拓展2：理解变量提升" class="headerlink" title="4.拓展2：理解变量提升"></a>4.拓展2：理解变量提升</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出1</span></span><br><span class="line">fun();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，对于函数表达式来说，从创建，赋值都被提升了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出：报错TypeError: fun is not a function</span></span><br><span class="line">fun();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从上面可以看出，对于函数赋值语句来说，函数变量创建存在提升，但是赋值并不存在。</p>
+<p><strong>最奇怪的地方还是下面这种场景了：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出 ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">20</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>前面提到过let和const是不存在变量提升的，如果是这样的话，那么为什么不是输出20呢？（local作用域找不到a，继而向上层作用域寻找）所以说，let在预编译期间应该还是做了更多的动作。基于此，我的理解是：在预编译（parser)期间，首先在全局作用域产生了一个变量a，接着在local作用域发现由let所定义的a，创建它，但是是否提升呢？<strong>可以理解为提升了，但是同时又创建了一个暂时死区</strong>，提升的意思是告诉后面执行阶段的代码a是local里面的，暂时死区的意思是指 <strong>变量a从声明语句那一处位置才开始变得可访问，在这之前是暂时死区，在这暂时死区里面访问是会报错的。</strong></p>
+<p>总结：<strong>let和const存在提升，但是提升的意义是在于告诉所在的作用域你访问的就是我，不是别的哪个上层作用域；同时副作用是：创建了暂时死区，得等我被执行之后才可访问；否则报ReferenceError错误。</strong></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-题目："><span class="toc-number">1.</span> <span class="toc-text">1.题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-分析："><span class="toc-number">2.</span> <span class="toc-text">2.分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-拓展，立执行函数的作用域分析："><span class="toc-number">3.</span> <span class="toc-text">3.拓展，立执行函数的作用域分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-拓展2：理解变量提升"><span class="toc-number">4.</span> <span class="toc-text">4.拓展2：理解变量提升</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&text=从一道作用域题目聊聊作用域"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&is_video=false&description=从一道作用域题目聊聊作用域"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从一道作用域题目聊聊作用域&body=Check out this article: http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&title=从一道作用域题目聊聊作用域"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/03/29/从一道作用域题目聊聊作用域/&name=从一道作用域题目聊聊作用域&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

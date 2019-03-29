@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="1.在typescript中，数字都是浮点型。 1let octNum: number = 0o677; // 八进制 2.typescript相比于JavaScript所新引入的类型是：元组(tuple),枚举(enum),任意值(any),void,never。 3.元组：元素数量确定，元素类型确定，元素类型顺序确定（可以有多种类型）。 12let x: [string, number] =">
 <meta name="keywords" content="typescript">
 <meta property="og:type" content="article">
@@ -67,7 +67,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -84,7 +84,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/25/typescript知识点/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -152,7 +152,7 @@
 <p>5.多类型检查</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n: <span class="built_in">number</span> = <span class="number">20</span>;</span><br><span class="line">n = <span class="literal">null</span>; <span class="comment">// 报错</span></span><br><span class="line">n = <span class="literal">undefined</span>; <span class="comment">// 报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> n2: <span class="built_in">number</span> | <span class="literal">null</span> | <span class="literal">undefined</span>;</span><br><span class="line">n2 = <span class="number">20</span>;</span><br><span class="line">n2 = <span class="literal">null</span>;</span><br><span class="line">n2 = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
 <p>6.void以及any在不返回值的函数中的运用</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fun(foo: () =&gt; void) &#123;</span><br><span class="line">  <span class="keyword">let</span> temp = foo();</span><br><span class="line">  temp.doSth(); <span class="comment">// 报错，如果foo返回类型改成any的话则不会报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">foo: () =&gt; <span class="built_in">void</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp = foo();</span><br><span class="line">  temp.doSth(); <span class="comment">// 报错，如果foo返回类型改成any的话则不会报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>7.never类型是其他类型的子类型，也就是说never可以赋值给其他类型，而其他类型无法赋值给never类型。never类型表示为会抛出异常或者无法执行到终止点。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ne: never = <span class="function">(<span class="params">(<span class="params"></span>) =&gt; &#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="params">'i need never'</span>) &#125;</span>)<span class="params">()</span>;</span></span><br><span class="line"><span class="function"><span class="params">function</span> <span class="params">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="params">never</span> &#123;</span></span><br><span class="line"><span class="function">  <span class="params">throw</span> <span class="params">new</span> <span class="params">Error</span>(<span class="params">message</span>);</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"><span class="params">function</span> <span class="params">loop</span><span class="params">()</span>: <span class="params">never</span> &#123;</span></span><br><span class="line"><span class="function">  <span class="params">while</span>(<span class="params"><span class="literal">true</span></span>) &#123;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>8.let,const不存在变量提升；在同一个块级作用域中，let只能声明一个变量一次，多次声明报错。</p>
