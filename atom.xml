@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-29T08:22:43.619Z</updated>
+  <updated>2019-04-02T04:00:01.044Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>证书可信任</title>
+    <link href="http://yoursite.com/2019/04/02/%E8%AF%81%E4%B9%A6%E5%8F%AF%E4%BF%A1%E4%BB%BB/"/>
+    <id>http://yoursite.com/2019/04/02/证书可信任/</id>
+    <published>2019-04-02T02:06:24.000Z</published>
+    <updated>2019-04-02T04:00:01.044Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="详细内容参见知乎专栏">https://zhuanlan.zhihu.com/p/25587986</a></p><h3 id="1-浏览器如何验证您的证书是有效的？"><a href="#1-浏览器如何验证您的证书是有效的？" class="headerlink" title="1.浏览器如何验证您的证书是有效的？"></a>1.浏览器如何验证您的证书是有效的？</h3><p>主要分为下面几个流程：</p><ul><li><p>1.client hello阶段，此时用户会在浏览器地址栏输入一个地址，然后浏览器会解析输入的域名对应到其相对应的IP地址上面，接着浏览器和解析得到的IP地址所对应机器的443端口进行通话（当然如果你转到了其它端口的话，那么就会使用其它端口）。这步也叫做TLS协议的握手请求。</p></li><li><p>2.server hello阶段，服务器收到客户端在TLS协议的握手请求后，会根据客户端的host在自己机器上面寻找对应的证书文件，然后将证书等信息再返回给客户端。</p></li><li><p>3.客户端在收到需要访问网站的证书信息后，会验证证书是否有效。验证步骤主要分为下面几个：验证证书有效期；验证证书域名（和浏览器地址栏域名是否相同）；验证证书吊销状态；验证证书颁发机构；如果颁发机构是中间证书的话，接着验证中间证书的有效期，一直验证到最后最后一层证书，如果最后一层证书是在操作系统或浏览器内置的话，那么证书就是可信的，否则就是自签名的HTTPS证书；</p></li><li><p>4.这个时候证书验证基本就结束了，如果验证通过的话那么浏览器就显示正常；验证不通过浏览器会进行相应提示。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;详细内容参见知乎专栏&quot;&gt;https://zhuanlan.zhihu.com/p/25587986&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-浏览器如何验证您的证书是有效的？&quot;&gt;&lt;a href=&quot;#1-浏览器如何验证您的证书是有效的？&quot; class=&quot;heade
+      
+    
+    </summary>
+    
+    
+      <category term="https" scheme="http://yoursite.com/tags/https/"/>
+    
+  </entry>
   
   <entry>
     <title>从一道作用域题目聊聊作用域</title>
@@ -453,29 +477,6 @@
       
         &lt;p&gt;&lt;strong&gt;1.mongoose.model.prototype.findOne是一个promise，应该await一下的，否则的话，执行之后所返回的结果总会是true。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.一个问题，如果请求头里面没有带上Content
-      
-    
-    </summary>
-    
-    
-      <category term="express" scheme="http://yoursite.com/tags/express/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Express值请求体中间件解析</title>
-    <link href="http://yoursite.com/2018/12/29/Express%E5%80%BC%E8%AF%B7%E6%B1%82%E4%BD%93%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%A7%A3%E6%9E%90/"/>
-    <id>http://yoursite.com/2018/12/29/Express值请求体中间件解析/</id>
-    <published>2018-12-29T05:55:40.000Z</published>
-    <updated>2018-12-29T06:36:24.744Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>1.express请求体中间件有很多，比如说常见的body-parser,multer,formidable,这些中间件都各有各的应用场景,比如说body-parser很适合用来对application/x-www-form-urlencoded，application/json格式的表单请求做处理。multer中间件很适合对multipart/form-data的body，也就是说很适合处理文件上传。Formidable中间件可用于处理表单和上传文件，功能大而且全，既可以用来处理表单也能够用来处理上传文件。</strong></p><p><strong>2.</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;1.express请求体中间件有很多，比如说常见的body-parser,multer,formidable,这些中间件都各有各的应用场景,比如说body-parser很适合用来对application/x-www-form-urlencoded，appli
       
     
     </summary>
