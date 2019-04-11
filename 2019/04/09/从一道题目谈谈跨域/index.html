@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="那个时代的摇滚让人热泪盈眶。  1.基本概念跨域是浏览器限制的，在xhr请求中，跨域问题尤为常见。浏览器针对跨域请求的策略：一个域名的JS，在未经允许的情况下，是不得读取另外一个域名的内容的。跨域问题不能够单单通过前端进行解决。 关于跨域常见的误区： 误区一：是服务端阻止的你跨域。NO! 上面也提到的，跨域是浏览器应用同源策略所限制的。 2.例子1：没有同源策略限制的接口请求这里考虑使用cook">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从一道题目谈谈跨域">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/从一道题目谈谈跨域/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="那个时代的摇滚让人热泪盈眶。  1.基本概念跨域是浏览器限制的，在xhr请求中，跨域问题尤为常见。浏览器针对跨域请求的策略：一个域名的JS，在未经允许的情况下，是不得读取另外一个域名的内容的。跨域问题不能够单单通过前端进行解决。 关于跨域常见的误区： 误区一：是服务端阻止的你跨域。NO! 上面也提到的，跨域是浏览器应用同源策略所限制的。 2.例子1：没有同源策略限制的接口请求这里考虑使用cook">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-11T14:37:41.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从一道题目谈谈跨域">
+<meta name="twitter:description" content="那个时代的摇滚让人热泪盈眶。  1.基本概念跨域是浏览器限制的，在xhr请求中，跨域问题尤为常见。浏览器针对跨域请求的策略：一个域名的JS，在未经允许的情况下，是不得读取另外一个域名的内容的。跨域问题不能够单单通过前端进行解决。 关于跨域常见的误区： 误区一：是服务端阻止的你跨域。NO! 上面也提到的，跨域是浏览器应用同源策略所限制的。 2.例子1：没有同源策略限制的接口请求这里考虑使用cook">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>从一道题目谈谈跨域</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/04/02/证书可信任/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&text=从一道题目谈谈跨域"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&is_video=false&description=从一道题目谈谈跨域"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从一道题目谈谈跨域&body=Check out this article: http://yoursite.com/2019/04/09/从一道题目谈谈跨域/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&name=从一道题目谈谈跨域&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-例子1：没有同源策略限制的接口请求"><span class="toc-number">2.</span> <span class="toc-text">2.例子1：没有同源策略限制的接口请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-解决跨域的方案之使用JSONP技术"><span class="toc-number">3.</span> <span class="toc-text">3.解决跨域的方案之使用JSONP技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-通过表单Form来解决POST请求跨域问题"><span class="toc-number">4.</span> <span class="toc-text">4.通过表单Form来解决POST请求跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用CORS协议处理跨域问题"><span class="toc-number">5.</span> <span class="toc-text">5.使用CORS协议处理跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-问题"><span class="toc-number">6.</span> <span class="toc-text">1.问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-答案"><span class="toc-number">7.</span> <span class="toc-text">2.答案</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        从一道题目谈谈跨域
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-04-08T16:25:28.000Z" itemprop="datePublished">2019-04-09</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/web/">web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>那个时代的摇滚让人热泪盈眶。</p>
+</blockquote>
+<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>跨域是浏览器限制的，在xhr请求中，跨域问题尤为常见。浏览器针对跨域请求的策略：一个域名的JS，在未经允许的情况下，是不得读取另外一个域名的内容的。跨域问题不能够单单通过前端进行解决。</p>
+<p>关于跨域常见的误区：</p>
+<p>误区一：是服务端阻止的你跨域。NO! 上面也提到的，跨域是浏览器应用同源策略所限制的。</p>
+<h3 id="2-例子1：没有同源策略限制的接口请求"><a href="#2-例子1：没有同源策略限制的接口请求" class="headerlink" title="2.例子1：没有同源策略限制的接口请求"></a>2.例子1：没有同源策略限制的接口请求</h3><p>这里考虑使用cookie作为登录态的处理方法。假如你登录了a.com的话，然后接着登录b.com的话。并且这个b.com背地里偷偷摸摸做了一些暗操作：执行a.com网站的某个操作；我们知道对于cookie来说，浏览器会将它自动放到请求头里面的，所以假设没有同源策略的限制的话，那么b网站在背后偷偷对网站a发起请求那么就是可能的。但这样的操作所带来的问题不言而喻，因此基于同源策略的跨域解决是很有必要的。</p>
+<h3 id="3-解决跨域的方案之使用JSONP技术"><a href="#3-解决跨域的方案之使用JSONP技术" class="headerlink" title="3.解决跨域的方案之使用JSONP技术"></a>3.解决跨域的方案之使用JSONP技术</h3><p>何谓JSONP技术？大意就是指使用script标签向被跨域的服务器发起请求。当服务器收到这个请求后，便返回一串js代码，前端页面在收到服务端所返回的数据之后便能够执行这个请求。为什么JSONP技术能够用来进行跨域呢？因为script标签就是不受浏览器的跨域限制哇。接下来举一个例子来使用JSONP技术来解决：在将会跨域的情况下，服务端根据客户端传过来的type返回对应的列表数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 这是前端页面代码</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">let</span> cb = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">if</span> (!arr || <span class="built_in">Object</span>.prototype.toString.call(arr) != <span class="string">"[object Array]"</span>) &#123; <span class="keyword">return</span>; &#125;</span></span><br><span class="line"><span class="javascript">  arr.map(<span class="function"><span class="params">str</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> p = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span></span><br><span class="line"><span class="undefined">    p.innerText = str;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.body.appendChild(p);</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https:abcdwillcors.com/jsonp?type=article&amp;cb=cb"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意query参数，这在JSONP中告诉了后端自己改怎么处理，处理完了该怎么返回。接下来看看后端相关代码（使用express）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mockDbQuery = <span class="function"><span class="params">type</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'article'</span>:</span><br><span class="line">      result = [<span class="string">'article1'</span>, <span class="string">'article2'</span>];</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'video'</span>:</span><br><span class="line">      result = [<span class="string">'video1'</span>, <span class="string">'video2'</span>];</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      result = [<span class="string">'article1'</span>, <span class="string">'video1'</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> query = req.query;</span><br><span class="line">  res.cookie(<span class="string">'sessionid'</span>, <span class="string">'mock one'</span>);</span><br><span class="line">  <span class="keyword">let</span> result = mockDbQuery(query.type || <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">let</span> response = <span class="string">`<span class="subst">$&#123;query.cb&#125;</span>(<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(result)&#125;</span>)`</span>;            <span class="comment">// 客户端接受到的应该是未经解释过的代码</span></span><br><span class="line">  res.send(response);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>上面的例子便是使用JSONP技术来完成跨域功能处理。运行之后，前端将能够渲染出后端所返回的列表数据。</p>
+<h3 id="4-通过表单Form来解决POST请求跨域问题"><a href="#4-通过表单Form来解决POST请求跨域问题" class="headerlink" title="4.通过表单Form来解决POST请求跨域问题"></a>4.通过表单Form来解决POST请求跨域问题</h3><p>对于上面的jsonp请求，很明显它支持GET请求的形式。尽管也能够携带有足够的参数，但是是满足不了POST请求的。为什么Form表单也没有被浏览器现在跨域？因为该种方式下，发起跨域的页面是无法获取新页面的内容的。而xhr确是有能力读取新页面返回的内容的。下面是一个使用form进行POST请求解决跨域的场景：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 这是前端页面的代码</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">let</span> mockPost = <span class="function">(<span class="params">url, data</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> form = <span class="built_in">document</span>.createElement(<span class="string">'form'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> input = <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</span></span><br><span class="line"><span class="javascript">  iframe.style.display = <span class="string">'none'</span>;</span></span><br><span class="line"><span class="javascript">  form.style.display = <span class="string">'none'</span>;</span></span><br><span class="line"><span class="javascript">  iframe.name = <span class="string">'mockPost'</span>;</span></span><br><span class="line"><span class="undefined">  form.action = url;</span></span><br><span class="line"><span class="javascript">  form.method = <span class="string">'post'</span>;</span></span><br><span class="line"><span class="javascript">  form.target = iframe.name;              <span class="comment">// 避免在新页面中打开或者本页面刷新</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.body.appendChild(iframe);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> data) &#123;</span></span><br><span class="line"><span class="undefined">    input.name = key;</span></span><br><span class="line"><span class="undefined">    input.value = data[key];</span></span><br><span class="line"><span class="undefined">    form.appendChild(input.cloneNode());</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.body.appendChild(form);</span></span><br><span class="line"><span class="undefined">  form.submit();</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.body.removeChild(form);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">mockPost(<span class="string">'http://apiwillcors/apiPost'</span>, &#123; <span class="attr">name</span>: <span class="string">'3h'</span>, <span class="attr">sex</span>: <span class="string">'man'</span> &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>接下来是后端部分的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接着上个jsonp中的express例子</span></span><br><span class="line">router.post(<span class="string">'/apiPost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> body = req.body;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'body is'</span>, body);                                     <span class="comment">// 打印出 &#123; name: '3h', sex: 'man' &#125;</span></span><br><span class="line">  res.send(<span class="string">'done'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="5-使用CORS协议处理跨域问题"><a href="#5-使用CORS协议处理跨域问题" class="headerlink" title="5.使用CORS协议处理跨域问题"></a>5.使用CORS协议处理跨域问题</h3><h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p>为什么通常在发送数据埋点请求的时候使用的是 1x1 像素的透明 gif 图片？</p>
+<h3 id="2-答案"><a href="#2-答案" class="headerlink" title="2.答案"></a>2.答案</h3><p>用来实现跨域，而且兼容性很好。如何用它来实现跨域？</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-例子1：没有同源策略限制的接口请求"><span class="toc-number">2.</span> <span class="toc-text">2.例子1：没有同源策略限制的接口请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-解决跨域的方案之使用JSONP技术"><span class="toc-number">3.</span> <span class="toc-text">3.解决跨域的方案之使用JSONP技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-通过表单Form来解决POST请求跨域问题"><span class="toc-number">4.</span> <span class="toc-text">4.通过表单Form来解决POST请求跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用CORS协议处理跨域问题"><span class="toc-number">5.</span> <span class="toc-text">5.使用CORS协议处理跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-问题"><span class="toc-number">6.</span> <span class="toc-text">1.问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-答案"><span class="toc-number">7.</span> <span class="toc-text">2.答案</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&text=从一道题目谈谈跨域"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&is_video=false&description=从一道题目谈谈跨域"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从一道题目谈谈跨域&body=Check out this article: http://yoursite.com/2019/04/09/从一道题目谈谈跨域/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&title=从一道题目谈谈跨域"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/09/从一道题目谈谈跨域/&name=从一道题目谈谈跨域&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
