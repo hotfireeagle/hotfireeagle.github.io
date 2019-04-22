@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/11/03/mysql命令行/');
+  precacheUrls.push('/2018/12/12/node事件循环/');
 
   precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
 
@@ -32,7 +32,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/2019/04/22/rust/');
 
-  precacheUrls.push('/2018/12/12/node事件循环/');
+  precacheUrls.push('/2018/10/15/puppeteer-API备忘/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
