@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/04/22/rust/</loc>
+    
+    <lastmod>2019-04-22T09:45:19.700Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/04/18/%E5%85%B3%E4%BA%8E%E6%BB%9A%E5%8A%A8%E5%90%B8%E9%A1%B6/</loc>
     
     <lastmod>2019-04-21T09:11:17.536Z</lastmod>
