@@ -26,13 +26,13 @@ var precacheUrls = [];
 
   precacheUrls.push('/2018/12/12/node事件循环/');
 
-  precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
-
   precacheUrls.push('/2019/04/18/关于滚动吸顶/');
 
-  precacheUrls.push('/2019/04/22/rust/');
+  precacheUrls.push('/2019/04/22/浏览器页面渲染机制/');
 
-  precacheUrls.push('/2018/10/15/puppeteer-API备忘/');
+  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
+
+  precacheUrls.push('/2019/01/09/Flutter之文本/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};

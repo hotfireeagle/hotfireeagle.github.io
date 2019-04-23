@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="他们夫妻，丈夫是高个子，妻子要矮上近四十公分。女儿的个子当然不高，成年以后常怨毒地责问“你凭什么娶个侏儒来连累后代”。当年，他在兵团的广播站里第一次听到她的声音，就开始疯狂地想念她，不知羞耻地逢人便诉说。当得知她的个子只到自己胸前时，不是失望，而是鼓起了追求的勇气。  1.基本概念浏览器内核两个核心程序：渲染引擎，JS引擎。当然，DOM是属于渲染引擎里面的东西，所以使用JS去操作DOM的时候，本">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器页面渲染机制">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/浏览器页面渲染机制/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="他们夫妻，丈夫是高个子，妻子要矮上近四十公分。女儿的个子当然不高，成年以后常怨毒地责问“你凭什么娶个侏儒来连累后代”。当年，他在兵团的广播站里第一次听到她的声音，就开始疯狂地想念她，不知羞耻地逢人便诉说。当得知她的个子只到自己胸前时，不是失望，而是鼓起了追求的勇气。  1.基本概念浏览器内核两个核心程序：渲染引擎，JS引擎。当然，DOM是属于渲染引擎里面的东西，所以使用JS去操作DOM的时候，本">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-23T05:34:54.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器页面渲染机制">
+<meta name="twitter:description" content="他们夫妻，丈夫是高个子，妻子要矮上近四十公分。女儿的个子当然不高，成年以后常怨毒地责问“你凭什么娶个侏儒来连累后代”。当年，他在兵团的广播站里第一次听到她的声音，就开始疯狂地想念她，不知羞耻地逢人便诉说。当得知她的个子只到自己胸前时，不是失望，而是鼓起了追求的勇气。  1.基本概念浏览器内核两个核心程序：渲染引擎，JS引擎。当然，DOM是属于渲染引擎里面的东西，所以使用JS去操作DOM的时候，本">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>浏览器页面渲染机制</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/04/18/关于滚动吸顶/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/22/浏览器页面渲染机制/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&text=浏览器页面渲染机制"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&is_video=false&description=浏览器页面渲染机制"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浏览器页面渲染机制&body=Check out this article: http://yoursite.com/2019/04/22/浏览器页面渲染机制/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&name=浏览器页面渲染机制&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-关键渲染路径"><span class="toc-number">2.</span> <span class="toc-text">2.关键渲染路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-布局和绘制"><span class="toc-number">3.</span> <span class="toc-text">3.布局和绘制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-回流reflow和重绘repaint"><span class="toc-number">4.</span> <span class="toc-text">4.回流reflow和重绘repaint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-script的async属性，defer属性区别。"><span class="toc-number">5.</span> <span class="toc-text">5.script的async属性，defer属性区别。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-如何进行性能优化？"><span class="toc-number">6.</span> <span class="toc-text">6.如何进行性能优化？</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        浏览器页面渲染机制
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-04-22T09:45:19.000Z" itemprop="datePublished">2019-04-22</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/web/">web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>他们夫妻，丈夫是高个子，妻子要矮上近四十公分。女儿的个子当然不高，成年以后常怨毒地责问“你凭什么娶个侏儒来连累后代”。当年，他在兵团的广播站里第一次听到她的声音，就开始疯狂地想念她，不知羞耻地逢人便诉说。当得知她的个子只到自己胸前时，不是失望，而是鼓起了追求的勇气。</p>
+</blockquote>
+<h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>浏览器内核两个核心程序：渲染引擎，JS引擎。当然，DOM是属于渲染引擎里面的东西，所以使用JS去操作DOM的时候，本质上是JS引擎和DOM引擎进行了跨界交流，而这个跨界交流的开销并不小，所以需要尽量减少操作DOM。需要注意的地方，这里所说的DOM操作不仅包括了修改，而且也包括了读取。</p>
+<p>页面经过下面这些步骤呈现在用户眼中：1).输入域名，浏览器进行DNS解析获取服务器IP地址；2).浏览器向这个IP地址的机器发送请求；3).服务器处理请求，发送响应；4).浏览收到响应数据，接着根据关键渲染路径进行渲染页面。</p>
+<h3 id="2-关键渲染路径"><a href="#2-关键渲染路径" class="headerlink" title="2.关键渲染路径"></a>2.关键渲染路径</h3><p>浏览器在收到了文件的字节码之后，会根据charset解码出对应的字符串。在没有JS干扰的情况下，关键渲染路径分为了下面几个步骤：构建DOM(document object model)；构建CSSOM(css object model)；利用构建出来的DOM和CSSOM创建出渲染树。接下来浏览器会分析渲染树中的每一个节点在网页中所对应的位置，这步也叫做布局。布局完接下来便开始在屏幕上绘制像素。正常情况下，DOM构建和CSSOM构建是并行构建的。</p>
+<p>那么在有JS干扰的情况下呢？JS会阻塞DOM构建，同时JS也会阻塞CSSOM的构建，如果某个时刻下，浏览器还没有完成CSSOM的下载和构建的话，但是此时同时还在运行脚本，<strong>那么浏览器将会延迟脚本执行和DOM构建</strong>，直至完成CSSOM的下载和构建。划重点，不仅会阻塞js执行而且还会阻塞DOM构建。遇到脚本时，优先级为先构建CSSOM，接着执行JS，然后构建DOM。</p>
+<p>CSSOM会阻塞渲染，只有当CSSOM构建完毕后才会进入下一个阶段构建渲染树。</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&amp;mid=2650588806&amp;idx=1&amp;sn=408a54e7c8102fd6944c9a40b119015a&amp;chksm=8891d6a2bfe65fb42f493fe9a4dab672dd7e440f31e753196cee0cfbc6696e4f8dd3a669e040&amp;mpshare=1&amp;scene=21&amp;srcid=1228ZrXsmbZKcgCSu7zTVDwy#wechat_redirect" target="_blank" rel="noopener">关于关键渲染路径的详细解释博文链接</a></p>
+<p>构建出来的DOM树和渲染树还是存在区别的，对于那些因为样式导致元素不存在（比如display:none;)的节点在DOM树中会存在；但是在渲染树中就不会存在了。</p>
+<h3 id="3-布局和绘制"><a href="#3-布局和绘制" class="headerlink" title="3.布局和绘制"></a>3.布局和绘制</h3><p>当浏览器生成渲染树后，就会根据渲染树来进行布局。布局也叫做回流，浏览器在回流过程中做的主要工作就是计算渲染树中各个节点在屏幕上确切位置和大小。</p>
+<h3 id="4-回流reflow和重绘repaint"><a href="#4-回流reflow和重绘repaint" class="headerlink" title="4.回流reflow和重绘repaint"></a>4.回流reflow和重绘repaint</h3><p>重绘repaint：当我们对DOM节点样式的修改并没有影响到位置属性的时候（比如说设置背景色），此时只需要进行重绘repaint步骤。</p>
+<p>回流reflow：对DOM节点样式的修改影响了位置属性（比如设置box的宽高，隐藏显示元素等），此时将会引起回流reflow过程。</p>
+<p>回流必定重绘，重绘并不引起回流。回流的成本会比重绘要高。需要注意的是下面这些行为也会引发回流reflow：内容变化，比如input输入文字；计算offseWidth和offsetHeight；浏览器窗口尺寸发生变化。</p>
+<h3 id="5-script的async属性，defer属性区别。"><a href="#5-script的async属性，defer属性区别。" class="headerlink" title="5.script的async属性，defer属性区别。"></a>5.script的async属性，defer属性区别。</h3><p>默认行为下的script行为是会阻塞页面，这里的阻塞页面既包括了执行js期间的阻塞；也包括从其它存储空间里面加载js文件期间的阻塞（如从网络中获取）；</p>
+<p>async行为：从其它存储空间加载js文件这个过程是不会阻塞页面文档解析的，此时文档解析和网络加载js在浏览器中是并行执行；但是一旦加载完js文件，执行js期间将会阻塞页面解析；js运行完毕后，在从中断位置处继续进行页面解析步骤；</p>
+<p>defer行为：加载js和不阻塞页面文档解析，加载js和页面解析在浏览器中是并行执行；但是js的运行并不是js一加载完成便开始运行的，而是等到页面文档解析完成的时候，js才开始执行。也就是说，defer下script被延迟了运行，但是加载过程是和页面解析过程并行的。</p>
+<h3 id="6-如何进行性能优化？"><a href="#6-如何进行性能优化？" class="headerlink" title="6.如何进行性能优化？"></a>6.如何进行性能优化？</h3><p>1.可以给某些引用的js文件加上async或者defer标签，避免阻塞页面解析；</p>
+<p>2.css的link可以加上preload标签，因为CSSOM + DOM 才能构建出渲染树，而且CSSOM还会阻塞JS。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-关键渲染路径"><span class="toc-number">2.</span> <span class="toc-text">2.关键渲染路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-布局和绘制"><span class="toc-number">3.</span> <span class="toc-text">3.布局和绘制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-回流reflow和重绘repaint"><span class="toc-number">4.</span> <span class="toc-text">4.回流reflow和重绘repaint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-script的async属性，defer属性区别。"><span class="toc-number">5.</span> <span class="toc-text">5.script的async属性，defer属性区别。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-如何进行性能优化？"><span class="toc-number">6.</span> <span class="toc-text">6.如何进行性能优化？</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/22/浏览器页面渲染机制/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&text=浏览器页面渲染机制"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&is_video=false&description=浏览器页面渲染机制"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浏览器页面渲染机制&body=Check out this article: http://yoursite.com/2019/04/22/浏览器页面渲染机制/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&title=浏览器页面渲染机制"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/22/浏览器页面渲染机制/&name=浏览器页面渲染机制&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1555997711375')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
