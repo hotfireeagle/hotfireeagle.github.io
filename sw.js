@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/10/15/puppeteer-API备忘/');
+  precacheUrls.push('/2019/01/14/next-js学习/');
 
   precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
 
