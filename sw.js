@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2019/01/14/next-js学习/');
+  precacheUrls.push('/2018/11/03/mysql命令行/');
 
   precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
-
-  precacheUrls.push('/2019/04/18/关于滚动吸顶/');
 
   precacheUrls.push('/2019/04/22/浏览器页面渲染机制/');
 
   precacheUrls.push('/2019/04/23/深入理解padding/');
+
+  precacheUrls.push('/2019/04/18/关于滚动吸顶/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
@@ -41,6 +41,8 @@ toolbox.options = {"networkTimeoutSeconds":5};
 toolbox.router.any(/hm.baidu.com/, toolbox.networkOnly);
 
 toolbox.router.any(/.*\.(js|css|jpg|jpeg|png|gif)$/, toolbox.cacheFirst);
+
+toolbox.router.any(/.*\.(ttf|eot|woff|woff2|svg)$/, toolbox.cacheFirst);
 
 toolbox.router.any(/\//, toolbox.networkFirst);
 
