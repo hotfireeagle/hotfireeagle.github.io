@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="详细文章，请参考该篇博文">
+    <meta name="description" content="详情请参考该篇博文 几个问题：下面这两种代码有什么不同？ 1234567891011121314new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve(1);&amp;#125;).then(n =&amp;gt; &amp;#123;    console.log(n, &apos;step1&apos;);    new Promise(resolve =&amp;gt; &amp;#123;">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好吧,EventLoop">
 <meta property="og:url" content="http://yoursite.com/2019/04/25/好吧-EventLoop/index.html">
 <meta property="og:site_name" content="夜游">
-<meta property="og:description" content="详细文章，请参考该篇博文">
+<meta property="og:description" content="详情请参考该篇博文 几个问题：下面这两种代码有什么不同？ 1234567891011121314new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve(1);&amp;#125;).then(n =&amp;gt; &amp;#123;    console.log(n, &apos;step1&apos;);    new Promise(resolve =&amp;gt; &amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T01:00:05.086Z">
+<meta property="og:updated_time" content="2019-04-27T03:42:32.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好吧,EventLoop">
-<meta name="twitter:description" content="详细文章，请参考该篇博文">
+<meta name="twitter:description" content="详情请参考该篇博文 几个问题：下面这两种代码有什么不同？ 1234567891011121314new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve(1);&amp;#125;).then(n =&amp;gt; &amp;#123;    console.log(n, &apos;step1&apos;);    new Promise(resolve =&amp;gt; &amp;#123;">
     
     
         
@@ -71,6 +71,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/04/26/轮播图实现/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/04/24/css题目/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -99,7 +101,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个问题："><span class="toc-number">1.</span> <span class="toc-text">几个问题：</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -140,7 +142,17 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><a href="https://yanceyleo.com/p/5cbc0ad8ec9b0f4eac13467e" target="_blank" rel="noopener">详细文章，请参考该篇博文</a></p>
+    <p><a href="https://yanceyleo.com/p/5cbc0ad8ec9b0f4eac13467e" target="_blank" rel="noopener">详情请参考该篇博文</a></p>
+<h3 id="几个问题："><a href="#几个问题：" class="headerlink" title="几个问题："></a>几个问题：</h3><p>下面这两种代码有什么不同？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n, <span class="string">'step1'</span>);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="number">2</span>);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(n, <span class="string">'step2'</span>);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'step4'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n, <span class="string">'step3'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面这种代码输出：1 step1换行2 step2换行undefined step3换行step4</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">1</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n, <span class="string">'step1'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="number">2</span>);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(n, <span class="string">'step2'</span>);</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'step4'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n, <span class="string">'step3'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面这种代码输出：1 step1 换行 2 step2 换行 step4 换行 undefined step3</p>
+<p>接下来看一个async和promise组合使用的问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async1 start'</span>);</span><br><span class="line">    <span class="keyword">await</span> async2();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async1 end'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'async2'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">async1();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br></pre></td></tr></table></figure>
+<p>对于遇到了async的情况，我们可以把它转化成下面这样在进行分析：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="keyword">await</span> async2();</span><br><span class="line"></span><br><span class="line"><span class="comment">// after</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(async2()).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1 end'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>对于上面这道题目的分析，详情参见<a href="https://yanceyleo.com/p/5cbc0ad8ec9b0f4eac13467e" target="_blank" rel="noopener">Yancey’Blog</a></p>
 
   </div>
 </article>
@@ -165,7 +177,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个问题："><span class="toc-number">1.</span> <span class="toc-text">几个问题：</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -215,7 +227,7 @@
 </footer>
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1556169546870')
+  navigator.serviceWorker.register('/sw.js?t=1557236829026')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

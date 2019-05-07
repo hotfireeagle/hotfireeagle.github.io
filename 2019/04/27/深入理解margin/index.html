@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="原生js，使用offsetWidth，offsetHeight来获取元素的border-box尺寸；使用clientWidth，clientHeight来获取元素的content-box尺寸。  问题一：margin能够改变元素尺寸？1234567891011121314&amp;lt;div class=&quot;f&quot;&amp;gt;  &amp;lt;div class=&quot;c&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/di">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解margin">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/深入理解margin/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="原生js，使用offsetWidth，offsetHeight来获取元素的border-box尺寸；使用clientWidth，clientHeight来获取元素的content-box尺寸。  问题一：margin能够改变元素尺寸？1234567891011121314&amp;lt;div class=&quot;f&quot;&amp;gt;  &amp;lt;div class=&quot;c&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/di">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-06T00:58:28.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解margin">
+<meta name="twitter:description" content="原生js，使用offsetWidth，offsetHeight来获取元素的border-box尺寸；使用clientWidth，clientHeight来获取元素的content-box尺寸。  问题一：margin能够改变元素尺寸？1234567891011121314&amp;lt;div class=&quot;f&quot;&amp;gt;  &amp;lt;div class=&quot;c&quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/di">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>深入理解margin</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/07/FirstPaint/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/26/轮播图实现/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/27/深入理解margin/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/27/深入理解margin/&text=深入理解margin"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/27/深入理解margin/&is_video=false&description=深入理解margin"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=深入理解margin&body=Check out this article: http://yoursite.com/2019/04/27/深入理解margin/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/27/深入理解margin/&name=深入理解margin&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一：margin能够改变元素尺寸？"><span class="toc-number">1.</span> <span class="toc-text">问题一：margin能够改变元素尺寸？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二：margin的百分比值"><span class="toc-number">2.</span> <span class="toc-text">问题二：margin的百分比值</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        深入理解margin
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-04-27T03:44:16.000Z" itemprop="datePublished">2019-04-27</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/css/">css</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>原生js，使用offsetWidth，offsetHeight来获取元素的border-box尺寸；使用clientWidth，clientHeight来获取元素的content-box尺寸。</p>
+</blockquote>
+<h3 id="问题一：margin能够改变元素尺寸？"><a href="#问题一：margin能够改变元素尺寸？" class="headerlink" title="问题一：margin能够改变元素尺寸？"></a>问题一：margin能够改变元素尺寸？</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.f</span> &#123;</span></span><br><span class="line"><span class="undefined">  width: 300px;</span></span><br><span class="line"><span class="undefined">  height: 300px;</span></span><br><span class="line"><span class="undefined">  margin: -20px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.c</span> &#123;</span></span><br><span class="line"><span class="undefined">  height: 300px;</span></span><br><span class="line"><span class="undefined">  margin: -20px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于上面这样的代码来说，box f的content-box尺寸为300px-300px，但是对于box c的content-box的尺寸则为340px-300px。可以看出，margin是可以改变元素尺寸的，那么有着一个怎样的机制呢？<strong>只要元素的尺寸表现符合充分利用可用空间，无论是垂直方向还是水平方向，都可以利用margin来改变尺寸。</strong></p>
+<h3 id="问题二：margin的百分比值"><a href="#问题二：margin的百分比值" class="headerlink" title="问题二：margin的百分比值"></a>问题二：margin的百分比值</h3><p>无论是设置水平方向还是垂直方向的margin，如果使用百分比单位的话，那么都是相对于父元素的宽度来进行计算的。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一：margin能够改变元素尺寸？"><span class="toc-number">1.</span> <span class="toc-text">问题一：margin能够改变元素尺寸？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二：margin的百分比值"><span class="toc-number">2.</span> <span class="toc-text">问题二：margin的百分比值</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/04/27/深入理解margin/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/04/27/深入理解margin/&text=深入理解margin"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/04/27/深入理解margin/&is_video=false&description=深入理解margin"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=深入理解margin&body=Check out this article: http://yoursite.com/2019/04/27/深入理解margin/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/04/27/深入理解margin/&title=深入理解margin"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/04/27/深入理解margin/&name=深入理解margin&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1557236829026')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

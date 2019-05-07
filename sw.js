@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/11/03/mysql命令行/');
+  precacheUrls.push('/2018/12/12/nodejs之process/');
 
-  precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
+  precacheUrls.push('/2019/04/26/轮播图实现/');
 
-  precacheUrls.push('/2019/04/22/浏览器页面渲染机制/');
+  precacheUrls.push('/2019/04/27/深入理解margin/');
 
-  precacheUrls.push('/2019/04/23/深入理解padding/');
+  precacheUrls.push('/2019/05/07/FirstPaint/');
 
-  precacheUrls.push('/2019/04/18/关于滚动吸顶/');
+  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
