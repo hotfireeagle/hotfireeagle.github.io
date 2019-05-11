@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/12/nodejs之process/');
+  precacheUrls.push('/2018/12/12/node事件循环/');
+
+  precacheUrls.push('/2019/05/07/FirstPaint/');
+
+  precacheUrls.push('/2018/10/15/puppeteer-API备忘/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
   precacheUrls.push('/2019/04/27/深入理解margin/');
-
-  precacheUrls.push('/2019/05/07/FirstPaint/');
-
-  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
