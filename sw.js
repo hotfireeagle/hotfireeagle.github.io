@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/12/nodejs之process/');
+  precacheUrls.push('/2018/12/07/nodejs the right way 一/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
@@ -32,7 +32,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/2019/05/07/FirstPaint/');
 
-  precacheUrls.push('/2018/12/12/node事件循环/');
+  precacheUrls.push('/2018/11/18/js注意点/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
