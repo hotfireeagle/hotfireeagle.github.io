@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="原生JS操作class，element.classList.add(className):添加类名；element.classList.remove(className):删除类名  1.结构示例代码：&amp;lt;!DOCTYPE html&amp;gt;             图片懒加载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片懒加载">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/图片懒加载/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="原生JS操作class，element.classList.add(className):添加类名；element.classList.remove(className):删除类名  1.结构示例代码：&amp;lt;!DOCTYPE html&amp;gt;             图片懒加载">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/图片懒加载/10.jpg">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/15087/rect.png">
+<meta property="og:updated_time" content="2019-05-14T13:05:45.488Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片懒加载">
+<meta name="twitter:description" content="原生JS操作class，element.classList.add(className):添加类名；element.classList.remove(className):删除类名  1.结构示例代码：&amp;lt;!DOCTYPE html&amp;gt;             图片懒加载">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/14/图片懒加载/1.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>图片懒加载</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/07/FirstPaint/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/14/图片懒加载/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/14/图片懒加载/&text=图片懒加载"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/14/图片懒加载/&is_video=false&description=图片懒加载"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=图片懒加载&body=Check out this article: http://yoursite.com/2019/05/14/图片懒加载/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/14/图片懒加载/&name=图片懒加载&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-结构示例代码："><span class="toc-number">1.</span> <span class="toc-text">1.结构示例代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-API-getBoundingClientRect"><span class="toc-number">2.</span> <span class="toc-text">2.API getBoundingClientRect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？"><span class="toc-number">3.</span> <span class="toc-text">2-1. getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-正题，使用getBoundingClientRect这个API来完成懒加载功能："><span class="toc-number">4.</span> <span class="toc-text">3.正题，使用getBoundingClientRect这个API来完成懒加载功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-使用API：IntersectionObserver"><span class="toc-number">5.</span> <span class="toc-text">4.使用API：IntersectionObserver</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        图片懒加载
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-14T00:21:14.000Z" itemprop="datePublished">2019-05-14</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>原生JS操作class，element.classList.add(className):添加类名；element.classList.remove(className):删除类名</p>
+</blockquote>
+<h3 id="1-结构示例代码："><a href="#1-结构示例代码：" class="headerlink" title="1.结构示例代码："></a>1.结构示例代码：</h3><p>&lt;!DOCTYPE html&gt;</p>
+<html lang="zh"><br>    <head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json"><br>        <title>图片懒加载</title><br>        <meta charset="utf-8"><br>        <meta name="keywords" content="图片懒加载测试"><br>        <meta name="description" content="多种方法结合进行测试"><br>        <meta name="viewport" content="width=device-width,initial-scale=1.0"><br>        <meta name="robots" content="all"><br>        <style type="text/css"><br>            *, html, body {<br>                margin: 0;<br>                padding: 0;<br>            }<br>            html, body {<br>                width: 100vw;<br>            }<br>            img {<br>                width: 100%;<br>                min-height: 300px;  // 注意最好指定一个min-height，否则在图片加载进来之前高度值就是0<br>                height: auto;<br>            }<br>        </style><br>    </head><br>    <body><br>        <div class="container"><br>            <ul><br>                <li><img src="./1.jpg" alt></li><br>                <li><img src="./2.jpg" alt></li><br>                <li><img src="./3.jpg" alt></li><br>                <li><img src="./4.jpg" alt></li><br>                <li><img src="./5.jpg" alt></li><br>                <li><img src="./6.jpg" alt></li><br>                <li><img src="./7.jpg" alt></li><br>                <li><img src="./8.jpg" alt></li><br>                <li><img src="./9.jpg" alt></li><br>                <li><img src="./10.jpg" alt></li><br>            </ul><br>        </div><br>        <script type="text/javascript"><br><br>        </script><br>    <script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1557840269992')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body><br></html>
+
+<p>假设上面的每一张图片的大小都大概2MB左右，对于上面这样的head中写inline style加上body中写inline script的写法并不会阻塞parse html阶段，DOMContentLoaded事件&gt;onload&gt;FirstPaint事件。</p>
+<p>最严重的问题是FirstPaint被触发的时机太晚了，这将造成非常不好的用户体验，因此有必要进行图片懒加载。下面介绍一下实现懒加载的几种方法：</p>
+<h3 id="2-API-getBoundingClientRect"><a href="#2-API-getBoundingClientRect" class="headerlink" title="2.API getBoundingClientRect"></a>2.API getBoundingClientRect</h3><p>这个API返回一个DOMRect对象，该对象包含了一组用于描述边框的只读属性-left，top，right，bottom，单位为像素，除了width和height外的属性之外都是相对于视口的左上角位置而言的。</p>
+<p><img src="https://mdn.mozillademos.org/files/15087/rect.png" alt="getBoundingClientRect返回值的示例图"></p>
+<h3 id="2-1-getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？"><a href="#2-1-getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？" class="headerlink" title="2-1. getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？"></a>2-1. getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？</h3><p>是border-box.举例如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.test</span> &#123;</span></span><br><span class="line"><span class="undefined">  width: 300px;</span></span><br><span class="line"><span class="undefined">  height: 300px;</span></span><br><span class="line"><span class="undefined">  padding: 20px;</span></span><br><span class="line"><span class="undefined">  border: 10px solid transparent;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, () =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> t = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'.test'</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'t.getBoundingClientRect().width'</span>, t.getBoundingClientRect().width);  <span class="comment">// 输出360</span></span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同样的对于上面这样的代码，但是对test的样式新增加一行：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么此时利用element.getBoundingClientRect()所获取到的width就是300了。</p>
+<h3 id="3-正题，使用getBoundingClientRect这个API来完成懒加载功能："><a href="#3-正题，使用getBoundingClientRect这个API来完成懒加载功能：" class="headerlink" title="3.正题，使用getBoundingClientRect这个API来完成懒加载功能："></a>3.正题，使用getBoundingClientRect这个API来完成懒加载功能：</h3><p>使用前面的HTML结构，script脚本如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/script"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> globalVariable = &#123;&#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">/** 检查某个DOM元素是否在可视区域内 */</span></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">checkDomInView</span> (<span class="params">dom</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> result = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (!dom) <span class="keyword">return</span> result;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> obj = dom.getBoundingClientRect();</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 这里只判断了纵轴方向，并且出于想尽快加载图片的考虑，因此还加了500</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (obj.top &gt;= <span class="number">0</span> &amp;&amp; obj.bottom &lt;= globalVariable.screenHeight+<span class="number">500</span>) &#123;</span></span><br><span class="line"><span class="javascript">        result = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> result;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">/** 给未加载的图片进行src赋值 */</span></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">setSrc</span> (<span class="params">dom</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> src = dom.getAttribute(<span class="string">'data-src'</span>) || <span class="string">'#'</span>;</span></span><br><span class="line"><span class="javascript">    dom.setAttribute(<span class="string">'src'</span>, src);</span></span><br><span class="line"><span class="javascript">    dom.classList.remove(<span class="string">'lazyloadImg'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">/** 检查图片是否需要进行懒加载，如果需要的话，进行懒加载 */</span></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">lazyload</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> imgs = <span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">'.lazyloadImg'</span>));</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (!imgs || imgs.length == <span class="number">0</span>) <span class="keyword">return</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = imgs.length; i &lt; len; i++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> img = imgs[i];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (checkDomInView(img)) &#123;                  <span class="comment">// 图片已经进入视区里面了</span></span></span><br><span class="line"><span class="undefined">            setSrc(img);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">/** 节流包装方法 */</span></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span> (<span class="params">fn</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> canRun = <span class="literal">true</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (!canRun) <span class="keyword">return</span>;</span></span><br><span class="line"><span class="javascript">        canRun = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">            fn &amp;&amp; fn();</span></span><br><span class="line"><span class="javascript">            canRun = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">        &#125;, 500)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, () =&gt; &#123;</span></span><br><span class="line"><span class="javascript">  globalVariable.screenWidth = <span class="built_in">window</span>.screen.width;</span></span><br><span class="line"><span class="javascript">  globalVariable.screenHeight = <span class="built_in">window</span>.screen.height;</span></span><br><span class="line"><span class="undefined">  lazyload();</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.addEventListener(<span class="string">'scroll'</span>, throttle(lazyload));</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, throttle(lazyload));</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的地方：最好给img的样式表现设置一个最小高度。上面这个例子只是考虑了纵轴方向上的懒加载，如果需要实现横轴上的话，那么就用left和right去进行比较。</p>
+<h3 id="4-使用API：IntersectionObserver"><a href="#4-使用API：IntersectionObserver" class="headerlink" title="4.使用API：IntersectionObserver"></a>4.使用API：IntersectionObserver</h3>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-结构示例代码："><span class="toc-number">1.</span> <span class="toc-text">1.结构示例代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-API-getBoundingClientRect"><span class="toc-number">2.</span> <span class="toc-text">2.API getBoundingClientRect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？"><span class="toc-number">3.</span> <span class="toc-text">2-1. getBoundingClientRect会返回元素盒子的width和height，那么它是什么盒子？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-正题，使用getBoundingClientRect这个API来完成懒加载功能："><span class="toc-number">4.</span> <span class="toc-text">3.正题，使用getBoundingClientRect这个API来完成懒加载功能：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-使用API：IntersectionObserver"><span class="toc-number">5.</span> <span class="toc-text">4.使用API：IntersectionObserver</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/14/图片懒加载/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/14/图片懒加载/&text=图片懒加载"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/14/图片懒加载/&is_video=false&description=图片懒加载"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=图片懒加载&body=Check out this article: http://yoursite.com/2019/05/14/图片懒加载/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/14/图片懒加载/&title=图片懒加载"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/14/图片懒加载/&name=图片懒加载&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

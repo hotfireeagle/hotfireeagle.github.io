@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T12:16:16.012Z">
+<meta property="og:updated_time" content="2019-05-13T13:32:48.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter学习1">
 <meta name="twitter:description" content="1.JIT以及AOT JIT是just in time的缩写，表明即时编译，是指一边编译一边运行，Javascript和Python属于这一种类别；AOT则是需要经过提前编译，将其编译为机器码，典型代表是C/C++类语言。 2.开发环境安装 按照官网流程步骤进行安装，使用真机运行flutter的话如果想要体验热重载的话那么只需要在控制台下按下r键即可，终端下输入flutter run运行即可。 3">
@@ -189,6 +189,8 @@
 <p>通过路由名字打开一个路由需要调用Navigator.pushNamed方法，如下所示：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Navigator.pushNamed(context, <span class="string">'About'</span>);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Navigator.push(context,</span></span><br><span class="line"><span class="comment">  new MaterialPageRoute(builder: (context) &#123;</span></span><br><span class="line"><span class="comment">      return new AboutMe();</span></span><br><span class="line"><span class="comment">  &#125;)</span></span><br><span class="line"><span class="comment">);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <p><strong>9.在flutter中，最基础的组件类是Widget，其它所有组件都是继承自Widget的。组件又分为有状态组件和无状态组件。</strong></p>
+<p><strong>10.main方法是dart语言的入口，runApp函数是flutter框架的入口。</strong></p>
+<p><strong>11.实现一个有状态类至少需要两个类，分别是StatefulWidget类；一个State类，StatefulWidget类本身默认是不可变的，但是State类在Widget类中会始终存在。</strong></p>
 
   </div>
 </article>
@@ -263,7 +265,7 @@
 </footer>
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1557751386843')
+  navigator.serviceWorker.register('/sw.js?t=1557840269992')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
