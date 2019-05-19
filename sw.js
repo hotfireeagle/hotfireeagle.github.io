@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/12/nodejs之process/');
+  precacheUrls.push('/2019/01/21/react遇上typescript/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
   precacheUrls.push('/2019/05/07/FirstPaint/');
 
-  precacheUrls.push('/2019/04/27/深入理解margin/');
-
   precacheUrls.push('/2019/05/16/利用原生JS实现简易的v-model/');
+
+  precacheUrls.push('/2019/04/27/深入理解margin/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
