@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/12/node事件循环/');
+  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
+
+  precacheUrls.push('/2018/12/13/express/');
+
+  precacheUrls.push('/2018/12/29/Express值请求体中间件解析/');
+
+  precacheUrls.push('/2019/02/11/angular架构概览/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
-
-  precacheUrls.push('/2019/04/27/深入理解margin/');
-
-  precacheUrls.push('/2019/05/07/FirstPaint/');
-
-  precacheUrls.push('/2019/05/14/图片懒加载/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
