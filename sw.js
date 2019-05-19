@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
+  precacheUrls.push('/2018/12/12/nodejs之process/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
@@ -32,7 +32,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/2019/04/27/深入理解margin/');
 
-  precacheUrls.push('/2019/05/16/利用原生JS实现简易的vue/');
+  precacheUrls.push('/2019/05/16/利用原生JS实现简易的v-model/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
