@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/12/node事件循环/');
+  precacheUrls.push('/2018/12/12/nodejs之process/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 

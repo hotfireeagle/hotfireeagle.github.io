@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.create-react-app作为脚手架如果利用create-react-app进行开发的话，那么使用create-react-app appName –typescript那么便可以初始化一个typescript+react的开发环境。 一般的，推荐在搭配tslint来规范代码格式，可以使用如下命令进行安装： 1yarn add tslint tslint-react tslint-con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript搭配react使用笔记1">
+<meta property="og:url" content="http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.create-react-app作为脚手架如果利用create-react-app进行开发的话，那么使用create-react-app appName –typescript那么便可以初始化一个typescript+react的开发环境。 一般的，推荐在搭配tslint来规范代码格式，可以使用如下命令进行安装： 1yarn add tslint tslint-react tslint-con">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T00:54:36.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript搭配react使用笔记1">
+<meta name="twitter:description" content="1.create-react-app作为脚手架如果利用create-react-app进行开发的话，那么使用create-react-app appName –typescript那么便可以初始化一个typescript+react的开发环境。 一般的，推荐在搭配tslint来规范代码格式，可以使用如下命令进行安装： 1yarn add tslint tslint-react tslint-con">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>typescript搭配react使用笔记1</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/16/typescript学习二/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&text=typescript搭配react使用笔记1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&is_video=false&description=typescript搭配react使用笔记1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript搭配react使用笔记1&body=Check out this article: http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&name=typescript搭配react使用笔记1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-create-react-app作为脚手架"><span class="toc-number">1.</span> <span class="toc-text">1.create-react-app作为脚手架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-手动配置"><span class="toc-number">2.</span> <span class="toc-text">2.手动配置</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        typescript搭配react使用笔记1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-22T00:21:17.000Z" itemprop="datePublished">2019-05-22</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-create-react-app作为脚手架"><a href="#1-create-react-app作为脚手架" class="headerlink" title="1.create-react-app作为脚手架"></a>1.create-react-app作为脚手架</h3><p>如果利用create-react-app进行开发的话，那么使用create-react-app appName –typescript那么便可以初始化一个typescript+react的开发环境。</p>
+<p>一般的，推荐在搭配tslint来规范代码格式，可以使用如下命令进行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add tslint tslint-react tslint-config-prettier --dev</span><br></pre></td></tr></table></figure>
+<p>在安装好依赖之后，接下来进行配置tslint，在项目的根目录下面新建tslint.json文件。如果是vscode的话，那么安装下tslint扩展。tslint.json文件如下所示（视项目实际情况进行配置即可）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: [</span><br><span class="line">    <span class="string">"tslint:recommended"</span>,</span><br><span class="line">    <span class="string">"tslint-react"</span>,</span><br><span class="line">    <span class="string">"tslint-config-prettier"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    <span class="attr">"no-console"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"linterOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"exclude"</span>: [</span><br><span class="line">      <span class="string">"node_modules/**/*.js"</span>,</span><br><span class="line">      <span class="string">"config/**/*.js"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置完后，可以测试一下tslint配置是否生效，在某个非exclude的js文件中console下，如果有报错标注则说明tslint配置生效了。</p>
+<h3 id="2-手动配置"><a href="#2-手动配置" class="headerlink" title="2.手动配置"></a>2.手动配置</h3><p>接下来手动配置一个项目使其支持typescript以及react：</p>
+<p>1.新建一个项目文件夹，使用npm init进行初始化，在项目根目录中新建一个src文件夹和dist文件夹。</p>
+<p>2.添加基础依赖，yarn add typescript –dev，在项目根目录中增加tsconfig.json配置文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">   <span class="attr">"target"</span>: <span class="string">"es5"</span>,</span><br><span class="line">   <span class="attr">"module"</span>: <span class="string">"es6"</span>,</span><br><span class="line">   <span class="attr">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">   <span class="attr">"lib"</span>: [<span class="string">"es6"</span>, <span class="string">"dom"</span>],</span><br><span class="line">   <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="attr">"jsx"</span>: <span class="string">"react"</span>,</span><br><span class="line">   <span class="attr">"strict"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="attr">"noImplicitReturns"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="attr">"rootDir"</span>: <span class="string">"src"</span>,</span><br><span class="line">   <span class="attr">"outDir"</span>: <span class="string">"dist"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"include"</span>: [<span class="string">"**/*.ts"</span>, <span class="string">"**/*.tsx"</span>],</span><br><span class="line">  <span class="attr">"exclude"</span>: [<span class="string">"node_modules"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.添加tslint作为代码格式检查工具: yarn add tslint –dev，在项目根目录中添加一个tslint.json配置文件，示例如下所示：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: [<span class="string">"tslint:recommened"</span>, <span class="string">"tslint-react"</span>, <span class="string">"tslint-config-prettier"</span>],</span><br><span class="line">  <span class="attr">"linterOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"exclude"</span>: [<span class="string">"node_modules/**/*.ts"</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于我们的tslint配置文件还用上了第三方依赖，所以安装它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add tslint-react tslint-config-prettier --dev</span><br></pre></td></tr></table></figure>
+<p>4.添加react依赖以及对应的types依赖文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add react react-dom;</span><br><span class="line">yarn add @types/react @types/react-dom --dev;</span><br></pre></td></tr></table></figure>
+<p>5.在项目根目录中的dist文件夹中添加index.html文件，内容如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>手把手配置基础脚手架<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在项目根目录中的src文件夹创建一个index.tsx文件，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App: React.SFC = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;learn&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>) <span class="keyword">as</span> HTMLElement);</span><br></pre></td></tr></table></figure>
+<p>6.使用webpack作为代码打包工具：首先安装依赖文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add webpack webpack-cli --dev</span><br><span class="line">yarn add webpack-dev-server --dev <span class="comment"># 在开发阶段可以作为server使用</span></span><br><span class="line">yarn add ts-loader --dev <span class="comment"># 针对typescript的webpack plugin</span></span><br></pre></td></tr></table></figure>
+<p>在项目根目录中配置webpack.config.js文件，实例如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &quot;./src/index.tsx&quot;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.tsx?$/,</span><br><span class="line">                use: &quot;ts-loader&quot;,</span><br><span class="line">                exclude: /node_modules/</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&quot;.tsx&quot;, &quot;.ts&quot;, &quot;.js&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &quot;dist&quot;),</span><br><span class="line">        filename: &quot;bundle.js&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.join(__dirname, &quot;dist&quot;),</span><br><span class="line">        compress: true,</span><br><span class="line">        port: 9000</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>7.添加npm脚本，如下所示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "start": "webpack-dev-server --env development",</span><br><span class="line">  "build": "webpack --env production"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8.接下来使用npm run start即可以看到运行效果。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-create-react-app作为脚手架"><span class="toc-number">1.</span> <span class="toc-text">1.create-react-app作为脚手架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-手动配置"><span class="toc-number">2.</span> <span class="toc-text">2.手动配置</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&text=typescript搭配react使用笔记1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&is_video=false&description=typescript搭配react使用笔记1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript搭配react使用笔记1&body=Check out this article: http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&title=typescript搭配react使用笔记1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/22/typescript搭配react使用笔记1/&name=typescript搭配react使用笔记1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1558573011263')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
