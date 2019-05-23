@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="原生js如何获取子元素：element.childNodes；原生js如何获取父元素：element.parentNode;  1.render方法所返回的是什么类型数据？1234567891011import * as React from &quot;react&quot;;class App extends React.Component &amp;#123;  public render(): React.Reac">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript+react学习笔记2">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/typescript-react学习笔记2/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="原生js如何获取子元素：element.childNodes；原生js如何获取父元素：element.parentNode;  1.render方法所返回的是什么类型数据？1234567891011import * as React from &quot;react&quot;;class App extends React.Component &amp;#123;  public render(): React.Reac">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img.vim-cn.com/23/5c5f457c891b83e4307b9da32d2449d8bbe825.png">
+<meta property="og:updated_time" content="2019-05-23T14:06:08.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript+react学习笔记2">
+<meta name="twitter:description" content="原生js如何获取子元素：element.childNodes；原生js如何获取父元素：element.parentNode;  1.render方法所返回的是什么类型数据？1234567891011import * as React from &quot;react&quot;;class App extends React.Component &amp;#123;  public render(): React.Reac">
+<meta name="twitter:image" content="https://img.vim-cn.com/23/5c5f457c891b83e4307b9da32d2449d8bbe825.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>typescript+react学习笔记2</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/22/typescript搭配react使用笔记1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/23/typescript-react学习笔记2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&text=typescript+react学习笔记2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&is_video=false&description=typescript+react学习笔记2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript+react学习笔记2&body=Check out this article: http://yoursite.com/2019/05/23/typescript-react学习笔记2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&name=typescript+react学习笔记2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-render方法所返回的是什么类型数据？"><span class="toc-number">1.</span> <span class="toc-text">1.render方法所返回的是什么类型数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jsx大致的解析过程？"><span class="toc-number">2.</span> <span class="toc-text">2.jsx大致的解析过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Component-props"><span class="toc-number">3.</span> <span class="toc-text">3.Component props</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Default-Prop-Values"><span class="toc-number">4.</span> <span class="toc-text">4.Default Prop Values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-component-state"><span class="toc-number">5.</span> <span class="toc-text">5.component state</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-React正确实践，不该作为state的切勿作为state处理："><span class="toc-number">6.</span> <span class="toc-text">6.React正确实践，不该作为state的切勿作为state处理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-React的生命周期"><span class="toc-number">7.</span> <span class="toc-text">7.React的生命周期</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        typescript+react学习笔记2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-23T05:57:57.000Z" itemprop="datePublished">2019-05-23</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/typescript/">typescript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>原生js如何获取子元素：element.childNodes；原生js如何获取父元素：element.parentNode;</p>
+</blockquote>
+<h3 id="1-render方法所返回的是什么类型数据？"><a href="#1-render方法所返回的是什么类型数据？" class="headerlink" title="1.render方法所返回的是什么类型数据？"></a>1.render方法所返回的是什么类型数据？</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> App <span class="keyword">extends</span> React.Component &#123;</span><br><span class="line">  <span class="keyword">public</span> render(): React.ReactNode &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;learn&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-jsx大致的解析过程？"><a href="#2-jsx大致的解析过程？" class="headerlink" title="2.jsx大致的解析过程？"></a>2.jsx大致的解析过程？</h3><p>先看在jsx中一个简单的元素是怎么被转化的(https:/​/​babeljs.​io/​repl可在线尝试)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;hello world&lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
+<p>它将被转化成下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">  <span class="string">"h1"</span>,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  <span class="string">"hello babel"</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>解释一下React.createElement方法的三个参数，参数一：表示元素类型，可以是以下几种 HTML tag name，React Component Type，React Fragment Type。参数二：应用在元素上面的props object。参数三：元素的children。</p>
+<p>因此，对于像下面这样的jsx代码的话将会转化成这样的代码：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">"c1"</span>&gt;</span><br><span class="line">  &lt;h1&gt;aha&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>translate:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">  <span class="string">"div"</span>,</span><br><span class="line">  &#123; <span class="attr">className</span>: <span class="string">"c1"</span> &#125;,</span><br><span class="line">  React.createElement(</span><br><span class="line">    <span class="string">"h1"</span>,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    <span class="string">"aha"</span></span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>从上面的转换我们也可以看出为什么在react中class是叫做className，因为class是关键字，jsx最终还是要走js的。</p>
+<p>再来看看当jsx里面引用js会发生什么情况：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> props = &#123; <span class="attr">title</span>: <span class="string">'babel'</span> &#125;;</span><br><span class="line">&lt;div className=<span class="string">"c1"</span>&gt;</span><br><span class="line">  &lt;span&gt;&#123;props.title ? props.title : <span class="string">'react and typescript'</span>&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>jsx解析结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> props = &#123; <span class="attr">title</span>: <span class="string">"babel"</span> &#125;;</span><br><span class="line">React.createElement(</span><br><span class="line">  <span class="string">"div"</span>,</span><br><span class="line">  &#123; <span class="attr">className</span>: <span class="string">"c1"</span> &#125;,</span><br><span class="line">  React.createElement(</span><br><span class="line">    <span class="string">"span"</span>,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    props.title ? props.title : <span class="string">"react and typescript"</span></span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="3-Component-props"><a href="#3-Component-props" class="headerlink" title="3.Component props"></a>3.Component props</h3><p>React.Component是一个泛型类，它能接受一个表示props的类型，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IProps = &#123;</span><br><span class="line">  title: <span class="built_in">string</span>;</span><br><span class="line">  content: <span class="built_in">string</span>;</span><br><span class="line">  classPrefix?: <span class="built_in">string</span>;         <span class="comment">// 表示这个props是可选的</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> App <span class="keyword">extends</span> React.Component&lt;IProps&gt; &#123;</span><br><span class="line">  <span class="keyword">public</span> render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;&#123;<span class="keyword">this</span>.props.title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;h1&gt;&#123;this.props.content&#125;&lt;/</span>h1&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-Default-Prop-Values"><a href="#4-Default-Prop-Values" class="headerlink" title="4.Default Prop Values"></a>4.Default Prop Values</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IProps = &#123;</span><br><span class="line">  title: <span class="built_in">string</span>;</span><br><span class="line">  classPrefix?: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> App <span class="keyword">extends</span> React.Component&lt;IProps&gt; &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line">    classPrefix: <span class="string">"confirm_"</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">public</span> render(): React.ReactNode &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-component-state"><a href="#5-component-state" class="headerlink" title="5.component state"></a>5.component state</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IState &#123;</span><br><span class="line">  showModal: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> App <span class="keyword">extends</span> React.Component&lt;&#123;&#125;, IState&gt;&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">props: &#123;&#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      showModal: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> modalOkHandler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; showModal: <span class="literal">false</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>暂时也不知{}是什么类型。可以确定的是，如果显示说明了一个component的props类型是{}的话，那么在使用这个component的时候就不能手动传入props，传来的话就会报错。</p>
+<h3 id="6-React正确实践，不该作为state的切勿作为state处理："><a href="#6-React正确实践，不该作为state的切勿作为state处理：" class="headerlink" title="6.React正确实践，不该作为state的切勿作为state处理："></a>6.React正确实践，不该作为state的切勿作为state处理：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IState &#123;</span><br><span class="line">  countDown: <span class="built_in">number</span>;</span><br><span class="line">  showModal: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> App <span class="keyword">extends</span> React.Component</span><br><span class="line">  <span class="keyword">private</span> _timer: <span class="built_in">number</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">props: &#123;&#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      countDown: <span class="number">10</span>,</span><br><span class="line">      showModal: <span class="literal">false</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// setTimeout, setInterval里面setState是同步更新</span></span><br><span class="line">  <span class="keyword">public</span> componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._timer = <span class="built_in">window</span>.setInterval(<span class="keyword">this</span>.timerHandler, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._timer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> timerHandler() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      countDown: <span class="keyword">this</span>.state.countDown - <span class="number">1</span></span><br><span class="line">    &#125;, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.state.countDown &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        clearInterval(<span class="keyword">this</span>._timer);</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; showModal: <span class="literal">true</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> render(): React.ReactNode &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;ComponentA show=&#123;<span class="keyword">this</span>.state.showModal&#125; /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-React的生命周期"><a href="#7-React的生命周期" class="headerlink" title="7.React的生命周期"></a>7.React的生命周期</h3><p>react16版本对生命周期方法做了较大的更新处理，最新的生命周期流程图如下所示：</p>
+<p><img src="https://img.vim-cn.com/23/5c5f457c891b83e4307b9da32d2449d8bbe825.png" alt="react16生命周期流程图"></p>
+<p>接下来进行逐一介绍：</p>
+<p><strong>componentDidMount</strong>：当component已经insert进DOM的时候被触发，一般的，在componentDidMount会完成以下逻辑处理：</p>
+<ul>
+<li>1.网络请求；</li>
+<li>2.事件监听</li>
+<li>3.初始化计时器</li>
+<li>4.初始化第三方库</li>
+</ul>
+<p><strong>componentWillUnmount</strong>：当component已经从DOM中remove的时候触发。一般的，会在里面完成以下逻辑：</p>
+<ul>
+<li>1.移除event listener</li>
+<li>2.取消active network；</li>
+<li>3.移除计时器</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-render方法所返回的是什么类型数据？"><span class="toc-number">1.</span> <span class="toc-text">1.render方法所返回的是什么类型数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jsx大致的解析过程？"><span class="toc-number">2.</span> <span class="toc-text">2.jsx大致的解析过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Component-props"><span class="toc-number">3.</span> <span class="toc-text">3.Component props</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Default-Prop-Values"><span class="toc-number">4.</span> <span class="toc-text">4.Default Prop Values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-component-state"><span class="toc-number">5.</span> <span class="toc-text">5.component state</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-React正确实践，不该作为state的切勿作为state处理："><span class="toc-number">6.</span> <span class="toc-text">6.React正确实践，不该作为state的切勿作为state处理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-React的生命周期"><span class="toc-number">7.</span> <span class="toc-text">7.React的生命周期</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/23/typescript-react学习笔记2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&text=typescript+react学习笔记2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&is_video=false&description=typescript+react学习笔记2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript+react学习笔记2&body=Check out this article: http://yoursite.com/2019/05/23/typescript-react学习笔记2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&title=typescript+react学习笔记2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/23/typescript-react学习笔记2/&name=typescript+react学习笔记2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1558620605098')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
