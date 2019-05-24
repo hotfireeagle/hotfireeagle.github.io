@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/11/02/angular模板语法/');
+  precacheUrls.push('/2018/11/03/mysql命令行/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
   precacheUrls.push('/2019/05/16/typescript学习二/');
 
-  precacheUrls.push('/2019/04/27/深入理解margin/');
+  precacheUrls.push('/2019/05/23/typescript-react学习笔记2/');
 
-  precacheUrls.push('/2019/05/14/图片懒加载/');
+  precacheUrls.push('/2019/04/27/深入理解margin/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
