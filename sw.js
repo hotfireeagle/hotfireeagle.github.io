@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/11/03/mysql命令行/');
+  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
