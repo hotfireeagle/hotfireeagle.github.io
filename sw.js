@@ -24,7 +24,7 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2019/01/15/flutter线性布局/');
+  precacheUrls.push('/2019/05/07/FirstPaint/');
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
