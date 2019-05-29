@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="在componentWillReceiveProps里面setState之后是不会接着触发componentWillReceiveProps的，否则那就是死循环了。  1.union types正如字面意思上面所说，union type就是联合类型。万万没想到在typescript中，字符串字面量也能够成为类型，如下所示： 123type St = &quot;string&quot;;const faith: S">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript之advancedTypes">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/types/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="在componentWillReceiveProps里面setState之后是不会接着触发componentWillReceiveProps的，否则那就是死循环了。  1.union types正如字面意思上面所说，union type就是联合类型。万万没想到在typescript中，字符串字面量也能够成为类型，如下所示： 123type St = &quot;string&quot;;const faith: S">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-28T12:59:00.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript之advancedTypes">
+<meta name="twitter:description" content="在componentWillReceiveProps里面setState之后是不会接着触发componentWillReceiveProps的，否则那就是死循环了。  1.union types正如字面意思上面所说，union type就是联合类型。万万没想到在typescript中，字符串字面量也能够成为类型，如下所示： 123type St = &quot;string&quot;;const faith: S">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>typescript之advancedTypes</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/29/learning-graphQL-笔记1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/05/26/typescript-react学习笔记3/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/27/types/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/27/types/&text=typescript之advancedTypes"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/27/types/&is_video=false&description=typescript之advancedTypes"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript之advancedTypes&body=Check out this article: http://yoursite.com/2019/05/27/types/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/27/types/&name=typescript之advancedTypes&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-union-types"><span class="toc-number">1.</span> <span class="toc-text">1.union types</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-泛型方法"><span class="toc-number">2.</span> <span class="toc-text">2.泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型类"><span class="toc-number">3.</span> <span class="toc-text">3.泛型类</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        typescript之advancedTypes
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-05-27T13:28:31.000Z" itemprop="datePublished">2019-05-27</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/typescript/">typescript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>在componentWillReceiveProps里面setState之后是不会接着触发componentWillReceiveProps的，否则那就是死循环了。</p>
+</blockquote>
+<h3 id="1-union-types"><a href="#1-union-types" class="headerlink" title="1.union types"></a>1.union types</h3><p>正如字面意思上面所说，union type就是联合类型。万万没想到在typescript中，字符串字面量也能够成为类型，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> St = <span class="string">"string"</span>;</span><br><span class="line"><span class="keyword">const</span> faith: St = <span class="string">"string"</span>;</span><br><span class="line"><span class="keyword">const</span> freedom: St = <span class="string">"string2"</span>;  <span class="comment">// 报错，St类型的变量的值只能够是string</span></span><br></pre></td></tr></table></figure>
+<p>在某些场合下，我们希望某个字符串只能是某几个可选的值之一，那么这个时候使用union type将会特别方便，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> St = <span class="string">"Man"</span> | <span class="string">"Women"</span> | <span class="string">"She"</span> | <span class="string">"He"</span> | <span class="string">"Me"</span>;</span><br><span class="line"><span class="keyword">const</span> theMan: St = <span class="string">"Man"</span>;</span><br><span class="line"><span class="keyword">const</span> theWomen: St = <span class="string">"Women"</span>;</span><br><span class="line"><span class="keyword">const</span> errorIsValid: St = <span class="string">"Aha"</span>; <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>下面再看一个使用union type的例子，感受下他对类型系统所作出的作用：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> I1 &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">"1"</span>;</span><br><span class="line">    value: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> I2 &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">"2"</span>;</span><br><span class="line">    value: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> I3 &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">"3"</span>;</span><br><span class="line">    value: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> I4 &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">"4"</span>;</span><br><span class="line">    value: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> smlz2 = I1 | I2 | I3 | I4;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">param: smlz2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(param.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">            param.value = <span class="string">"one"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">            param.value = <span class="string">"two"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"3"</span>:</span><br><span class="line">            param.value = <span class="string">"three"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">const</span> neverChoice: never = param;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> par: smlz2 = &#123; <span class="keyword">type</span>: <span class="string">"4"</span>, value: <span class="string">"four"</span> &#125;;</span><br><span class="line">init(par);  <span class="comment">// 报错，要解决这个问题的话，那么就需要在case 3这个分支后面加上对case 4的处理。</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-泛型方法"><a href="#2-泛型方法" class="headerlink" title="2.泛型方法"></a>2.泛型方法</h3><p>不多说，直接介绍使用方法，下面是一个泛型方法的使用方式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = &lt;T&gt;(url: <span class="built_in">string</span>): <span class="built_in">Promise</span>&lt;T&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> fetch(url).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!response.ok) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(response.statusText);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> response.json();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ApiRes &#123;</span><br><span class="line">  errorMes: <span class="built_in">string</span>;</span><br><span class="line">  content: object;</span><br><span class="line">  status: <span class="built_in">number</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getData&lt;ApiRes&gt;(<span class="string">"/api/mockMe"</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res.content);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="3-泛型类"><a href="#3-泛型类" class="headerlink" title="3.泛型类"></a>3.泛型类</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> List&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> data: T[] = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> getList(): T[] &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> add(item: T) &#123;</span><br><span class="line">        <span class="keyword">this</span>.data.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> peopleList = <span class="keyword">new</span> List&lt;Person&gt;();</span><br><span class="line">peopleList.add(&#123; name: <span class="string">'hahahai'</span>, age: <span class="number">23</span> &#125;);</span><br><span class="line">peopleList.add(&#123; name: <span class="string">'hahahai'</span>, nickName: <span class="string">'xh'</span> &#125;);  <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-union-types"><span class="toc-number">1.</span> <span class="toc-text">1.union types</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-泛型方法"><span class="toc-number">2.</span> <span class="toc-text">2.泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型类"><span class="toc-number">3.</span> <span class="toc-text">3.泛型类</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/27/types/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/27/types/&text=typescript之advancedTypes"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/27/types/&is_video=false&description=typescript之advancedTypes"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=typescript之advancedTypes&body=Check out this article: http://yoursite.com/2019/05/27/types/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/27/types/&title=typescript之advancedTypes"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/27/types/&name=typescript之advancedTypes&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1559144570015')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
