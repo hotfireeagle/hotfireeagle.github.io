@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.安装使用最佳实践：sequelize + sequelize-cli捆绑消费。这里介绍搭配eggjs进行使用 1npm i egg-sequelize mysql2 sequelize-cli --save 接着在项目的根目录上面新建一个.sequelizerc文件，这个文件的作用：sequelize-cli的配置文件，可以在里面配置migration文件的路径，modal文件的路径，seed">
+<meta name="keywords" content="sequelize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sequelize学习">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/Sequelize学习/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.安装使用最佳实践：sequelize + sequelize-cli捆绑消费。这里介绍搭配eggjs进行使用 1npm i egg-sequelize mysql2 sequelize-cli --save 接着在项目的根目录上面新建一个.sequelizerc文件，这个文件的作用：sequelize-cli的配置文件，可以在里面配置migration文件的路径，modal文件的路径，seed">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-05T14:57:24.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sequelize学习">
+<meta name="twitter:description" content="1.安装使用最佳实践：sequelize + sequelize-cli捆绑消费。这里介绍搭配eggjs进行使用 1npm i egg-sequelize mysql2 sequelize-cli --save 接着在项目的根目录上面新建一个.sequelizerc文件，这个文件的作用：sequelize-cli的配置文件，可以在里面配置migration文件的路径，modal文件的路径，seed">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Sequelize学习</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/06/04/ramda笔记/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/05/Sequelize学习/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/05/Sequelize学习/&text=Sequelize学习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/05/Sequelize学习/&is_video=false&description=Sequelize学习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sequelize学习&body=Check out this article: http://yoursite.com/2019/06/05/Sequelize学习/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/05/Sequelize学习/&name=Sequelize学习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装使用"><span class="toc-number">1.</span> <span class="toc-text">1.安装使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-我想要建表了"><span class="toc-number">2.</span> <span class="toc-text">2.我想要建表了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-我该如何使用sequelize-API建表"><span class="toc-number">3.</span> <span class="toc-text">3.我该如何使用sequelize API建表</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Sequelize学习
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-06-05T13:39:30.000Z" itemprop="datePublished">2019-06-05</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/sequelize/">sequelize</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-安装使用"><a href="#1-安装使用" class="headerlink" title="1.安装使用"></a>1.安装使用</h3><p>最佳实践：sequelize + sequelize-cli捆绑消费。这里介绍搭配eggjs进行使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i egg-sequelize mysql2 sequelize-cli --save</span><br></pre></td></tr></table></figure>
+<p>接着在项目的根目录上面新建一个.sequelizerc文件，这个文件的作用：sequelize-cli的配置文件，可以在里面配置migration文件的路径，modal文件的路径，seeder文件的路径，数据库环境配置。内容示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="string">"config"</span>: path.join(__dirname, <span class="string">"database/config.json"</span>),</span><br><span class="line">  <span class="string">"migrations-path"</span>: path.join(__dirname, <span class="string">"database/migrations"</span>),</span><br><span class="line">  <span class="string">"seeders-path"</span>: path.join(__dirname, <span class="string">"database/seeders"</span>),</span><br><span class="line">  <span class="string">"models-path"</span>: path.join(__dirname, <span class="string">"app/model"</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意上面我们把model文件放在app目录中，可参考egg目录结构配置这一块。</p>
+<p>既然已经配置好了，接下来我们利用sequelize-cli来做一些事了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 生成配置文件</span></span><br><span class="line">./node_modules/.bin/sequelize init:config</span><br></pre></td></tr></table></figure>
+<p>生成migration文件，这个migration文件可以用来数据库迁移。就好比我们使用Git来管理代码一样，migration就是用来管理数据表版本的。同时，最佳实践，不手动建表，一：建表的SQL自己要另存，用处不大，只能看看。二：写不来，不是放光的DBA。而有了sequelize-cli的帮助的话，可以，如果你想要建表的话，那么来写一个migration文件吧，不仅能够用来创建数据表，而且还能够用来进行数据表的版本回退。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 按照配置生成migrations目录</span></span><br><span class="line">./node_modules/.bin/sequelize init:migrations</span><br></pre></td></tr></table></figure>
+<p>执行上面这条bash命令后，sequelize-cli会在我们约定好的地方生成migrations目录。</p>
+<h3 id="2-我想要建表了"><a href="#2-我想要建表了" class="headerlink" title="2.我想要建表了"></a>2.我想要建表了</h3><p>别急着定义model，在sequelize-cli中，始于migration。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 生成某个表的migration命令</span></span><br><span class="line">./node_modules/.bin/sequelize migration:generate --name=users</span><br></pre></td></tr></table></figure>
+<p>执行之后，我们可以看到在migrations目录中多了一个时间戳-users名字的js文件。要想建表的话，那么就撸起袖子在这个文件里面做操作吧。</p>
+<h3 id="3-我该如何使用sequelize-API建表"><a href="#3-我该如何使用sequelize-API建表" class="headerlink" title="3.我该如何使用sequelize API建表"></a>3.我该如何使用sequelize API建表</h3><p>谈到数据表，那自然离不开表字段的定义。这里只说点超超超简单的，什么表约束等不懂。字段自然是声明类型。对于migration文件来说，它是被sequelize-cli给直接处理的。所以我们讨论一下sequelize-cli，在它的建立的规则里面，migration文件导出一个对象，对象拥有两个字段，分别是up和down。up也好，down也好，他们都是一个函数，函数的第一个参数是queryInterface(可以理解为操作数据库的实例)，第二个参数是Sequelize类，常用来声明类型。下面是一个示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  up: <span class="keyword">async</span> (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; STRING, DATE, INTEGER, TEXT &#125; = Sequelize;</span><br><span class="line">    <span class="keyword">await</span> queryInterface.createTable(<span class="string">"news"</span>, &#123;</span><br><span class="line">      id: &#123;</span><br><span class="line">        type: INTEGER.UNSIGNED,</span><br><span class="line">        autoIncrement: <span class="literal">true</span>,</span><br><span class="line">        primaryKey: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      title: &#123;</span><br><span class="line">        type: STRING,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      createdAt: &#123;</span><br><span class="line">        type: DATE,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      updatedAt: &#123;</span><br><span class="line">        type: DATE,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      author: &#123;</span><br><span class="line">        type: STRING(<span class="number">32</span>),</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      content: &#123;</span><br><span class="line">        type: TEXT,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      category: &#123;</span><br><span class="line">        type: STRING,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  down: <span class="keyword">async</span> (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> queryInterface.dropTable(<span class="string">"news"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装使用"><span class="toc-number">1.</span> <span class="toc-text">1.安装使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-我想要建表了"><span class="toc-number">2.</span> <span class="toc-text">2.我想要建表了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-我该如何使用sequelize-API建表"><span class="toc-number">3.</span> <span class="toc-text">3.我该如何使用sequelize API建表</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/05/Sequelize学习/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/05/Sequelize学习/&text=Sequelize学习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/05/Sequelize学习/&is_video=false&description=Sequelize学习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sequelize学习&body=Check out this article: http://yoursite.com/2019/06/05/Sequelize学习/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/05/Sequelize学习/&title=Sequelize学习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/05/Sequelize学习/&name=Sequelize学习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1559746661551')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

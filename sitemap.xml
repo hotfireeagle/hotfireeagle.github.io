@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/06/05/Sequelize%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2019-06-05T14:57:24.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/06/04/ramda%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-06-04T12:51:51.479Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/03/mysql%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    
+    <lastmod>2019-06-04T00:05:37.339Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/05/27/types/</loc>
+    
+    <lastmod>2019-05-31T12:31:29.720Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/05/29/learning-graphQL-%E7%AC%94%E8%AE%B01/</loc>
     
-    <lastmod>2019-05-29T15:37:34.548Z</lastmod>
+    <lastmod>2019-05-30T06:11:02.648Z</lastmod>
     
   </url>
   
@@ -12,13 +40,6 @@
     <loc>http://yoursite.com/2019/04/24/js%E9%A2%98%E7%9B%AE/</loc>
     
     <lastmod>2019-05-29T01:51:39.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/05/27/types/</loc>
-    
-    <lastmod>2019-05-28T12:59:00.607Z</lastmod>
     
   </url>
   
@@ -180,13 +201,6 @@
     <loc>http://yoursite.com/2018/10/15/puppeteer-API%E5%A4%87%E5%BF%98/</loc>
     
     <lastmod>2019-03-24T14:35:09.145Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/11/03/mysql%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
-    
-    <lastmod>2019-03-24T06:10:16.911Z</lastmod>
     
   </url>
   
