@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。 2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。 3.关于dataset的问题，如下 1&amp;lt;view data-userExamineId=&quot;&amp;#123;&amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-22T06:18:04.783Z">
+<meta property="og:updated_time" content="2019-07-02T08:40:06.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序备忘">
 <meta name="twitter:description" content="1.App的生命周期方法之onLaunch以及onShow，当小程序启动时，首先触发onLaunch在触发onShow，当小程序从后台再次被用户使用时，不会触发onLaunch，会触发onShow。 2.image响应式尺寸，设置定宽然后加上一个mode=”widthFix”。 3.关于dataset的问题，如下 1&amp;lt;view data-userExamineId=&quot;&amp;#123;&amp;#123;">
@@ -157,6 +157,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Button</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>10.在小程序中，absolute和flex定位搭配使用flex布局将会不起作用。解决办法，给需要flex布局的元素添加一个父元素，父元素使用绝对定位，而且指明宽度。</p>
 <p>11.前面也提到了，setData对于视图来说是异步行为，那么怎么在更新视图完毕之后执行某些逻辑呢？答案就是传一个callBack作为setData的第二个参数。</p>
+<p>12.对于小程序来说，线上，体验，开发三个版本共用storage。</p>
 
   </div>
 </article>
@@ -231,7 +232,7 @@
 </footer>
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1561459041603')
+  navigator.serviceWorker.register('/sw.js?t=1565053029213')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

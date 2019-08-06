@@ -24,15 +24,15 @@ var precacheUrls = [];
 
   precacheUrls.push('/');
 
-  precacheUrls.push('/2018/12/07/react生态基本使用笔记/');
+  precacheUrls.push('/2018/10/15/puppeteer-API备忘/');
 
-  precacheUrls.push('/2018/12/20/express2之database/');
+  precacheUrls.push('/2019/01/26/新点总结/');
 
-  precacheUrls.push('/2019/06/05/Sequelize学习/');
+  precacheUrls.push('/2019/04/02/证书可信任/');
 
-  precacheUrls.push('/2019/01/11/Flutter之按钮/');
+  precacheUrls.push('/2019/04/26/轮播图实现/');
 
-  precacheUrls.push('/2019/01/09/Flutter之文本/');
+  precacheUrls.push('/2019/04/09/从一道题目谈谈跨域/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};

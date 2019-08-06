@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.基础概念函数式：使用函数来抽象对数据的处理。函数式致力于产生小的副作用，简化代码体量。表现上看，函数式是分解流程+组合流程。分解步骤表达了单一职责这一目的。组合可以让数据操作更趋向于自然语言的表达。 2.示例1.计算平均值，使用数学进行描述的话，那么就是分为求和，求长度，除法。因此使用函数实现这几个步骤： 123456const plus = (total, cur) =&amp;gt; total">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T13:16:27.172Z">
+<meta property="og:updated_time" content="2019-08-02T13:47:06.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数式">
 <meta name="twitter:description" content="1.基础概念函数式：使用函数来抽象对数据的处理。函数式致力于产生小的副作用，简化代码体量。表现上看，函数式是分解流程+组合流程。分解步骤表达了单一职责这一目的。组合可以让数据操作更趋向于自然语言的表达。 2.示例1.计算平均值，使用数学进行描述的话，那么就是分为求和，求长度，除法。因此使用函数实现这几个步骤： 123456const plus = (total, cur) =&amp;gt; total">
@@ -71,6 +71,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/08/04/定投/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/06/17/serverless笔记1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -99,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础概念"><span class="toc-number">1.</span> <span class="toc-text">1.基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-示例"><span class="toc-number">2.</span> <span class="toc-text">2.示例</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础概念"><span class="toc-number">1.</span> <span class="toc-text">1.基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-示例"><span class="toc-number">2.</span> <span class="toc-text">2.示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-岔个题"><span class="toc-number">3.</span> <span class="toc-text">3.岔个题</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -148,6 +150,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">k</span>: &#123; <span class="attr">b</span>: <span class="number">2</span> &#125; &#125;;</span><br><span class="line"><span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">obj.k = &#123; <span class="attr">b</span>: <span class="number">3</span> &#125;;</span><br><span class="line">obj.k; <span class="comment">// &#123; b: 2 &#125;</span></span><br><span class="line">obj.k.b = <span class="number">3</span>;</span><br><span class="line">obj.k; <span class="comment">// &#123; b: 3 &#125;</span></span><br></pre></td></tr></table></figure>
 <p>因此，在js中，为了尽可能的实现纯的话，很可能你需要自己实现一个深冻结的方法。一层一层遍历下去，接着进行冻结。如下所示：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isObject = <span class="function"><span class="params">obj</span> =&gt;</span> obj &amp;&amp; <span class="keyword">typeof</span> obj === <span class="string">"object"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> deepFreeze = <span class="function"><span class="params">obj</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isObject(obj) &amp;&amp; <span class="built_in">Object</span>.isFrozen(obj)) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">    <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">name</span> =&gt;</span> deepFreeze(obj[name]));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在JavaScript中，还有其它方法能够模拟数值吗？有的，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">zipCode</span>(<span class="params">code, location</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> _code = code;</span><br><span class="line">  <span class="keyword">let</span> _location = location;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    code: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> _code;</span><br><span class="line">    &#125;,</span><br><span class="line">    location: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> _location;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过上面的方式，便把_code以及_location给隐藏起来了，间接达到不可被修改的目的。</p>
+<h3 id="3-岔个题"><a href="#3-岔个题" class="headerlink" title="3.岔个题"></a>3.岔个题</h3>
   </div>
 </article>
 
@@ -171,7 +177,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础概念"><span class="toc-number">1.</span> <span class="toc-text">1.基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-示例"><span class="toc-number">2.</span> <span class="toc-text">2.示例</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础概念"><span class="toc-number">1.</span> <span class="toc-text">1.基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-示例"><span class="toc-number">2.</span> <span class="toc-text">2.示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-岔个题"><span class="toc-number">3.</span> <span class="toc-text">3.岔个题</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -221,7 +227,7 @@
 </footer>
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1561459041603')
+  navigator.serviceWorker.register('/sw.js?t=1565053029213')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
