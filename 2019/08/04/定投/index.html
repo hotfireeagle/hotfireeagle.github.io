@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="夜游">
 <meta property="og:description" content="1.基本概念基金定投：定期分批次投资基金。基金定投好处：容易摊平成本。目前为止，基金的种类主要有下面几种：    基金种类 投资方向 风险级别     货币型基金 货币市场 低   债券型基金 债券市场 低   股票型基金 股票市场 高   混合型基金 都有 中   指数型基金 指数成分股 高    单位净值：当前这份基金每一份卖多少钱。 累计净值：单位净值+基金分红。 从大类上面划分，指数型基金">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T13:44:27.329Z">
+<meta property="og:updated_time" content="2019-08-14T14:19:58.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="定投">
 <meta name="twitter:description" content="1.基本概念基金定投：定期分批次投资基金。基金定投好处：容易摊平成本。目前为止，基金的种类主要有下面几种：    基金种类 投资方向 风险级别     货币型基金 货币市场 低   债券型基金 债券市场 低   股票型基金 股票市场 高   混合型基金 都有 中   指数型基金 指数成分股 高    单位净值：当前这份基金每一份卖多少钱。 累计净值：单位净值+基金分红。 从大类上面划分，指数型基金">
@@ -71,6 +71,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/08/06/Rust类型系统/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/06/21/函数式/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -99,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-指数基金"><span class="toc-number">2.</span> <span class="toc-text">2.指数基金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-主流的指数介绍"><span class="toc-number">3.</span> <span class="toc-text">3.主流的指数介绍</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-指数基金"><span class="toc-number">2.</span> <span class="toc-text">2.指数基金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-主流的指数介绍"><span class="toc-number">3.</span> <span class="toc-text">3.主流的指数介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-概念介绍"><span class="toc-number">4.</span> <span class="toc-text">4.概念介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-如何衡量指数的价值？"><span class="toc-number">5.</span> <span class="toc-text">5.如何衡量指数的价值？</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -190,11 +192,11 @@
 </ul>
 <h3 id="3-主流的指数介绍"><a href="#3-主流的指数介绍" class="headerlink" title="3.主流的指数介绍"></a>3.主流的指数介绍</h3><p>有一点需要先知道：目前大陆有两个证券交易所，分别是上海证券交易所和深圳证券交易所。港台地区分别有一个：香港交易所，台湾证券交易所。所以我国有四个。</p>
 <ul>
-<li><p>1.沪深300：跨市场指数，从上海和深圳证券市场选取300只规模大，流动性好的股票作为样本，覆盖了沪深市场60%左右的市值，具有良好的市场代表性。</p>
+<li><p>1.沪深300：跨市场指数，从上海和深圳证券市场选取300只规模大，流动性好的股票作为样本，覆盖了沪深市场60%左右的市值，具有良好的市场代表性。基日为2004年12月31日，基日指数点为1000点。沪深300指数有两个代码，分别为000300和399300，因为沪深300既属于上海证券市场又属于深圳证券市场，所以两个交易所各自一个代码。</p>
 </li>
 <li><p>2.中证500：沪深股票市场中，剔除了沪深300指数所选股之后的前500只股票。综合反映了中小市值公司的整体情况。</p>
 </li>
-<li><p>3.上证50：挑选上海股票市场规模大，流动性好的50只股票作为样本股。</p>
+<li><p>3.上证50：挑选上海股票市场规模大，流动性好的50只股票作为样本股，反映上海市场最具影响力的一批龙头公司的股票价格表现。基日还03年12月31日，基点为1000点。</p>
 </li>
 <li><p>4.中证100：从沪深300指数中所选股挑取规模最大的100只股票作为样本。</p>
 </li>
@@ -208,6 +210,15 @@
 </li>
 </ul>
 <p>推荐被动型指数基金。怎么区别这两种指数基金？1.通过基金名称；2.通过投资目标和投资策略。</p>
+<h3 id="4-概念介绍"><a href="#4-概念介绍" class="headerlink" title="4.概念介绍"></a>4.概念介绍</h3><p>什么是指数？指数的定义就是：各种数值的综合，用于衡量市场或者经济的变化。证券市场的指数主要有三个作用：1.市场的标尺，反映市场的平均收益和波动情况；2.指数基金的跟踪标的。</p>
+<p>从指数所覆盖行业市场的广度来区别的话，指数又可以分为窄基指数和宽基指数，如果想稳一点的话，宽基指数是更好的选择。</p>
+<p>一个小知识点：中证500是在A股市场上剔除沪深300指数成分股的排名前500只股票，所以他代表了A股中盘市场；沪深300毋庸置疑代表了A股大盘市场；中证1000是在A股市场剔除了中证800指数成分股的排名前1000只股票，所以代表了A股小盘市场。所谓中证800就是沪深300+中证500。</p>
+<p>何谓A股，既人民币普通股票，在中国上市，用人民币表明面值，用人民币进行认购和交易的股票。B股，中国上市，人民币标明面值，使用外币进行交易。H股，香港证券交易所上市的股票，使用港币进行交易。</p>
+<h3 id="5-如何衡量指数的价值？"><a href="#5-如何衡量指数的价值？" class="headerlink" title="5.如何衡量指数的价值？"></a>5.如何衡量指数的价值？</h3><p>目前用于衡量指数的价值主要有下面几种分析方法：1.市盈率PE;2.市净率PB；3.净资产收益率ROE；4.股息率。</p>
+<p>市盈率的计算方法是公司市值/公司盈利；假设公司A在市场上面发行了200股股票，每股1元，公司A当时盈利为10元，那么他的市盈率PE就是20；市盈率反映了股民对这家公司的期望，直接影响了其估值。</p>
+<p>市净率PB的计算方法是公司市值/公司净资产。什么叫做净资产？净资产就是公司的总资产-负债。</p>
+<p>净资产收益率ROE是净利润除以净资产，该指标反映了股东权益的收益水平，用来衡量公司运用自有资本的效率，这个指标越高，说明投资带来的收益越高。</p>
+<p>股息率的计算方式为：每股红利/每股价值。股息率是挑选收益性股票的重要依据，如果连续多年年度股息率超过当年银行存款利率的话，那么基本可以把这只股票视为收益性股票。假设A每股10元，分红时每股发放0.5元，那么股息率就是5%。</p>
 
   </div>
 </article>
@@ -232,7 +243,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-指数基金"><span class="toc-number">2.</span> <span class="toc-text">2.指数基金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-主流的指数介绍"><span class="toc-number">3.</span> <span class="toc-text">3.主流的指数介绍</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-指数基金"><span class="toc-number">2.</span> <span class="toc-text">2.指数基金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-主流的指数介绍"><span class="toc-number">3.</span> <span class="toc-text">3.主流的指数介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-概念介绍"><span class="toc-number">4.</span> <span class="toc-text">4.概念介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-如何衡量指数的价值？"><span class="toc-number">5.</span> <span class="toc-text">5.如何衡量指数的价值？</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -282,7 +293,7 @@
 </footer>
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1565053029213')
+  navigator.serviceWorker.register('/sw.js?t=1565792643107')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

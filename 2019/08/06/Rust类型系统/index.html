@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.Rust类型系统计算机就是用来存储信息和处理信息的。在编译期间进行类型检查的语言属于静态类型；在运行期间进行类型检查的语言属于动态类型。如果一门语言在不存在类型的隐式转换，要求不同类型之间的类型在执行运算之前必须要进行显式的强制类型转换的话，那么这门语言就属于强类型，反之就属于弱类型。 静态语言在编译期间会执行类型检查，而类型检查离不开类型系统。所以如果一门语言的类型系统设计的足够好的话，那么">
+<meta name="keywords" content="Rust">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust类型系统">
+<meta property="og:url" content="http://yoursite.com/2019/08/06/Rust类型系统/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.Rust类型系统计算机就是用来存储信息和处理信息的。在编译期间进行类型检查的语言属于静态类型；在运行期间进行类型检查的语言属于动态类型。如果一门语言在不存在类型的隐式转换，要求不同类型之间的类型在执行运算之前必须要进行显式的强制类型转换的话，那么这门语言就属于强类型，反之就属于弱类型。 静态语言在编译期间会执行类型检查，而类型检查离不开类型系统。所以如果一门语言的类型系统设计的足够好的话，那么">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-07T15:04:30.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rust类型系统">
+<meta name="twitter:description" content="1.Rust类型系统计算机就是用来存储信息和处理信息的。在编译期间进行类型检查的语言属于静态类型；在运行期间进行类型检查的语言属于动态类型。如果一门语言在不存在类型的隐式转换，要求不同类型之间的类型在执行运算之前必须要进行显式的强制类型转换的话，那么这门语言就属于强类型，反之就属于弱类型。 静态语言在编译期间会执行类型检查，而类型检查离不开类型系统。所以如果一门语言的类型系统设计的足够好的话，那么">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Rust类型系统</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/04/定投/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/06/Rust类型系统/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/06/Rust类型系统/&text=Rust类型系统"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/06/Rust类型系统/&is_video=false&description=Rust类型系统"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Rust类型系统&body=Check out this article: http://yoursite.com/2019/08/06/Rust类型系统/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/06/Rust类型系统/&name=Rust类型系统&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Rust类型系统"><span class="toc-number">1.</span> <span class="toc-text">1.Rust类型系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类型大小"><span class="toc-number">2.</span> <span class="toc-text">2.类型大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型"><span class="toc-number">3.</span> <span class="toc-text">3.泛型</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Rust类型系统
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-08-06T15:27:33.000Z" itemprop="datePublished">2019-08-06</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/Rust/">Rust</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1-Rust类型系统"><a href="#1-Rust类型系统" class="headerlink" title="1.Rust类型系统"></a>1.Rust类型系统</h3><p>计算机就是用来存储信息和处理信息的。<strong>在编译期间进行类型检查的语言属于静态类型；在运行期间进行类型检查的语言属于动态类型。如果一门语言在不存在类型的隐式转换，要求不同类型之间的类型在执行运算之前必须要进行显式的强制类型转换的话，那么这门语言就属于强类型，反之就属于弱类型。</strong></p>
+<p>静态语言在编译期间会执行类型检查，而类型检查离不开类型系统。所以如果一门语言的类型系统设计的足够好的话，那么将能够规避很多bug问题。举个反例：尽管c,cplusplus属于静态语言，但是在编译期间却不能检测出数组越界行为，这属于c，cplusplus类型系统之外的未定义行为。而在rust语言的类型系统中，则不存在这个问题，无需担心。</p>
+<p>同时，强大的类型系统能够进行类型推导，比如说Haskell。Rust类型系统受其启发，但是做的并没有那么强大，类型推导还是稍有不足。</p>
+<p>动态类型的语言如果要做类型检查的话，那么就只能在运行期间做了，动态类型的语言也能够做到类型安全。</p>
+<p>如果类型系统允许一段代码在不同的上下文中具有不同的类型的话，那么这个类型系统便具备多态特性。如果按照多态的时间来划分的话，那么多态又可以分为静多态和动多态。静多态发生在编译期间，静多态牺牲灵活获取性能；而动多态发生在运行期，牺牲性能获取灵活。rust既支持静多态也支持动多态，静多态是一种零成本抽象。</p>
+<p>多态目前主要有三种形式：分别是参数化多态，Ad-hoc多态，子类型多态。</p>
+<ul>
+<li><p>1.<strong>参数化多态就是指泛型</strong>，泛型能够获得更好的表达力，同时能够保证静态类型安全。</p>
+</li>
+<li><p>2.<strong>Ad-hoc多态：同一种行为定义，在不同的上下文中会有不同的行为表现。</strong>Haskell中使用Typeclass来支持Ad-hoc多态，rust中使用trait来实现。trait定义了行为，将其impl到不同的struct中可以实现不同的表现。</p>
+</li>
+<li><p>3.子类型多态一般用在面向对象的编程语言中，比如Java中的继承。在Rust中并没有Java中的继承概念，所以不存在子类型多态。</p>
+</li>
+</ul>
+<p>总结：rust多态只支持参数化多态和Ad-hoc多态，凭借泛型和trait。</p>
+<p>Rust中一切皆表达式，表达式皆有值，值皆有类型，所以可以说，Rust中一切皆有类型。</p>
+<p>为什么说Rust是类型安全？除了一些基本的原生类型和复合类型，Rust把作用域也纳入了类型系统。Rust中有一些表达式，有的时候没有返回值（也就是返回单元值），有时返回错误的值，Rust也将这些纳入了类型系统，也就是Option<t>和Result&lt;T,E&gt;这样的类型。甚者，一些极端情况，比如说线程崩溃，break，continue等行为，也被纳入了类型系统，这种类型叫做never类型。</t></p>
+<h3 id="2-类型大小"><a href="#2-类型大小" class="headerlink" title="2.类型大小"></a>2.类型大小</h3><p>存信息，首先需要先知道大小。Rust中没有GC，内存首先通过编译器来分配，Rust被编译为LLVM IR，被编译的产物中会携带内存分配的信息。因此Rust编译器需要知道类型大小，才能分配合理的内存。</p>
+<ul>
+<li><p>1.Sized Type: Rust中大部分类型都是在编译器就可以确定大小的类型，比如u32固定4个字节。</p>
+</li>
+<li><p>2.Dynamic Sized Type: DST,动态大小的类型。</p>
+</li>
+</ul>
+<p>这里着重介绍一下DST，动态类型。比如说字符串，字符串到底占多少字节这个是说不定的。对于这种情况，Rust提供了引用类型，引用的类型大小总是能够确定的，字符串切片&amp;str就是一种引用类型，引用类型由指针和长度信息组成。引用存在栈上面，引用所指向的数据信息存储在堆上面。为什么引用的类型就能够确定类型大小了？因为指针是固定的大小，长度信息也是可以知道的。因此编译器就可以正确的为其分配栈内存空间，而引用所指向的数据在运行的时候也会在堆上开辟出内存空间。举例如下所示：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="built_in">str</span> = <span class="string">"hello world"</span>;</span><br><span class="line">  <span class="keyword">let</span> ptr = <span class="built_in">str</span>.as_ptr();</span><br><span class="line">  <span class="keyword">let</span> len = <span class="built_in">str</span>.len();</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">"&#123;:p&#125;"</span>, ptr); <span class="comment">// 本机此时输出0x10ce51840</span></span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">"&#123;:?&#125;"</span>, len); <span class="comment">// 11</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&amp;str这种引用类型，它所指向的内容是动态大小类型，同时携带了长度信息，在Rust中又被叫做胖指针(Fat Pointer)。</p>
+<ul>
+<li><p>3.Zero Sized Type:零大小类型。比如单元类型和单元结构体，大小都是0。0+0还会等于0，如果一个结构体或者数组是由单元类型组成的话，那么其大小也为0。</p>
+</li>
+<li><p>4.Bottom Type:底类型。never就是底类型，底类型的特点是1.没有值；2.是其它任意类型的子类型。如果说ZST类型是空的话，那么底类型就表示无。底类型没有值，而且可以等价于任意类型，Rust使用叹号！来表示底类型。</p>
+</li>
+</ul>
+<p>底类型举例使用：在Rust中，要求if的每一个分支都返回同一种类型的值。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">foo</span></span>() -&gt; ! &#123;</span><br><span class="line">  <span class="keyword">loop</span> &#123; <span class="built_in">println!</span>(<span class="string">"ok"</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="keyword">if</span> <span class="literal">false</span> &#123;</span><br><span class="line">    foo()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="number">100</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">assert_eq!</span>(i, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-泛型"><a href="#3-泛型" class="headerlink" title="3.泛型"></a>3.泛型</h3><p>泛型是一种参数化多态，使用泛型可以编写更为抽象的代码。下面是两个使用泛型的示例：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">foo</span></span>&lt;T&gt;(x: T) -&gt; T &#123;</span><br><span class="line">  x</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span>&lt;T&gt; &#123; x: T, y: T &#125;</span><br><span class="line"><span class="keyword">impl</span>&lt;T&gt; Point&lt;T&gt; &#123;</span><br><span class="line">  <span class="function"><span class="keyword">fn</span> <span class="title">new</span></span>(x: T, y: T) -&gt; <span class="keyword">Self</span> &#123;</span><br><span class="line">    Point&#123;x: x, y: y&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> point1 = Point::new(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">let</span> point2 = Point::new(<span class="string">"1"</span>, <span class="string">"2"</span>);</span><br><span class="line">  <span class="built_in">assert_eq!</span>(foo(<span class="number">1</span>), <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">assert_eq!</span>(foo(<span class="string">"2"</span>), <span class="string">"2"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Rust中的泛型属于静多态，它是一种编译器多态：在编译期间，泛型会被单态化。单态化是编译器进行静态分发的一种策略。单态化意味着编译器要将一个泛型函数生成两个具体类型对应的函数。泛型和单态化是rust中很重要的两个功能，单态化静态分发的好处是性能好，没有运行时开销，缺点是容易造成二进制文件变大。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Rust类型系统"><span class="toc-number">1.</span> <span class="toc-text">1.Rust类型系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类型大小"><span class="toc-number">2.</span> <span class="toc-text">2.类型大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型"><span class="toc-number">3.</span> <span class="toc-text">3.泛型</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/06/Rust类型系统/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/06/Rust类型系统/&text=Rust类型系统"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/06/Rust类型系统/&is_video=false&description=Rust类型系统"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Rust类型系统&body=Check out this article: http://yoursite.com/2019/08/06/Rust类型系统/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/06/Rust类型系统/&title=Rust类型系统"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/06/Rust类型系统/&name=Rust类型系统&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1565792643107')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
