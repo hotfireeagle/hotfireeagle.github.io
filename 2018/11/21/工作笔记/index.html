@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><link rel=manifest href=/manifest.json><meta name="generator" content="Hexo 3.8.0"><link rel="manifest" href="/manifest.json">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。 2.微信分享接口将不再具有success回调以及fail回调。 3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。 4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下">
+<meta name="keywords" content="work">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作笔记">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/工作笔记/index.html">
+<meta property="og:site_name" content="夜游">
+<meta property="og:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。 2.微信分享接口将不再具有success回调以及fail回调。 3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。 4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-07T03:45:53.478Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作笔记">
+<meta name="twitter:description" content="1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。 2.微信分享接口将不再具有success回调以及fail回调。 3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。 4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>工作笔记</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/11/22/mongodb学习/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/11/14/nest学习/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/11/21/工作笔记/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/11/21/工作笔记/&text=工作笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/11/21/工作笔记/&is_video=false&description=工作笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=工作笔记&body=Check out this article: http://yoursite.com/2018/11/21/工作笔记/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/11/21/工作笔记/&name=工作笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        工作笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">夜游</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-11-21T03:06:23.000Z" itemprop="datePublished">2018-11-21</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/work/">work</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>1.关于vue中v-html遇到null.a的问题，很不幸，浏览器控制台并不会报错，并且会莫名其妙的阻塞渲染。在拿到后端传过来的数据最好做一个检查，有效就使用，无效的话就使用默认值吧。</p>
+<p>2.微信分享接口将不再具有success回调以及fail回调。</p>
+<p>3.app里面的globalData和page里的data所建立的关系并不是响应式绑定。</p>
+<p>4.微信页面栈的问题，最多同时存在五个页面在栈中，正常情况下，navigateTo是不断将新页面入栈的，redirectTo没有变化，出一个进来一个，navigateBack是出栈的；要解决这个问题就不要设计过于复杂的页面依赖跳转关系。</p>
+<p>5.在react的jsx表达式中使用&amp;&amp;的副作用，{0 &amp;&amp; 1} 将会渲染出一个1的dom；而{null &amp;&amp; 1}就不会了。也就是说null以及undefined并不会react转化为dom元素。</p>
+<p>6.js的字段名陷阱，参考下面代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> key = <span class="string">'a'</span>;</span><br><span class="line"><span class="keyword">delete</span> obj.key; <span class="comment">// 返回true,但是并没有删除a字段，而是删除的key字段,正确写法应该像下面这样</span></span><br><span class="line"><span class="keyword">delete</span> obj[key]; <span class="comment">// 由于没有加引号，所以取了变量的值</span></span><br></pre></td></tr></table></figure>
+<p>7.一个不太好找关于xtemplate和zepto结合使用时不太好找出bug的问题。问题描述：使用zepto给dom元素绑定点击事件的时候，出现的问题是点击不走自己设置的回调，而且绑定的时候还是在document.ready里面绑定的。那么这是为什么呢？肯定是dom结构还没有准备好，就进行绑定了，何况是配合xtemplate进行使用，此时document已经ready了，但是xhr可能还在loading，xhrloading好后，一部分dom才会被添加到文档流里面，此时自然在document.ready里面进行绑定的话是于事无补的。</p>
+<p>8.如果遇到了在字体数量变多的情况下接着所导致的字体的px变大的情况，那么可以使用如下的css来修复，原因不清楚：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.someDom</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">max-height</span>: <span class="number">1.4em</span>; <span class="comment">/** 并不是说值必须得为1.4em，而是说得显式设置一个max-height才可 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>9.如果一个input设置了autofocus的话，那么很可能在第一次渲染的时候页面很容易就自动聚焦到那里了。但是如果重绘了(比如网络图片到了)，那么这个自动聚焦就已经被cancel了。那么对于一种很常见的需求就是如何点击按钮，让input输入框自动聚焦并且唤起键盘呢。答案就是监听点击事件，然后focus一下，大致如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'#numberInput'</span>);</span><br><span class="line">input &amp;&amp; input.focus();</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/11/21/工作笔记/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/11/21/工作笔记/&text=工作笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/11/21/工作笔记/&is_video=false&description=工作笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=工作笔记&body=Check out this article: http://yoursite.com/2018/11/21/工作笔记/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/11/21/工作笔记/&title=工作笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/11/21/工作笔记/&name=工作笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 hahahai
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/hotfireeagle">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1573141721156')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

@@ -28,11 +28,11 @@ var precacheUrls = [];
 
   precacheUrls.push('/2019/04/26/轮播图实现/');
 
-  precacheUrls.push('/2019/04/27/深入理解margin/');
-
   precacheUrls.push('/2019/05/16/typescript学习二/');
 
-  precacheUrls.push('/2019/05/23/typescript-react学习笔记2/');
+  precacheUrls.push('/2019/10/03/History1/');
+
+  precacheUrls.push('/2019/06/05/Sequelize学习/');
 
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
