@@ -154,7 +154,7 @@
 <p>如果接收到的文件是js文件的话，那么接下来和HTML一样，receive response -&gt; receive data -&gt; finish loading -&gt; evaluate script。</p>
 <h3 id="2-问题三：DOMContentLoaded和onLoad事件分别在什么时机被触发？"><a href="#2-问题三：DOMContentLoaded和onLoad事件分别在什么时机被触发？" class="headerlink" title="2.问题三：DOMContentLoaded和onLoad事件分别在什么时机被触发？"></a>2.问题三：DOMContentLoaded和onLoad事件分别在什么时机被触发？</h3><p>DOMContentLoaded事件一般在parse HTML过程完成后被触发（解析到了HTML文档的末尾）。onLoad一般需要等到外部资源也已经加载完成了的时候触发。</p>
 <h3 id="3：-DOMContentLoaded和onload事件一般是谁写被触发？"><a href="#3：-DOMContentLoaded和onload事件一般是谁写被触发？" class="headerlink" title="3： DOMContentLoaded和onload事件一般是谁写被触发？"></a>3： DOMContentLoaded和onload事件一般是谁写被触发？</h3><p>正常生产情况大部分都是DOMContentLoaded事件先被触发。但是也不一定，当浏览器finish loading HTML文档后，接着会开始parse HTML，但是呢，parse HTML并不是直接就到HTML文档结尾的，而是分阶段的：先parse HTML到<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1573401423521')
+  navigator.serviceWorker.register('/sw.js?t=1573489781501')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
